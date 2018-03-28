@@ -22,11 +22,6 @@ section .section-title{
 	-moz-transition: .5s all ease;
 	transition: .5s all ease;
 }
-#what-we-do .card:hover{
-	-webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-	-moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-	box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-}
 #what-we-do .card .card-block{
 	padding-left: 50px;
     position: relative;
@@ -55,22 +50,22 @@ section .section-title{
     transition:transform .2s ease-in-out;
 }
 #what-we-do .card .block-1:before{
-    content: "\f3d1";
+    content: "\f155";
 }
 #what-we-do .card .block-2:before{
-    content: "\f3d1";
+    content: "\f155";
 }
 #what-we-do .card .block-3:before{
-    content: "\f3d1";
+    content: "\f155";
 }
 #what-we-do .card .block-4:before{
-    content: "4)";
+    content: "\f155";
 }
 #what-we-do .card .block-5:before{
-    content: "\f0a1";
+    content: "\f155";
 }
 #what-we-do .card .block-6:before{
-    content: "\f218";
+    content: "\f155";
 }
 #what-we-do .card:hover .card-block:before{
 	-webkit-transform: rotate(360deg);
