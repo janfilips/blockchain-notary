@@ -1,2 +1,2 @@
 # blockchain-notary
-A simple blockchain notary app written in django
+A very simple and the second most logical Blockchain app leaveraging Smart Contracts
