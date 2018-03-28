@@ -7,7 +7,7 @@ section{
 }
 section .section-title{
 	text-align:center;
-	color:#007b5e;
+	color:black;
 	margin-bottom:50px;
 	text-transform:uppercase;
 }
@@ -49,19 +49,19 @@ section .section-title{
 	font-family: FontAwesome;
     position: absolute;
     font-size: 39px;
-    color: #007b5e;
+    color: black;
     left: 0;
 	-webkit-transition: -webkit-transform .2s ease-in-out;
     transition:transform .2s ease-in-out;
 }
 #what-we-do .card .block-1:before{
-    content: "1)";
+    content: "\f3d1";
 }
 #what-we-do .card .block-2:before{
-    content: "2)";
+    content: "\f3d1";
 }
 #what-we-do .card .block-3:before{
-    content: "3)";
+    content: "\f3d1";
 }
 #what-we-do .card .block-4:before{
     content: "4)";
