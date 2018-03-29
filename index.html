@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Simple Blockchain Notarisation Service">
-    <meta name="author" content="Jan Paricka">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Simple Blockchain Notarisation Service">
+  <meta name="author" content="Jan Paricka">
 
-    <title>Blockchain Notary</title>
+  <title>Blockchain Notary</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/one-page-wonder.min.css" rel="stylesheet">
-    <link href="css/what-we-do.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/one-page-wonder.min.css" rel="stylesheet">
+  <link href="css/site.css" rel="stylesheet">
+  <link href="vendor/dropzone-4.3.0/dist/min/dropzone.min.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Blockchain Notary</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Log In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
       <div class="container">
-        <a class="navbar-brand" href="#">Blockchain Notary</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Log In</a>
-            </li>
-          </ul>
-        </div>
+        <h1 class="masthead-heading mb-0">Blockchain Notary</h1>
+        <h2 class="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
+        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
       </div>
-    </nav>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+  </header>
 
-    <header class="masthead text-center text-white">
-      <div class="masthead-content">
-        <div class="container">
-          <h1 class="masthead-heading mb-0">Blockchain Notary</h1>
-          <h2 class="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
-          <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
-        </div>
-      </div>
-      <div class="bg-circle-1 bg-circle"></div>
-      <div class="bg-circle-2 bg-circle"></div>
-      <div class="bg-circle-3 bg-circle"></div>
-      <div class="bg-circle-4 bg-circle"></div>
-    </header>
+  <section id="what-we-do">
+    <div class="container-fluid">
 
-    <section id="what-we-do">
-		<div class="container-fluid">
-
-        <h2 class="section-title mb-2 h1">What we do</h2>
-        <p>
+      <h2 class="section-title mb-2 h1">What we do</h2>
+      <p>
         What we do is that we provide a unique proof of any electronic document.
-        <br/>
-        On the Blockchain.
-        <br/>
-        Forever.      
-        </p>
-        </br>
-  
+        <br/> On the Blockchain.
+        <br/> Forever.
+      </p>
+      </br>
+
       <h2 class="section-title mb-2 h1">How it works</h2>
       <br/>
-			<p class="text-left text-muted h5">
-          We provide <a href="https://github.com/jparicka/blockchain-notary">an open source</a> service that computes the cryptographic hash for
-          your documents and store this cryptographic information on the Blockchain.
-          <br/>
-          We use the <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-2 algorithm</a> to compute hash for your files and we never get to actually upload your file anywhere to a server.
-          <br/>
-          This means that your document content is <u>100% cryptographically protected</u> along the way.
-          <br/>
-          Using this service, you will receive the ultimate proof of your digital document and no one gets to read it along the way.
-          <br/>
-          Blockchain rulez lol
+      <p class="text-left text-muted h5">
+        We provide
+        <a href="https://github.com/jparicka/blockchain-notary">an open source</a> service that computes the cryptographic hash for your documents and store this cryptographic information
+        on the Blockchain.
+        <br/> We use the
+        <a href="https://en.wikipedia.org/wiki/SHA-2">SHA-2 algorithm</a> to compute hash for your files and we never get to actually upload your file anywhere to a server.
+        <br/> This means that your document content is
+        <u>100% cryptographically protected</u> along the way.
+        <br/> Using this service, you will receive the ultimate proof of your digital document and no one gets to read it along
+        the way.
+        <br/> Blockchain rulez lol
       </p>
       <br/>
       <br/>
@@ -92,63 +92,109 @@
 
 
       <div class="row mt-5">
-				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-					<div class="card">
-						<div class="card-block block-1">
-							<h3 class="card-title">Add documents for digital verification</h3>
-							<p class="card-text">Simply drag and drop documents that you want to digitally verify and 
-                  we will compute the cryptographic hash and record this on the Blockchain.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-					<div class="card">
-						<div class="card-block block-2">
-							<h3 class="card-title">Write resultant hashes to the Blockchain</h3>
-							<p class="card-text">xxxx</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-					<div class="card">
-						<div class="card-block block-3">
-							<h3 class="card-title">Receive an email</h3>
-							<p class="card-text">Your document hash has been forever written in the blockchain and 
-                  we will send you a link referencing the Blockchain network with it's own unique cryptographic proof of the document.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>	
-	</section>
-<<<<<<< HEAD
-=======
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+          <div class="card">
+            <div class="card-block block-1">
+              <h3 class="card-title">Add documents for digital verification</h3>
+              <p class="card-text">Simply drag and drop documents that you want to digitally verify and we will compute the cryptographic hash
+                and record this on the Blockchain.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+          <div class="card">
+            <div class="card-block block-2">
+              <h3 class="card-title">Write resultant hashes to the Blockchain</h3>
+              <p class="card-text">xxxx</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+          <div class="card">
+            <div class="card-block block-3">
+              <h3 class="card-title">Receive an email</h3>
+              <p class="card-text">Your document hash has been forever written in the blockchain and we will send you a link referencing the Blockchain
+                network with it's own unique cryptographic proof of the document.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <hr/>
-  <br/>
-  <p class="text-center text-muted h5">
-    <img src="img/dropzone-drawing.png">
-  </p>
-  <br/>
+  <div class="row col-sm-10 centered">
+    <div id="dropzone" class="col-sm-12">
+      <form action="/upload" class="dropzone" id="dropzoneform">
+        <div class="dz-message">
+          Click or Drag'n'Drop file for notarise
+        </div>
+      </form>
+    </div>
 
->>>>>>> 66aae0d45e8bbc6ab73dc0e79f69064992012586
+    <table class="table col-sm-12" style="display: none;" id="dropzone-results">
+      <tr>
+        <th>Name</th>
+        <td data-file-name>Unknown</td>
+      </tr>
+      <tr>
+        <th>File type</th>
+        <td data-file-type>Unknown</td>
+      </tr>
+      <tr>
+        <th>Size</th>
+        <td data-file-size>Unknown</td>
+      </tr>
+      <tr>
+        <th>Last modified</th>
+        <td data-file-last-modified>Unknown</td>
+      </tr>
+      <tr>
+        <th>Hash</th>
+        <td data-file-hash>
+          <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+            Hashing...
+          </div>
+          <div id="hash-result"></div>
+        </td>
+      </tr>
+    </table>
+    <div class="row centered" id="upload-buttons" style="display: none" ;>
+      <button class="btn btn-success" id="upload-button-notarise" disabled="disabled">Notarise</button>
+      <button class="btn btn-danger" id="upload-button-cancel" disabled="disabled">Cancel</button>
+    </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-black">
-      <div class="container">
-        <p class="m-0 text-center text-white small">
-          <a href="https://github.com/jparicka">
-            (c) 2018 Jan Paricka
-          </a>
-        </p>
-   </div>
-      <!-- /.container -->
-    </footer>
+  <!-- Footer -->
+  <footer class="py-5 bg-black">
+    <div class="container">
+      <p class="m-0 text-center text-white small">
+        <a href="https://github.com/jparicka">
+          (c) 2018 Jan Paricka
+        </a>
+      </p>
+    </div>
+    <!-- /.container -->
+  </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Scripts -->
+  <!-- jQuery -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Dropzone -->
+  <script src="vendor/dropzone-4.3.0/dist/min/dropzone.min.js"></script>
+  <!-- Number formating -->
+  <script src="vendor/jquery.formatNumber-master/jquery.formatNumber-0.1.1.min.js"></script>
+  <!-- Stanford Javascript Crypto Library -->
+  <script src="https://bitwiseshiftleft.github.io/sjcl/sjcl.js"></script>
+  <!-- Upload logic (own) -->
+  <script src="scripts/upload.js"></script>
 
-  </body>
+</body>
 
 </html>
