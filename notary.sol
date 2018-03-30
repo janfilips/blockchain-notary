@@ -10,7 +10,7 @@ contract notary {
   uint public file_timestamp;
   uint public timestamp;
 
-  function nottario(bytes32 _hash, bytes32 _name, bytes32 _mime_type, uint _size, uint _file_timestamp) payable {
+  function notary(bytes32 _hash, bytes32 _name, bytes32 _mime_type, uint _size, uint _file_timestamp) payable {
     if (msg.value < 10000000000000000) throw;
     owner = msg.sender;
     name = _name;
