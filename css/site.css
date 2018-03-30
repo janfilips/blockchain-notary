@@ -143,6 +143,6 @@ footer{
   text-align: center;
 }
 
-p.large{
-  font-size: 20px;
+p {
+  font-size: 25px;
 }
