@@ -70,7 +70,7 @@
             it) on the Blockchain.</p>
           <p>In the past, if you wanted to prove that you had a certain document at a certain point of time, you would need
             to go to a notay public who will (for a fee) testify a witness to that fact.</p>
-          <p>Blockchain allows you to do just that without needing involving a notary public to become a witness and to testify.
+          <p><a href="https://en.wikipedia.org/wiki/Blockchain" target="_blank">Blockchain</a> allows you to do just that without needing involving a notary public to become a witness and to testify.
             We guarantee the witness mathematically. And it's really that simple.</p>
           <p>Once we have done that, we will email you a permanent link referencing the actual bitcoin transaction and the proof of your document on the Blockain itself. The proof of your document is valid forever, guaranteed by the Blockchain network itself.
 
@@ -98,18 +98,74 @@
         </div>
       </div>
 
+
       <h2 class="section-title mb-2 h1">How much does it cost?</h2>
       <div class="row">
-        <div class="col-sm-11 centered text-left text-muted">
-          <ol>
-            <h3>Well, there is a cost associated to this service and consists of 2 things:</h3>
-            <li>0.01 ETH is the cost for submitting the contract to the Blockchain</li>
-            <li>0.05 ETH is for
-              <a href="http://linkedin.com/in/jparicka/" taget="_blank">Jan Paricka</a> because he is a good developer, we all love him and we want him to have lots and lots of money</li>
-          </ol>
-          <p>So the total cost will be 0.06 ETH and we guarantee a lifetime warranty for your document proof provided by the
-            Blockchain network.
-          </p>
+          <div class="col-sm-11 centered">
+              <p class="text-left text-muted">
+                Well, there is a cost associated to this service and consists of 2 things:
+                <br/>
+                <br/>
+        
+                1 -  0.01 ETH is the cost for submitting the contract to the Blockchain
+                <br/>
+        
+                2 - 0.09 ETH is for <a href="http://linkedin.com/in/jparicka/" target="_blank">Jan Paricka</a> because he is a very good developer, we all love him and we want him to have lots and lots and lots of money
+                <br/>
+                <br/>
+                So the total cost will be 0.1 ETH and we guarantee the lifetime warranty for your document proof provided by the Blockchain network.
+              </p>
+          </div>
+      </div>
+
+      <hr/>
+
+      <div class="row">
+        <div class="col-sm-10 centered">
+          <div id="dropzone" class="col-sm-12">
+            <form action="/upload" class="dropzone" id="dropzoneform">
+              <div class="dz-message">
+                Click or Drag'n'Drop file for notarise
+              </div>
+            </form>
+          </div>
+
+          <table class="table col-sm-12" style="display: none;" id="dropzone-results">
+            <tr>
+              <th>Name</th>
+              <td data-file-name>Unknown</td>
+            </tr>
+            <tr>
+              <th>File type</th>
+              <td data-file-type>Unknown</td>
+            </tr>
+            <tr>
+              <th>Size</th>
+              <td data-file-size>Unknown</td>
+            </tr>
+            <tr>
+              <th>Last modified</th>
+              <td data-file-last-modified>Unknown</td>
+            </tr>
+            <tr>
+              <th>Hash</th>
+              <td data-file-hash>
+                <div class="spinner">
+                  <div class="rect1"></div>
+                  <div class="rect2"></div>
+                  <div class="rect3"></div>
+                  <div class="rect4"></div>
+                  <div class="rect5"></div>
+                  Hashing...
+                </div>
+                <div id="hash-result"></div>
+              </td>
+            </tr>
+          </table>
+          <div class="row centered" id="upload-buttons" style="display: none" ;>
+            <button class="btn btn-success" id="upload-button-notarise" disabled="disabled">Notarise</button>
+            <button class="btn btn-danger" id="upload-button-cancel" disabled="disabled">Cancel</button>
+          </div>
         </div>
       </div>
 
@@ -143,57 +199,6 @@
       </div>
     </div>
   </section>
-
-  <div class="row">
-    <div class="col-sm-10 centered">
-      <div id="dropzone" class="col-sm-12">
-        <form action="/upload" class="dropzone" id="dropzoneform">
-          <div class="dz-message">
-            Click or Drag'n'Drop file for notarise
-          </div>
-        </form>
-      </div>
-
-      <table class="table col-sm-12" style="display: none;" id="dropzone-results">
-        <tr>
-          <th>Name</th>
-          <td data-file-name>Unknown</td>
-        </tr>
-        <tr>
-          <th>File type</th>
-          <td data-file-type>Unknown</td>
-        </tr>
-        <tr>
-          <th>Size</th>
-          <td data-file-size>Unknown</td>
-        </tr>
-        <tr>
-          <th>Last modified</th>
-          <td data-file-last-modified>Unknown</td>
-        </tr>
-        <tr>
-          <th>Hash</th>
-          <td data-file-hash>
-            <div class="spinner">
-              <div class="rect1"></div>
-              <div class="rect2"></div>
-              <div class="rect3"></div>
-              <div class="rect4"></div>
-              <div class="rect5"></div>
-              Hashing...
-            </div>
-            <div id="hash-result"></div>
-          </td>
-        </tr>
-      </table>
-      <div class="row" id="upload-buttons" style="display: none">
-        <div class="col-sm-12">
-          <button class="btn btn-success" id="upload-button-notarise" disabled="disabled">Notarise</button>
-          <button class="btn btn-danger" id="upload-button-cancel" disabled="disabled">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="py-5 bg-black">
