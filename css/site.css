@@ -1,6 +1,3 @@
-/**********************
-/***** Services *******
-/*********************/
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 section{
 	padding: 60px 0;
@@ -27,7 +24,6 @@ section .section-title{
     position: relative;
 }
 #what-we-do .card .card-block a{
-	color: #007b5e !important;
 	font-weight:700;
 	text-decoration:none;
 }
@@ -132,7 +128,7 @@ section .section-title{
 }
 
 footer{
-	margin-top: 50px;
+  margin-top: 50px;
 }
 
 .btn{
