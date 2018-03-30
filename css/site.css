@@ -138,3 +138,7 @@ footer{
 .btn{
 	margin: 10px;
 }
+
+.dropzone, #dropzone-results{
+  margin-top: 50px;
+}
