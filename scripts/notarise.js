@@ -1,19 +1,12 @@
-var provider;
-
-window.addEventListener('load', function () {
-
-    // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+$(document).ready(function () {
     if (typeof web3 !== 'undefined') {
+        console.warn("Using web3 detected from external source like Metamask")
+        // Use Mist/MetaMask's provider
+        window.web3 = new Web3(web3.currentProvider);
 
-        // Use the browser's ethereum provider
-        provider = web3.currentProvider
 
     } else {
-        console.log('No Etherum accound found. Please log into MetaMask or Mist')
+        window.alert("No web3 detected. This site is a Web3 Dapp - to proceed you will need to get Metamask https://metamask.io/");
     }
 
-})
-
-$("#upload-button-notarise").click(function () {
-    alert(provider);
 });
