@@ -139,7 +139,7 @@
       <div class="row">
         <div class="col-sm-10 centered">
           <div id="dropzone" class="col-sm-12">
-            <form action="/upload" class="dropzone" id="dropzoneform">
+            <form action="index.html" class="dropzone" id="dropzoneform">
               <div class="dz-message">
                 Drop Zone..
               </div>
@@ -234,23 +234,57 @@
     <!-- /.container -->
   </footer>
 
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" role="dialog" id="modal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Alert</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Some text...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
+
   <!-- jQuery -->
   <script src="vendor/jquery/jquery.min.js"></script>
+
   <!-- Bootstrap -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   <!-- Dropzone -->
   <script src="vendor/dropzone-4.3.0/dist/min/dropzone.min.js"></script>
+
   <!-- Number formating -->
   <script src="vendor/jquery.formatNumber-master/jquery.formatNumber-0.1.1.min.js"></script>
+
   <!-- Stanford Javascript Crypto Library -->
   <script src="https://bitwiseshiftleft.github.io/sjcl/sjcl.js"></script>
-  <!-- Web3 -->
-  <script type="text/javascript" src="bower_components/web3/dist/web3.min.js"></script>
-  <!-- Upload logic (own) -->
-  <script src="scripts/upload.js"></script>
+
+    <!-- EthJS -->
+    <script type="text/javascript" src="vendor/ethjs/ethjs.min.js"></script>
+
+  <!-- EthJS-Query -->
+  <script type="text/javascript" src="vendor/ethjs/ethjs-query.min.js"></script>
+
+    <!-- EthJS-Contract -->
+    <script type="text/javascript" src="vendor/ethjs/ethjs-contract.min.js"></script>
+
   <!-- Notarise logic (own) -->
   <script src="scripts/notarise.js"></script>
+
+  <!-- Modal (own) -->
+  <script src="scripts/modal.js"></script>
 
 </body>
 
