@@ -88,7 +88,7 @@ function isLoggedIn() {
 
 function checkIsLoggedIn() {
     if (!isLoggedIn()) {
-        showAlert("You are not logged into your MetaMask account.<br/>You need to log in first to access the Blockchain.", "Not Logged In");
+        showAlert("Please log into your MetaMask account to continue.", "Not Logged In");
     }
 }
 
