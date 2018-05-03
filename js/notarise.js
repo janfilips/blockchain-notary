@@ -11,7 +11,7 @@ $(document).ready(function () {
 
         // MetaMask not injected
     } else {
-        showAlert("MetaMask not detected. Get Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a>.", "MetaMask needed");
+        showAlert("This is a blockchain application, you need to install Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a> if you want to play around with blockchains.", "MetaMask not detected");
     }
 
 });
