@@ -101,5 +101,5 @@ function initContract(contract) {
 function sendContract() {
     var contract = new EthContract(eth);
     //initContract(contract);
-    alert("sending");
+    alert("Saving the proof of your document on the Blockain..");
 }
