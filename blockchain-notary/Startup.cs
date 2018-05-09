@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using blockchain_notary.Data;
 using blockchain_notary.Services;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace blockchain_notary
 {
@@ -60,6 +62,16 @@ namespace blockchain_notary
             }
 
             app.UseStaticFiles();
+
+			app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+					Path.Combine(Directory.GetCurrentDirectory(), 
+					             "wwwroot")
+				),
+                RequestPath = "/wwwroot"
+            });
+
 
             app.UseAuthentication();
 
