@@ -13132,11 +13132,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tomáš Tříska\\Source\\Repos\\blockchain-notary\\blockchain-notary\\blockchain-notary.csproj",
+      "projectUniqueName": "C:\\Users\\Tomáš Tříska\\source\\repos\\blockchain-notary\\blockchain-notary\\blockchain-notary.csproj",
       "projectName": "blockchain-notary",
-      "projectPath": "C:\\Users\\Tomáš Tříska\\Source\\Repos\\blockchain-notary\\blockchain-notary\\blockchain-notary.csproj",
+      "projectPath": "C:\\Users\\Tomáš Tříska\\source\\repos\\blockchain-notary\\blockchain-notary\\blockchain-notary.csproj",
       "packagesPath": "C:\\Users\\Tomáš Tříska\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tomáš Tříska\\Source\\Repos\\blockchain-notary\\blockchain-notary\\obj\\",
+      "outputPath": "C:\\Users\\Tomáš Tříska\\source\\repos\\blockchain-notary\\blockchain-notary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

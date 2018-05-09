@@ -1,35 +1,165 @@
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+section {
+    padding: 60px 0;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
+    section .section-title {
+        text-align: center;
+        color: black;
+        margin-bottom: 50px;
+        text-transform: uppercase;
     }
+
+#what-we-do {
+    background: #ffffff;
+}
+
+    #what-we-do .card {
+        min-height: 50px;
+        padding: 1rem !important;
+        border: none;
+        margin-bottom: 1rem;
+        -webkit-transition: .5s all ease;
+        -moz-transition: .5s all ease;
+        transition: .5s all ease;
+    }
+
+        #what-we-do .card .card-block {
+            padding-left: 50px;
+            position: relative;
+        }
+
+            #what-we-do .card .card-block a {
+                font-weight: 700;
+                text-decoration: none;
+            }
+
+                #what-we-do .card .card-block a i {
+                    display: none;
+                }
+
+        #what-we-do .card:hover .card-block a i {
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        #what-we-do .card .card-block:before {
+            font-family: FontAwesome;
+            position: absolute;
+            font-size: 39px;
+            color: black;
+            left: 0;
+            -webkit-transition: -webkit-transform .2s ease-in-out;
+            transition: transform .2s ease-in-out;
+        }
+
+        #what-we-do .card .block-1:before {
+            content: "\f15a";
+        }
+
+        #what-we-do .card .block-2:before {
+            content: "\f15a";
+        }
+
+        #what-we-do .card .block-3:before {
+            content: "\f15a";
+        }
+
+        #what-we-do .card .block-4:before {
+            content: "\f15a";
+        }
+
+        #what-we-do .card .block-5:before {
+            content: "\f15a";
+        }
+
+        #what-we-do .card .block-6:before {
+            content: "\f15a";
+        }
+
+        #what-we-do .card:hover .card-block:before {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            -webkit-transition: .5s all ease;
+            -moz-transition: .5s all ease;
+            transition: .5s all ease;
+        }
+
+.centered {
+    margin: auto;
+}
+
+.spinner {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+}
+
+    .spinner > div {
+        background-color: #333;
+        height: 100%;
+        width: 6px;
+        display: inline-block;
+        -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+        animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    .spinner .rect2 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .spinner .rect3 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    .spinner .rect4 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .spinner .rect5 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+@-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% {
+        -webkit-transform: scaleY(0.4)
+    }
+
+    20% {
+        -webkit-transform: scaleY(1.0)
+    }
+}
+
+@keyframes sk-stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }
+
+    20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}
+
+footer {
+    margin-top: 50px;
+}
+
+.btn {
+    margin: 10px;
+}
+
+#upload-buttons {
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
 }

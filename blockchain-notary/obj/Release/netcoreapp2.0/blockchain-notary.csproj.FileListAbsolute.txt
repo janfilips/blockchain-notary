@@ -1,0 +1,12 @@
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\bin\Release\netcoreapp2.0\blockchain-notary.deps.json
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\bin\Release\netcoreapp2.0\blockchain-notary.runtimeconfig.json
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\bin\Release\netcoreapp2.0\blockchain-notary.runtimeconfig.dev.json
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\bin\Release\netcoreapp2.0\blockchain-notary.dll
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\bin\Release\netcoreapp2.0\blockchain-notary.pdb
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\obj\Release\netcoreapp2.0\blockchain-notary.csprojResolveAssemblyReference.cache
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\obj\Release\netcoreapp2.0\blockchain-notary.csproj.CoreCompileInputs.cache
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\obj\Release\netcoreapp2.0\blockchain-notary.AssemblyInfoInputs.cache
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\obj\Release\netcoreapp2.0\blockchain-notary.AssemblyInfo.cs
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\obj\Release\netcoreapp2.0\blockchain-notary.dll
+C:\Users\Tomáš Tříska\source\repos\blockchain-notary\blockchain-notary\obj\Release\netcoreapp2.0\blockchain-notary.pdb
