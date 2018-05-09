@@ -1,17 +1,15 @@
-var testing = true;
+var isMetaMaskInstalled;
 
 $(document).ready(function () {
 
     // MetaMask injected
     if (typeof web3 !== 'undefined') {
         eth = new Eth(web3.currentProvider);
-
-        // Check if logged in on MetaMask
-        checkIsLoggedIn();
+        isMetaMaskInstalled = true;
 
         // MetaMask not injected
     } else {
-        showAlert("MetaMask not detected. Get Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a>.", "MetaMask needed");
+        showAlert("MetaMask not detected. Get Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a> and refresh page.", "MetaMask needed");
     }
 
 });
@@ -77,29 +75,28 @@ $("#upload-button-notarise").click(function () {
     sendContract();
 });
 
-function isLoggedIn() {
+function isLoggedIn(showAlert) {
     if (web3.eth.accounts.length !== 0) {
         return true;
     }
     else {
         return false;
-    }
-}
-
-function checkIsLoggedIn() {
-    if (!isLoggedIn()) {
-        showAlert("You are not logged into your MetaMask account. You need to log in before notary your file.", "Not Logged In");
+        if (showAlert) { 
+            showAlert("You are not logged into your MetaMask account. You need to log in before notary your file.", "Not Logged In");
+        }
     }
 }
 
 function initContract(contract) {
-    const MiniToken = contract(abi)
-    const miniToken = MiniToken.at(address)
-    listenForClicks(miniToken)
+    const MiniToken = contract(abi);
+    const miniToken = MiniToken.at(address);
+    listenForClicks(miniToken);
 }
 
 function sendContract() {
-    var contract = new EthContract(eth);
-    //initContract(contract);
-    alert("sending");
+    if (isLoggedIn(true)) { 
+        var ethContract = new EthContract(eth);
+        var contract = ethContract(abi);
+        var request = contract.at(address);
+    }
 }
