@@ -32,7 +32,6 @@ def _remove_accents(data):
 
 def user_logout(request):
 
-    print('-- logout')
     logout(request)
 
     return HttpResponseRedirect("/")
@@ -40,7 +39,6 @@ def user_logout(request):
 
 def register(request):
 
-    print('-- registration:')
     err = None
 
     if request.POST:
@@ -49,9 +47,6 @@ def register(request):
         username = email
         password1 = request.POST[u'password1']
         password2 = request.POST[u'password2']
-
-        print(username)
-        print(request.POST)
 
         if not password1 or not password2:
             err = "empty_password"
@@ -80,9 +75,6 @@ def register(request):
 
                     login(request, user)
 
-                    print('new user registered')
-                    print(username)
-
                     return HttpResponseRedirect("/")
 
     return HttpResponseRedirect("/")
@@ -90,43 +82,35 @@ def register(request):
 
 def auth(request):
 
-    print('-- auth:')
-
     err = False
 
     if(request.method == 'POST'):
 
         post = request.POST
 
-        print(post)
-
         try:
             email = request.POST['username']
             passwprd = request.POST['password']
         except:
-            print('failed login code:1')
-            err = True
-            #return HttpResponseRedirect("/register")
+            err = 'failed login code:1'
+            #return HttpResponseRedirect("/error")
 
 
         try:
             user = User.objects.get(email=email)
         except:
-            print('failed login code:2')
-            err = True
-            #return HttpResponseRedirect("/register")
+            err = 'failed login code:2'
+            #return HttpResponseRedirect("/error")
 
         try:
             user = authenticate(username=user.username, password=passwprd)
             login(request, user)
         except:
-            print('failed login code:3')
-            err = True
+            err = 'failed login code:3'
             #return HttpResponseRedirect("/register")
 
         if(not err):
             print('user logged in', user)
             return HttpResponseRedirect("/")
-
 
     return render(request,template_name='err.html',context={'err':err},)

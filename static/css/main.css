@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700');
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    text-decoration: none;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/*-- general css --*/
+html {
+  font-size: 62.5%;
+}
+body {
+  background: #2573b7;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 1.6rem;
+}
+h1 {
+  font-size: 8.3rem;
+  color: #fff;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin-bottom: 2rem;
+}
+h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  color: #80b045;
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+h3 {
+  font-size: 3.3rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.1rem;
+  color: #2573b7;
+  text-transform: uppercase;
+  font-weight: 300;
+  line-height: 1.3;
+  text-align: center;
+  margin-bottom: 2.6rem;
+}
+p a {
+  color: #2573b7;
+}
+p a:hover {
+  text-decoration: underline;
+}
+.center {
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.action {
+  font-size: 1.4rem;
+  color: #333;
+  padding: 1rem 2rem;
+  display: block;
+  background: #fff;
+  border-radius: 2rem;
+  max-width: 9rem;
+  position: relative;
+}
+.action::after {
+  content: '';
+  width: 0.9rem;
+  height: 1.4rem;
+  display: block;
+  float: right;
+  background: url('../images/arrow-right.svg') no-repeat;
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.action:hover {
+  background: #80b045;
+  color: #fff;
+}
+.action:hover::after {
+  right: 1.6rem;
+}
+
+/*-- header --*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  height: 8rem;
+  padding: 1.6rem 0;
+  box-sizing: border-box;
+  z-index: 100;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+}
+.header .BLN-logo {
+  float: left;
+  display: block;
+  overflow: hidden;
+  padding-top: 0.5rem;
+}
+.header .BLN-logo img {
+  display: block;
+  margin-right: 3rem;
+  float: left;
+  width: 12.3rem;
+}
+.header .BLN-logo span {
+  float: left;
+  font-size: 2.6rem;
+  color: #999;
+  letter-spacing: 0.6rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding-top: 0.5rem;
+}
+.header .main-nav {
+  float: right;
+}
+.header .main-nav a {
+  float: left;
+  font-size: 1.6rem;
+  color: #333333;
+  padding: 1.5rem 3rem;
+  border-radius: 3rem;
+  box-sizing: border-box;
+}
+.header .main-nav a:hover {
+  color: #80b045;
+}
+.header .main-nav a.register {
+  background: #80b045;
+  color: #fff;
+  margin-left: 2rem;
+}
+.header .main-nav a.register:hover {
+  background: #2573b7;
+}
+
+/*-- promo banner --*/
+.promo-banner {
+  margin-top: 8rem;
+}
+.promo-banner .center {
+  background: url('../images/banner-promo.png') no-repeat right center;
+  height: 620px;
+}
+.promo-banner .center .position {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding-right: 55%;
+}
+.promo-banner h2 {
+  letter-spacing: 0.93rem;
+  color: #f5c146;
+}
+.promo-banner p {
+  font-size: 1.9rem;
+  color: #fff;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+.promo-banner .action {
+  zoom: 130%;
+  max-width: 10rem;
+}
+.promo-banner .action:after {
+  transform: rotate(90deg);
+  margin-top: -0.3rem;
+}
+.promo-banner .action:hover:after {
+  margin: 0;
+  right: 2rem;
+}
+
+/*-- about --*/
+.about {
+  overflow: hidden;
+  padding-bottom: 1rem;
+  margin-bottom: 9rem;
+}
+.about .box {
+  float: left;
+  width: 31%;
+  min-height: 40rem;
+  margin-right: 3.5%;
+  background: #fff;
+  box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.33);
+  padding: 4rem 3rem;
+  position: relative;
+  box-sizing: border-box;
+}
+.about .box:last-child {
+  margin-right: 0;
+}
+.about .box h2 {
+  margin-bottom: 3rem;
+}
+.about .box p {
+  line-height: 2;
+}
+.about .box .action {
+  position: absolute;
+  bottom: 4rem;
+  right: 3rem;
+  border: solid 1px #ccc;
+  width: 9rem;
+}
+.about .box .action:hover {
+  border: solid 1px #80b045;
+}
+
+/*-- noterize --*/
+.noterize {
+  margin-bottom: 9rem;
+}
+.noterize .dropzone {
+  background: #20507a;
+  min-height: 360px;
+  box-sizing: border-box;
+  border: dashed 2px #0e283f;
+  margin-bottom: 3rem;
+  position: relative;
+}
+.dropzone .indrop {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+}
+.dropzone .indrop img {
+  max-width: 9.3rem;
+  margin-bottom: 2rem;
+}
+.dropzone .indrop p {
+  color: #fff;
+  font-size: 1.9rem;
+  line-height: 1.6;
+}
+.dropzone .indrop p span {
+  color: #80b045;
+  font-weight: 700;
+}
+.noterize .additional-info {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/*-- proces --*/
+.process {
+  background: #fff;
+  box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.33);
+  margin-bottom: 9rem;
+  overflow: hidden;
+}
+.process .inpro {
+  float: left;
+  width: 33.3333%;
+  padding: 4rem 6rem;
+  box-sizing: border-box;
+}
+.process .inpro img {
+  max-width: 13.9rem;
+  margin: 0 auto 3rem;
+  display: block;
+}
+.process p {
+  font-size: 1.6rem;
+  line-height: 2;
+  text-align: center;
+}
+
+/*-- document list --*/
+.content-tab.tab-ongoing {
+  display: block;
+}
+.content-tab.tab-certifications {
+  display: none;
+}
+.doc-list {
+  background: #fff;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+  padding: 5rem 0;
+}
+.doc-list .tabs {
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+.doc-list .tabs a {
+  display: block;
+  float: left;
+  font-size: 2.6rem;
+  color: #666;
+  margin-right: 6rem;
+  padding: 0.6rem 0;
+  position: relative;
+}
+.doc-list .tabs a {
+  color: #2573b7;
+}
+.doc-list .tabs a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0.3rem;
+  border-radius: 1rem;
+  background: #2573b7;
+}
+.doc-list .tabs a.inactive { color: #666;  }
+.doc-list .tabs a.inactive::before { display: none; }
+.content-tab .doc-info {
+  font-size: 1.9rem;
+  color: #999;
+  padding-bottom: 2rem;
+}
+.table-leyout {
+  width: 100%;
+  margin-bottom: 2rem;
+  border: solid 1px #bbb;
+}
+.table-leyout th {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: #666;
+}
+.table-leyout th, .table-leyout td {
+  padding: 2rem 3rem;
+  border-bottom: solid 1px #ddd;
+}
+.table-leyout th:last-child td {
+  border-bottom: none;
+}
+.table-leyout tr:nth-child(even) {
+  background: #f7f7f7;
+}
+.table-leyout a {
+  color: #2573b7;
+}
+.table-leyout a:hover {
+  color: #80b045;
+}
+.table-leyout tr td:last-child {
+  color: #888;
+}
+.table-leyout .check {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: block;
+  float: left;
+  margin-right: 1rem;
+  background: url('../images/icon-checked.svg') no-repeat ;
+}
+
+/*-- inner contet --*/
+.inner-content {
+  margin-top: 16rem;
+}
+.inner-content p {
+  font-size: 1.6rem;
+  line-height: 2;
+  color: #333;
+  padding-bottom: 2.6rem;
+}
+.inner-content p span {
+  font-weight: 700;
+}
+.inner-content h2 {
+  font-size: 4.6rem;
+  color: #fff;
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+.content-box {
+  background: #fff;
+  box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.33);
+  margin-bottom: 9rem;
+  overflow: hidden;
+}
+.content-box .third {
+  float: left;
+  width: 33.3333%;
+  padding: 4rem 3rem;
+  box-sizing: border-box;
+  position: relative;
+}
+.content-box .third img, .inner-content .half-wrap .content-box img {
+  width: 100%;
+  display: block;
+  margin: 0 auto 3rem;
+}
+.inner-content .half-wrap {
+  float: left;
+  width: 49%;
+  margin-right: 2%;
+}
+.inner-content .half-wrap:last-child {
+  margin-right: 0;
+}
+.inner-content .half-wrap .content-box {
+  padding: 4rem 3rem;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  /*-- inner contet --*/
+  .center {
+    padding: 0 2rem;
+  }
+}
+@media only screen and (max-width: 960px) and (min-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+  .header .BLN-logo span {
+    letter-spacing: 0.3rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .inner-content {
+    margin-top: 10rem;
+  }
+  .inner-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+  .content-box {
+    margin-bottom: 4rem;
+  }
+  .content-box .third {
+    float: none;
+    width: 100%;
+    padding: 3rem 2rem 0;
+  }
+  .content-box .third img, .inner-content .half-wrap .content-box img {
+    max-width: 30rem;
+  }
+  .inner-content .half-wrap {
+    width: 100%;
+  }
+}

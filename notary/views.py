@@ -19,16 +19,30 @@ from django.contrib.auth.decorators import login_required
 
 from django.conf import settings
 
+def about(request):
+
+    print('--  about:')
+
+    ip = request.META['REMOTE_ADDR']
+    print('ip',ip)
+
+    return render(
+        request=request,
+        template_name='about.html',
+        context={'x':1,'y':2,},
+    )
+
+
 def home(request):
 
     print('--  web:')
 
     if request.user.is_anonymous:
-        x={'x':1,'y':2,}
+
         return render(
             request=request,
-            template_name='web.html',
-            context=x,
+            template_name='index.html',
+            context={},
         )
 
 
@@ -38,11 +52,9 @@ def home(request):
 
     ip = request.META['REMOTE_ADDR']
     print('ip',ip)
-    
-    x={'x':1,'y':2,}
 
     return render(
         request=request,
         template_name='home.html',
-        context=x,
+        context={'x':1,'y':2,},
     )
