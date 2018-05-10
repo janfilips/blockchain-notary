@@ -19,7 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # views
     'notary',
-    'userprofile',
+    'profile',
 ]
 
 MIDDLEWARE = [

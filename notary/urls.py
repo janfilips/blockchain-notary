@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 
 from notary.views import home, about
-from userprofile.views import auth, register, user_logout
+from profile.views import auth, register, user_logout
 
 
 urlpatterns = [
