@@ -6,8 +6,12 @@ login goes here
 
 registration link here
 
-<hr/>
+err {{err}}
 
+
+<hr/>
+registration
+<br/>
 <form action="/register/" method='POST' class='form-validate' id="register">
         {% csrf_token %}
         <input type="text" name="email" value="email"><br>
@@ -15,3 +19,15 @@ registration link here
         <input type="password" name="password2" value="password2"><br>
         <input type="submit" value="Submit">
   </form>
+
+<hr/>
+
+login
+<br/>
+<form action="/login/" method='POST' class='form-validate' id="register">
+        {% csrf_token %}
+        <input type="text" name="username" value="username"><br>
+        <input type="password" name="password" value="password"><br>
+        <input type="submit" value="Submit">
+  </form>
+<hr/>

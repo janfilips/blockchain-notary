@@ -85,7 +85,7 @@ def register(request):
 
                     return HttpResponseRedirect("/")
 
-    return HttpResponseRedirect("/register/")
+    return HttpResponseRedirect("/")
 
 
 def auth(request):
@@ -129,4 +129,4 @@ def auth(request):
             return HttpResponseRedirect("/")
 
 
-    return render_to_response('login.html',{'err':err},context_instance=RequestContext(request))
+    return render(request,template_name='err.html',context={'err':err},)
