@@ -59,18 +59,13 @@ def register(request):
 
         if not err:
 
-            passwd = password1
-
             try:
-                User.objects.create_user(username, email, passwd, last_login=datetime.datetime.now())
-            except:
-                err = "duplicate_username"
-                print(err)
+                User.objects.create_user(username, email, password1, last_login=datetime.datetime.now())
+            except: err = "duplicate_username"
 
             if not err:
 
-                user = authenticate(username=username, password=passwd)
-
+                user = authenticate(username=username, password=password1)
                 if(user):
 
                     login(request, user)
@@ -112,5 +107,6 @@ def auth(request):
         if(not err):
             print('user logged in', user)
             return HttpResponseRedirect("/")
+
 
     return render(request,template_name='err.html',context={'err':err},)
