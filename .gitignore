@@ -108,3 +108,4 @@ workspace
 bin/
 obj/
 
+db.sqlite3
