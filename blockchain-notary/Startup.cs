@@ -63,16 +63,6 @@ namespace blockchain_notary
 
             app.UseStaticFiles();
 
-			app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-					Path.Combine(Directory.GetCurrentDirectory(), 
-					             "wwwroot")
-				),
-                RequestPath = "/wwwroot"
-            });
-
-
             app.UseAuthentication();
 
             app.UseMvc(routes =>
