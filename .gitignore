@@ -103,3 +103,8 @@ ENV/
 # editors
 .vs
 workspace
+
+# binaries
+bin/
+obj/
+
