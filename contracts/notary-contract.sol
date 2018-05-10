@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.00;
 
 contract Notarize {
   // state
@@ -35,7 +35,5 @@ contract Notarize {
   function _hasProof(bytes32 proof) constant returns (bool) {
     return proofs[proof];
   }
-
-  // xxx an ability to store pre-calculated hash
-
+  
 }
