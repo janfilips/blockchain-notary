@@ -1,20 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import os
-import time
-import logging
 import unicodedata
 import datetime
 
-import string, pickle
+import string
 from random import choice
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _
-
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 from django.contrib.auth.models import User
 
