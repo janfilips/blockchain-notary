@@ -41,7 +41,6 @@ def register(request):
 
     err = None
 
-
     if request.POST:
 
         email = request.POST[u'email']
@@ -51,27 +50,25 @@ def register(request):
 
         if not password1 or not password2:
             err = "empty_password"
-            print(err)
 
         if(password1 != password2):
             err = "password_mismatch"
-            print(err)
 
 
         if not err:
 
             try:
                 User.objects.create_user(username, email, password1, last_login=datetime.datetime.now())
-            except: err = "duplicate_username"
+            except: 
+                err = "duplicate_username"
 
             if not err:
 
                 user = authenticate(username=username, password=password1)
                 if(user):
-
                     login(request, user)
-
                     return HttpResponseRedirect("/")
+
 
     return render(
         request=request,
@@ -90,28 +87,20 @@ def auth(request):
 
         try:
             email = request.POST['username']
-            passwprd = request.POST['password']
-        except:
-            err = 'failed login code:1'
-            #return HttpResponseRedirect("/error")
-
+            password = request.POST['password']
+        except: err = 'failed login code: 1'
 
         try:
             user = User.objects.get(email=email)
-        except:
-            err = 'failed login code:2'
-            #return HttpResponseRedirect("/error")
+        except: err = 'failed login code: 2'
 
         try:
             user = authenticate(username=user.username, password=passwprd)
             login(request, user)
-        except:
-            err = 'failed login code:3'
-            #return HttpResponseRedirect("/register")
-
+        except: err = 'failed login code: 3'
+        
         if(not err):
-            print('user logged in', user)
             return HttpResponseRedirect("/")
 
 
-    return render(request,template_name='err.html',context={'err':err},)
+    return render(request,template_name='login.html',context={'err':err},)

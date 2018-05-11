@@ -1,1 +1,13 @@
-hello world
+
+<hr/>
+registration
+<br/>
+<form action="/register/" method='POST' class='form-validate' id="register">
+        {% csrf_token %}
+        <input type="text" name="email" value="email"><br>
+        <input type="password" name="password1" value="password1"><br>
+        <input type="password" name="password2" value="password2"><br>
+        <input type="submit" value="Submit">
+  </form>
+
+<hr/>
