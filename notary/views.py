@@ -55,6 +55,6 @@ def home(request):
 
     return render(
         request=request,
-        template_name='home.html',
+        template_name='dashboard.html',
         context={'x':1,'y':2,},
     )
