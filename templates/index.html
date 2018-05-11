@@ -2,18 +2,28 @@
 <html lang="en">
 
 <head>
+  {% load static %}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta charset="utf-8" />
-  <title>Spark Notary</title>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-    crossorigin="anonymous"></script>
-  <script type="text/jscript" src="/static/js/function.js"></script>
+  <title>Blockchain Notary</title>
+  <script src="{% static 'vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/pages/index.js' %}"></script>
+  <script src="{% static 'js/modal.js' %}"></script>
+  <script src="{% static 'vendors/abi/abi.js' %}"></script>
+  <script src="{% static 'vendors/dropzone/dropzone.js' %}"></script>
+  <script src="{% static 'js/notarise.js' %}"></script>
+  <script src="{% static 'vendors/jquery.formatNumber-master/jquery.formatNumber-0.1.1.min.js' %}"></script>
+  <script src="{% static 'vendors/standford-javascript-crypto-library/sjcl.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs.min.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs-query.min.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs-contract.min.js' %}"></script>
   <script type="text/javascript">
     if (screen.width <= 768) {
       document.location = "/about";
     }
   </script>
-  <link rel="stylesheet" href="/static/css/main.css" type="text/css" />
+  <script src="{% static 'js/modal.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
 </head>
 
 <body>
@@ -21,13 +31,13 @@
   <header class="header">
     <!-- header -->
     <div class="center">
-      <a class="BLN-logo" href="/">
-        <img alt="blockchain notary" src="/static/images/bln-logo.svg">
+      <a class="BLN-logo" href="{% url 'home' %}">
+        <img alt="Blockchain Notary" src="{% static 'images/bln-logo.svg' %}">
         <span>Blockchain Notary</span>
       </a>
       <nav class="main-nav">
         <!-- main nav -->
-        <a href="/about">About</a>
+        <a href="{% url 'about' %}">About</a>
         <a href="#">Login</a>
         <a class="register" href="#">Register</a>
       </nav>
@@ -64,7 +74,7 @@
           <p>We provide a unique proof of any
             <a href="#">electronic document</a> and we record this information (notarise it) on the Blockchain. The result is a mathematical
             proof that is difficult and resources consuming to find but very quick and easy to verify.</p>
-          <a class="action" href="/about">read more</a>
+          <a class="action" href="{% url 'about' %}">read more</a>
         </div>
         <!-- box 1 END -->
         <div class="box">
@@ -72,7 +82,7 @@
           <h2>How it works</h2>
           <p>Using our service, you will get the ultimate proof of your digital document yet it's secure and nobody but you
             gets to access the content whilst everyone will have an ability to verify it's authenticity.</p>
-          <a class="action" href="/about">read more</a>
+          <a class="action" href="{% url 'about' %}">read more</a>
         </div>
         <!-- box 2 END -->
         <div class="box">
@@ -81,16 +91,14 @@
           <p>So the total cost will be 1.00 ETH and we give you the lifetime warranty for your document proof guaranteed by
             the Ethereum Blockchain network. For the current
             <a href="#">Ethereum to US Dollar exchange</a> rate have a look here.</p>
-          <a class="action" href="/about">read more</a>
+          <a class="action" href="{% url 'about' %}">read more</a>
         </div>
-        <!-- box 2 END -->
       </section>
-      <!-- about END -->
-      <section class="noterize" id="notarize">
-        <!-- noterize -->
-        <h3>Notarize Your Document</h3>
-        <div class="dropzone">
-          <!-- dropzone -->
+
+      <!-- Drag and drop zone -->
+      <h3>Notarize Your Document</h3>
+      <form action="/" method="get" class="dropzone" id="dropzoneform">{% csrf_token %}
+        <div class="dz-message">
           <div class="indrop">
             <img alt="drop file" src="/static/images/icon-upload.svg">
             <p>Drag and drop your document here and
@@ -98,11 +106,46 @@
               <br> The file will not be uploaded.</p>
           </div>
         </div>
-        <!-- dropzone END -->
-        <p class="additional-info">If it has been certified already, you will be redirected to the original record.
-          <br>You can also input a hash to find previous records.</p>
-      </section>
-      <!-- noterize END -->
+      </form>
+      <p class="additional-info">If it has been certified already, you will be redirected to the original record.
+        <br>You can also input a hash to find previous records.</p>
+      <table style="display: none;" id="dropzone-results">
+        <tr>
+          <th>Name</th>
+          <td data-file-name>Unknown</td>
+        </tr>
+        <tr>
+          <th>File type</th>
+          <td data-file-type>Unknown</td>
+        </tr>
+        <tr>
+          <th>Size</th>
+          <td data-file-size>Unknown</td>
+        </tr>
+        <tr>
+          <th>Last modified</th>
+          <td data-file-last-modified>Unknown</td>
+        </tr>
+        <tr>
+          <th>Hash</th>
+          <td data-file-hash>
+            <div class="spinner">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
+              Hashing...
+            </div>
+            <div id="hash-result"></div>
+          </td>
+        </tr>
+      </table>
+      <div class="row centered" id="upload-buttons" style="display: none" ;>
+        <button class="btn btn-success" id="upload-button-notarise" disabled="disabled">Notarise</button>
+        <button class="btn btn-danger" id="upload-button-cancel" disabled="disabled">Cancel</button>
+      </div>
+
       <section class="process">
         <!-- process -->
         <div class="inpro">
@@ -206,12 +249,29 @@
             </tr>
           </table>
         </div>
-        <!-- certifications END-->
       </div>
     </section>
-    <!-- list END -->
   </main>
-  <!-- main conetn END -->
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" role="dialog" id="modal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Alert</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Some text...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 

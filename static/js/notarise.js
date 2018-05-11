@@ -1,6 +1,8 @@
 var isMetaMaskInstalled;
 var isLoggedIn;
 
+Dropzone.autoDiscover = false;
+
 $(document).ready(function () {
     if (typeof web3 !== 'undefined') {
         eth = new Eth(web3.currentProvider);
@@ -10,32 +12,32 @@ $(document).ready(function () {
             isLoggedIn = true;
         }
     }
+
+    $('#dropzoneform').dropzone({
+        maxFiles: 1,
+        uploadMultiple: false,
+        init: function () {
+            this.on("addedfile", function (file) {
+                $("#dropzone").hide();
+                $("#upload-buttons").show();
+                $("#dropzone-results").show();
+                $("[data-file-name]").html(file.name);
+                if (file.type) {
+                    $("[data-file-type]").html(file.type);
+                }
+                else {
+                    $("[data-file-type]").html("Unknown");
+                }
+                $("[data-file-size]").html(file.size);
+                $("[data-file-last-modified]").html(file.lastModifiedDate);
+                getHash(file);
+
+                // Format file size
+                formatFileSize();
+            });
+        }
+    });
 });
-
-Dropzone.options.dropzoneform = {
-    maxFiles: 1,
-    uploadMultiple: false,
-    init: function () {
-        this.on("addedfile", function (file) {
-            $("#dropzone").hide();
-            $("#upload-buttons").show();
-            $("#dropzone-results").show();
-            $("[data-file-name]").html(file.name);
-            if (file.type) {
-                $("[data-file-type]").html(file.type);
-            }
-            else {
-                $("[data-file-type]").html("Unknown");
-            }
-            $("[data-file-size]").html(file.size);
-            $("[data-file-last-modified]").html(file.lastModifiedDate);
-            getHash(file);
-
-            // Format file size
-            formatFileSize();
-        });
-    }
-};
 
 function formatFileSize() {
     $("[data-file-size]").formatNumber();

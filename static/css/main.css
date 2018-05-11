@@ -312,17 +312,14 @@ p a:hover {
   border: solid 1px #80b045;
 }
 
-/*-- noterize --*/
-.noterize {
-  margin-bottom: 9rem;
-}
-.noterize .dropzone {
+.dropzone {
   background: #20507a;
   min-height: 360px;
   box-sizing: border-box;
   border: dashed 2px #0e283f;
   margin-bottom: 3rem;
   position: relative;
+  cursor: pointer;
 }
 .dropzone .indrop {
   position: absolute;
@@ -346,7 +343,7 @@ p a:hover {
   color: #80b045;
   font-weight: 700;
 }
-.noterize .additional-info {
+.additional-info {
   text-align: center;
   font-size: 1.3rem;
   color: #fff;

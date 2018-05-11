@@ -61,7 +61,7 @@
     <div class="bg-circle-4 bg-circle"></div>
   </header>
 
-  
+
   <!-- What we do section -->
   <section id="what-we-do">
     <div class="container-fluid">
@@ -135,21 +135,20 @@
 
       <!–– xxx get rid off this fucking br......  ––>
       <br/>
-  
+
       <!-- Drag and drop zone -->
       <h2 class="section-title mb-2 h1">DRAG AND DROP FILE INTO THE DROPZONE</h2>
       <br/>
       <div class="row">
         <div class="col-sm-10 centered">
           <div id="dropzone" class="col-sm-12">
-            <form action="index.html" class="dropzone" id="dropzoneform">
+            <form action="" class="dropzone" id="dropzoneform" enctype="multipart/form-data" method="get">
               <div class="dz-message">
-                  Drop zone
-                  <br/>
-                  <br/>
-                  Drag and drop your document here and have it certified on the Blockchain.
-                  <br/>
-                  The file will <b>not</b> be uploaded.
+                Drop zone
+                <br/>
+                <br/> Drag and drop your document here and have it certified on the Blockchain.
+                <br/> The file will
+                <b>not</b> be uploaded.
               </div>
             </form>
           </div>
@@ -157,8 +156,7 @@
 
           <!–– xxx wrap around this code......  ––>
           If it has been certified already, you will be redirected to the original record.
-          <br/>
-          You can also input a hash to find previous records.
+          <br/> You can also input a hash to find previous records.
           <br/>
           <font color="red">XXX style this away ..</font>
 
@@ -235,16 +233,139 @@
       </div>
     </div>
   </section>
-  
+
 
   <!-- Submissions -->
 
   <section id="submissions">
-      <font color="red">XXX style this away ..</font>
-      <br/>
-      <br/>
-      <!-- xxx of course this is just a messy example and needs a redo -->
-      <div class="row"><div class="col-md-6"><div class="card"><div class="card-header"><h3 class="card-title">Ongoing Submissions</h3><p class="card-category">Documents already registered for certification, waiting for payments.</p></div><div class="card-body table-responsive table-full-width"><table class="table table-striped" id="latest"><thead><tr><th></th><th>Document Digest</th><th>Timestamp</th></tr></thead><tbody><tr><td></td><td><a href="/detail/b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a></td><td>2018-05-03T09:24:22.596Z</td></tr><tr><td></td><td><a href="/detail/01feb4a21109c923d8ee898bdeb87498e6bc3ab72d64a220c82b34dc268e640b">01feb4a21109c923d8ee898bdeb87498e6bc3ab72d64a220c82b34dc268e640b</a></td><td>2018-05-03T09:03:04.077Z</td></tr><tr><td></td><td><a href="/detail/3887f145ebce77aa588a2be0d0fa3ee6797904812cf1f7690888917ebfe21af7">3887f145ebce77aa588a2be0d0fa3ee6797904812cf1f7690888917ebfe21af7</a></td><td>2018-05-03T07:17:36.482Z</td></tr><tr><td></td><td><a href="/detail/29b740b4c323cbce8135e09916dd6f2afc6a640664f897da9c5961f58b7c31a3">29b740b4c323cbce8135e09916dd6f2afc6a640664f897da9c5961f58b7c31a3</a></td><td>2018-05-03T07:16:18.169Z</td></tr><tr><td></td><td><a href="/detail/6726a698c84d80df90bbe25dd6660889d97e2cb982781fa712d66a61c681c58d">6726a698c84d80df90bbe25dd6660889d97e2cb982781fa712d66a61c681c58d</a></td><td>2018-05-03T07:09:52.498Z</td></tr></tbody></table></div></div></div><div class="col-md-6"><div class="card"><div class="card-header"><h3 class="card-title">Certifications</h3><p class="card-category">Documents of proven existence, confirmed on the blockchain</p></div><div class="card-body table-responsive table-full-width"><table class="table table-striped" id="latest"><thead><tr><th></th><th>Document Digest</th><th>Timestamp</th></tr></thead><tbody><tr><td><span class="label label-success">✔</span></td><td><a href="/detail/e1895dde244b89766921584980688b1fd6f3897442f38d838923ad3dc46b7511">e1895dde244b89766921584980688b1fd6f3897442f38d838923ad3dc46b7511</a></td><td>2018-04-25T21:55:21.696Z</td></tr><tr><td><span class="label label-success">✔</span></td><td><a href="/detail/f0ef849a481770e8c1565cd288975c6731b9e538e044213de59dab951c186f2b">f0ef849a481770e8c1565cd288975c6731b9e538e044213de59dab951c186f2b</a></td><td>2018-04-16T23:03:23.002Z</td></tr><tr><td><span class="label label-success">✔</span></td><td><a href="/detail/f5aa0581051c64a2daf9cfe2e51be297cd0385d6587bab2288a0e54dab69a5e7">f5aa0581051c64a2daf9cfe2e51be297cd0385d6587bab2288a0e54dab69a5e7</a></td><td>2018-04-16T04:55:17.451Z</td></tr><tr><td><span class="label label-success">✔</span></td><td><a href="/detail/633336919c195013eacc9b3b729f517eecd222e142950700a3736bcb39d7ba21">633336919c195013eacc9b3b729f517eecd222e142950700a3736bcb39d7ba21</a></td><td>2018-04-13T20:23:04.211Z</td></tr><tr><td><span class="label label-success">✔</span></td><td><a href="/detail/98f7e0272c1b423231a6a2e31aaa563a71062718379e3432b61e38510ac2fa77">98f7e0272c1b423231a6a2e31aaa563a71062718379e3432b61e38510ac2fa77</a></td><td>2018-04-12T17:51:26.805Z</td></tr></tbody></table></div></div></div></div>
+    <font color="red">XXX style this away ..</font>
+    <br/>
+    <br/>
+    <!-- xxx of course this is just a messy example and needs a redo -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Ongoing Submissions</h3>
+            <p class="card-category">Documents already registered for certification, waiting for payments.</p>
+          </div>
+          <div class="card-body table-responsive table-full-width">
+            <table class="table table-striped" id="latest">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Document Digest</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="/detail/b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                  </td>
+                  <td>2018-05-03T09:24:22.596Z</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="/detail/01feb4a21109c923d8ee898bdeb87498e6bc3ab72d64a220c82b34dc268e640b">01feb4a21109c923d8ee898bdeb87498e6bc3ab72d64a220c82b34dc268e640b</a>
+                  </td>
+                  <td>2018-05-03T09:03:04.077Z</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="/detail/3887f145ebce77aa588a2be0d0fa3ee6797904812cf1f7690888917ebfe21af7">3887f145ebce77aa588a2be0d0fa3ee6797904812cf1f7690888917ebfe21af7</a>
+                  </td>
+                  <td>2018-05-03T07:17:36.482Z</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="/detail/29b740b4c323cbce8135e09916dd6f2afc6a640664f897da9c5961f58b7c31a3">29b740b4c323cbce8135e09916dd6f2afc6a640664f897da9c5961f58b7c31a3</a>
+                  </td>
+                  <td>2018-05-03T07:16:18.169Z</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a href="/detail/6726a698c84d80df90bbe25dd6660889d97e2cb982781fa712d66a61c681c58d">6726a698c84d80df90bbe25dd6660889d97e2cb982781fa712d66a61c681c58d</a>
+                  </td>
+                  <td>2018-05-03T07:09:52.498Z</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Certifications</h3>
+            <p class="card-category">Documents of proven existence, confirmed on the blockchain</p>
+          </div>
+          <div class="card-body table-responsive table-full-width">
+            <table class="table table-striped" id="latest">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Document Digest</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="label label-success">✔</span>
+                  </td>
+                  <td>
+                    <a href="/detail/e1895dde244b89766921584980688b1fd6f3897442f38d838923ad3dc46b7511">e1895dde244b89766921584980688b1fd6f3897442f38d838923ad3dc46b7511</a>
+                  </td>
+                  <td>2018-04-25T21:55:21.696Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="label label-success">✔</span>
+                  </td>
+                  <td>
+                    <a href="/detail/f0ef849a481770e8c1565cd288975c6731b9e538e044213de59dab951c186f2b">f0ef849a481770e8c1565cd288975c6731b9e538e044213de59dab951c186f2b</a>
+                  </td>
+                  <td>2018-04-16T23:03:23.002Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="label label-success">✔</span>
+                  </td>
+                  <td>
+                    <a href="/detail/f5aa0581051c64a2daf9cfe2e51be297cd0385d6587bab2288a0e54dab69a5e7">f5aa0581051c64a2daf9cfe2e51be297cd0385d6587bab2288a0e54dab69a5e7</a>
+                  </td>
+                  <td>2018-04-16T04:55:17.451Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="label label-success">✔</span>
+                  </td>
+                  <td>
+                    <a href="/detail/633336919c195013eacc9b3b729f517eecd222e142950700a3736bcb39d7ba21">633336919c195013eacc9b3b729f517eecd222e142950700a3736bcb39d7ba21</a>
+                  </td>
+                  <td>2018-04-13T20:23:04.211Z</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="label label-success">✔</span>
+                  </td>
+                  <td>
+                    <a href="/detail/98f7e0272c1b423231a6a2e31aaa563a71062718379e3432b61e38510ac2fa77">98f7e0272c1b423231a6a2e31aaa563a71062718379e3432b61e38510ac2fa77</a>
+                  </td>
+                  <td>2018-04-12T17:51:26.805Z</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
 
