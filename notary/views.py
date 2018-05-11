@@ -33,6 +33,20 @@ def about(request):
     )
 
 
+def tomas_testing(request):
+
+    print('--  tomas_testing:')
+
+    ip = request.META['REMOTE_ADDR']
+    print('ip',ip)
+
+    return render(
+        request=request,
+        template_name='tomas.html',
+        context={'x':1,'y':2,},
+    )
+
+
 def home(request):
 
     print('--  web:')
