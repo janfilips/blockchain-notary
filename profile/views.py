@@ -41,6 +41,7 @@ def register(request):
 
     err = None
 
+
     if request.POST:
 
         email = request.POST[u'email']
@@ -72,7 +73,11 @@ def register(request):
 
                     return HttpResponseRedirect("/")
 
-    return HttpResponseRedirect("/")
+    return render(
+        request=request,
+        template_name='register.html',
+        context={},
+    )
 
 
 def auth(request):
