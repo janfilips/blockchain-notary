@@ -547,4 +547,50 @@ p a:hover {
   .inner-content .half-wrap {
     width: 100%;
   }
+
+  .header {
+    padding: 1rem 0 0;
+    height: auto;
+  }
+  .header .BLN-logo {
+    overflow: hidden;
+    float: none;
+    width: 28rem;
+    margin: 0 auto 1rem;
+  }
+  .header .BLN-logo img {
+    width: 9rem;
+    margin-right: 1.6rem;
+  }
+  .header .BLN-logo span {
+    font-size: 1.6rem;
+    letter-spacing: 0rem;
+  }
+  .header .main-nav {
+    float: none;
+    width: calc(100% + 4rem);
+    border-top: solid 1px #ccc;
+    text-align: center;
+    margin: 0 -2rem;
+  }
+  .header .main-nav a {
+    padding: 1.5rem 2rem;
+    float: none;
+    display: inline-block;
+  }
+  .header .main-nav a.register {
+    margin-left: 0;
+    background: none;
+    color: #333;
+  }
+  .header .main-nav a.register:hover {
+    background: none;
+    color: #80b045;
+  }
+  .inner-content {
+    margin-top: 12rem;
+  }
+  .inner-content h2 {
+    text-align: center;
+  }
 }
