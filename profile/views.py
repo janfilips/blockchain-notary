@@ -86,12 +86,15 @@ def auth(request):
 
         try:
             user = User.objects.get(email=email)
-        except: err = 'failed login code: 2'
+        except:
+            user = None
+            err = 'failed login code: 2'
 
-        try:
-            user = authenticate(username=user.username, password=passwprd)
-            login(request, user)
-        except: err = 'failed login code: 3'
+        if(user):
+            try:
+                user = authenticate(username=user.username, password=password)
+                login(request, user)
+            except: err = 'failed login code: 3'
         
         if(not err):
             return HttpResponseRedirect("/")
