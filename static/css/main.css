@@ -377,6 +377,7 @@ p a:hover {
   max-width: none;
   cursor: pointer;
   font-size: 1.6rem;
+  outline: none;
 }
 .noterize-action .action::after {
   display: none;
@@ -471,6 +472,7 @@ p a:hover {
   background: #fff;
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
   padding: 5rem 0;
+  min-width: 20rem;
 }
 .doc-list .tabs {
   overflow: hidden;
