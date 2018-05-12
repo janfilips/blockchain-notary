@@ -57,7 +57,7 @@
         </hgroup>
         <p>Blockchain Notary is an open source service that computes the cryptographic hash for your documents and store this
           cryptographic information on the Blockchain.</p>
-        <a class="action scrollink" href="#notarize">Notarize</a>
+        <a class="action scrollink" href="#notarize-block">Notarize</a>
       </div>
     </div>
   </div>
@@ -95,6 +95,7 @@
           </div>
       </section>
 
+      <section class="noterize-block" id="notarize-block"><!-- noterize -->
       <!-- Drag and drop zone -->
       <h3>Notarize Your Document</h3>
       <form action="/" method="get" class="dropzone" id="dropzoneform">{% csrf_token %}
@@ -141,10 +142,11 @@
           </td>
         </tr>
       </table>
-      <div class="row centered" id="upload-buttons" style="display: none" ;>
-        <button class="btn btn-success" id="upload-button-notarise" disabled="disabled">Notarise</button>
-        <button class="btn btn-danger" id="upload-button-cancel" disabled="disabled">Cancel</button>
+      <div class="noterize-action" id="upload-buttons" style="display: none" ;>
+        <button class="btn btn-success action" id="upload-button-notarise" disabled="disabled">Notarise</button>
+        <button class="btn btn-danger action" id="upload-button-cancel" disabled="disabled">Cancel</button>
       </div>
+    </section>
 
       <section class="process">
         <!-- process -->
@@ -173,8 +175,97 @@
       <!-- list -->
       <div class="center">
         <div class="tabs">
-          <a id="tab-ongoing" href="#">Ongoing Submissions</a>
-          <a class="inactive" id="tab-certifications" href="#">Certifications</a>
+          <a id="tab-certifications" href="#">Certifications</a>
+          <a class="inactive" id="tab-ongoing" href="#">Ongoing Submissions</a>
+        </div>
+        <div class="tab-certifications content-tab" id="tab-certificationsC">
+          <!-- certifications -->
+          <p class="doc-info">Documents of proven existence (notarized) and on the blockchain.</p>
+          <div class="table-overflow">
+            <table class="table-leyout">
+              <tr>
+                <th>Document Digest</th>
+                <th>Timestamp</th>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:24:22.596Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:03:04.077Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:24:22.596Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:03:04.077Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:24:22.596Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:03:04.077Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:24:22.596Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:03:04.077Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:03:04.077Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:03:04.077Z</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="check"></span>
+                  <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
+                </td>
+                <td>2018-05-03T09:03:04.077Z</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="tab-ongoing content-tab" id="tab-ongoingC">
           <!-- ongoing -->
@@ -211,44 +302,6 @@
           </table>
         </div>
         <!-- ongoing END-->
-        <div class="tab-certifications content-tab" id="tab-certificationsC">
-          <!-- certifications -->
-          <p class="doc-info">Documents of proven existence (notarized) and on the blockchain.</p>
-          <table class="table-leyout">
-            <tr>
-              <th>Document Digest</th>
-              <th>Timestamp</th>
-            </tr>
-            <tr>
-              <td>
-                <span class="check"></span>
-                <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
-              </td>
-              <td>2018-05-03T09:24:22.596Z</td>
-            </tr>
-            <tr>
-              <td>
-                <span class="check"></span>
-                <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
-              </td>
-              <td>2018-05-03T09:03:04.077Z</td>
-            </tr>
-            <tr>
-              <td>
-                <span class="check"></span>
-                <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
-              </td>
-              <td>2018-05-03T09:24:22.596Z</td>
-            </tr>
-            <tr>
-              <td>
-                <span class="check"></span>
-                <a href="#">b4e9bd30e0fd6c76e7c6c36eb9c20612c06f28da2134739ba9985f98053fe3aa</a>
-              </td>
-              <td>2018-05-03T09:03:04.077Z</td>
-            </tr>
-          </table>
-        </div>
       </div>
     </section>
   </main>
@@ -259,15 +312,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Alert</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>Some text...</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet risus facilisis, gravida sem ut, imperdiet nisi.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-secondary action" data-dismiss="modal">OK</button>
         </div>
       </div>
     </div>

@@ -28,25 +28,6 @@
 
 <body>
 
-  <header class="header">
-    <!-- header -->
-    <div class="center">
-      <a class="BLN-logo" href="{% url 'home' %}">
-        <img alt="Blockchain Notary" src="{% static 'images/bln-logo.svg' %}">
-        <span>Blockchain Notary</span>
-      </a>
-      <nav class="main-nav">
-        <!-- main nav -->
-        <a href="{% url 'about' %}">About</a>
-        <a href="/login">Login</a>
-        <a class="register" href="/register">Register</a>
-      </nav>
-      <!-- main nav END -->
-    </div>
-  </header>
-  <!-- header END -->
-
-
 
 <main>
   <!-- main conetn -->
@@ -66,7 +47,6 @@
             <div class="submit-wrap">
               <input type="submit" value="Login">
             </div>
-            <p class="forgot-pass"><a href="#">forgot password</a></p>
       </form><!-- form END -->
     </div>
     <p class="not-member"><span>Not a member yet?</span><a href="/register">Register</a></p>
@@ -80,5 +60,4 @@
 
 
 </body>
-
 </html>

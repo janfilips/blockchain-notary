@@ -18,7 +18,7 @@ $(document).ready(function () {
         uploadMultiple: false,
         init: function () {
             this.on("addedfile", function (file) {
-                $("#dropzone").hide();
+                $("#dropzoneform").next().hide();
                 $("#upload-buttons").show();
                 $("#dropzone-results").show();
                 $("[data-file-name]").html(file.name);

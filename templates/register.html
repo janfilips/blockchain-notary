@@ -1,13 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<hr/>
-registration
-<br/>
-<form action="/register/" method='POST' class='form-validate' id="register">
-        {% csrf_token %}
-        <input type="text" name="email" value="email"><br>
-        <input type="password" name="password1" value="password1"><br>
-        <input type="password" name="password2" value="password2"><br>
-        <input type="submit" value="Submit">
-  </form>
+<head>
+  {% load static %}
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="utf-8" />
+  <title>Blockchain Notary</title>
+  <script src="{% static 'vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/pages/index.js' %}"></script>
+  <script src="{% static 'js/modal.js' %}"></script>
+  <script src="{% static 'vendors/abi/abi.js' %}"></script>
+  <script src="{% static 'vendors/dropzone/dropzone.js' %}"></script>
+  <script src="{% static 'js/notarise.js' %}"></script>
+  <script src="{% static 'vendors/jquery.formatNumber-master/jquery.formatNumber-0.1.1.min.js' %}"></script>
+  <script src="{% static 'vendors/standford-javascript-crypto-library/sjcl.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs.min.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs-query.min.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs-contract.min.js' %}"></script>
+  <script type="text/javascript">
+    if (screen.width <= 768) {
+      document.location = "/about";
+    }
+  </script>
+  <script src="{% static 'js/modal.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
+</head>
 
-<hr/>
+<body>
+
+<main>
+  <!-- main conetn -->
+  <div class="center form-page">
+    <div class="form-wrap box-form">
+      <form action="/register/" method='POST' class='form-validate' id="register">
+            <h2>Register</h2>
+            {% csrf_token %}
+            <div class="input-wrap">
+              <label>Email</label>
+              <input type="text" name="email" value="email">
+            </div>
+            <div class="input-wrap">
+              <label>Password</label>
+              <input type="password" name="password1" value="password1">
+            </div>
+            <div class="input-wrap">
+              <label>Retype Password</label>
+              <input type="password" name="password2" value="password2">
+            </div>
+            <div class="submit-wrap"><input type="submit" value="Submit"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- main conetn END -->
+</main>
+
+</body>
+</html>

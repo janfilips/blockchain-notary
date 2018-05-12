@@ -143,7 +143,7 @@ p a:hover {
   text-decoration: underline;
 }
 .center {
-  max-width: 1200px;
+  max-width: 120rem;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -242,7 +242,7 @@ p a:hover {
 }
 .promo-banner .center {
   background: url('../images/banner-promo.png') no-repeat right center;
-  height: 620px;
+  height: 62rem;
 }
 .promo-banner .center .position {
   position: relative;
@@ -307,14 +307,21 @@ p a:hover {
   right: 3rem;
   border: solid 1px #ccc;
   width: 9rem;
+  text-decoration: none;
+  line-height: 1.3rem;
 }
 .about .box .action:hover {
   border: solid 1px #80b045;
 }
 
+
+/*-- noterize --*/
+.noterize-block {
+  margin-bottom: 9rem;
+}
 .dropzone {
   background: #20507a;
-  min-height: 360px;
+  min-height: 36rem;
   box-sizing: border-box;
   border: dashed 2px #0e283f;
   margin-bottom: 3rem;
@@ -349,6 +356,81 @@ p a:hover {
   color: #fff;
   line-height: 1.6;
 }
+#dropzone-results {
+  width: 100%;
+  background: #fff;
+  margin: 3rem 0 2rem;
+  box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.33);
+}
+#dropzone-results th, #dropzone-results td {
+  padding: 2rem 3rem;
+  text-align: left;
+  border-bottom: solid 1px #ddd;
+  color: #666;
+}
+.noterize-action {
+  text-align: center;
+}
+.noterize-action .action {
+  display: inline-block;
+  margin: 0 1rem;
+  max-width: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.noterize-action .action::after {
+  display: none;
+}
+.noterize-action #upload-button-cancel {
+  background-color: #ccc;
+}
+.noterize-action #upload-button-cancel:hover {
+  background-color: #333;
+}
+.dropzone.dz-started {
+  border: none;
+  max-width: 50rem;
+  margin: 0 auto 3rem;
+  background: #2d3135;
+  min-height: 16rem;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+.dz-started .dz-message {
+  display: none;
+}
+.dz-complete {
+  width: 40rem;
+  margin: 0 auto;
+}
+.dz-complete .dz-image {
+  width: 80%;
+  padding: 2rem;
+  margin: 0 auto;
+}
+.dz-complete .dz-image img {
+  width: 100%;
+  display: block;
+}
+.dz-complete .dz-details {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.dz-complete .dz-details .dz-size, .dz-complete .dz-details .dz-filename {
+  display: inline-block;
+  font-size: 1.8rem;
+  color: #fff;
+  padding: 1rem 1.6rem;
+}
+.dz-complete .dz-details .dz-size {
+  color: #ccc;
+}
+.dz-complete .dz-error-message {
+  text-align: center;
+  background-color: #f2dede;
+  border-color: #ebcccc;
+  color: #a94442;
+}
 
 /*-- proces --*/
 .process {
@@ -375,10 +457,14 @@ p a:hover {
 }
 
 /*-- document list --*/
-.content-tab.tab-ongoing {
+.content-tab.tab-certifications {
   display: block;
 }
-.content-tab.tab-certifications {
+.content-tab.tab-certifications .table-overflow {
+  height: 57.1rem;
+  overflow-y: scroll;
+}
+.content-tab.tab-ongoing {
   display: none;
 }
 .doc-list {
@@ -584,6 +670,75 @@ p a:hover {
   padding: 1rem;
   margin-bottom: 2rem;
 }
+.form-wrap label {
+  padding: 0 0 1rem 2rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.1rem;
+  display: block;
+  color: #999;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/*-- popup --*/
+.modal {
+  display: none;
+}
+.modal::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.69);
+}
+.modal .modal-dialog {
+  width: 50rem;
+  height: 20rem;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  margin: -10rem 0 0 -25rem;
+  position: fixed;
+  background: #fff;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+.modal .modal-content {
+  position: relative;
+}
+.modal .close {
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: url('../images/icon-close.svg');
+  border: none;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.3;
+}
+.modal h5 {
+  font-size: 2.6rem;
+  color: #a94442;
+  font-weight: 300;
+  margin-bottom: 1.6rem;
+}
+.modal .modal-body p {
+  font-size: 1.6rem;
+  color: #666;
+  line-height: 2rem;
+  margin-bottom: 2rem;
+}
+.modal-footer .action {
+  cursor: pointer;
+}
+.modal-footer .action:after {
+  display: none;
+}
+
 
 @media only screen and (max-width: 1200px) {
 
