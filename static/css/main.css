@@ -284,7 +284,7 @@ p a:hover {
 .about .box {
   float: left;
   width: 31%;
-  min-height: 40rem;
+  min-height: 36rem;
   margin-right: 3.5%;
   background: #fff;
   box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.33);
