@@ -23,7 +23,7 @@ contract ProofOfExistence {
     return sha256(document);
   }
 
-  // check if a document has been notarized
+  // check if a document has been notarised
   // *read-only function*
   function checkDocument(string document) constant returns (bool) {
     var proof = calculateProof(document);
@@ -35,5 +35,4 @@ contract ProofOfExistence {
   function hasProof(bytes32 proof) constant returns (bool) {
     return proofs[proof];
   }
-
 }
