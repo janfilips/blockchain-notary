@@ -5,7 +5,7 @@ import time
 import socket
 import logging
 import datetime
-import base64, pickle
+import base64
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
