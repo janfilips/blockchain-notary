@@ -30,11 +30,13 @@
 
 
 <main>
-  <!-- main conetn -->
+  <!-- main content -->
   <div class="center form-page">
 
     <div class="form-wrap box-form">
-      <div class="error">error: {{err}}</div>
+      {% if err %}
+        <div class="error">error: {{err}}</div>
+      {% endif %}
       <form action="/login/" method='POST' class='form-validate' id="register"><!-- form -->
             <h2>LogIn</h2>
               {% csrf_token %}
@@ -56,12 +58,8 @@
     <p class="not-member"><span>Not a member yet?</span><a href="/register">Register</a></p>
 
   </div>
-  <!-- main conetn END -->
+  <!-- main content END -->
 </main>
-
-
-
-
 
 </body>
 </html>
