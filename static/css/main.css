@@ -507,6 +507,84 @@ p a:hover {
   box-sizing: border-box;
 }
 
+/*-- form page --*/
+.form-page {
+  margin-top: 13rem;
+}
+.box-form {
+  max-width: 40rem;
+  margin: 0 auto 2rem;
+  background: #fff;
+  padding: 3rem;
+  box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.33);
+}
+.box-form h2 {
+  padding-bottom: 2rem;
+  text-align: center;
+}
+.input-wrap {
+  margin-bottom: 2rem;
+}
+.form-wrap input {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  background: #fff;
+  border: solid 1px #eee;
+  border-radius: 6rem;
+  box-sizing: border-box;
+  outline: none;
+}
+.form-wrap input:focus {
+  border: solid 1px #80b045;
+}
+.form-wrap input[type='submit'] {
+  width: auto;
+  background: #80b045;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+.form-wrap input[type='submit']:focus {
+  border: none;
+}
+.form-wrap input[type='submit']:hover {
+  background: #2573b7;
+}
+.box-form input[type='submit'] {
+  width: 10rem;
+  margin: 0 auto 2rem;
+  display: block;
+}
+.box-form .forgot-pass {
+  text-align: center;
+}
+.box-form .forgot-pass a {
+  font-size: 1.3rem;
+  color: #666;
+}
+.box-form .forgot-pass a:hover {
+  color: #2573b7;
+  text-decoration: underline;
+}
+.not-member {
+  text-align: center;
+  color: #ccc;
+}
+.not-member a {
+  color: #fff;
+  margin: 0 1rem;
+}
+.form-wrap .error {
+  text-align: center;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
 @media only screen and (max-width: 1200px) {
 
   /*-- inner contet --*/
