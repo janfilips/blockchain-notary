@@ -6,10 +6,9 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install pipenv
-  - pipenv install --dev
 
 script:
-  - pipenv run python -m unittest
+  - python -m unittest
   - coverage run tests.py
 
 notifications:
