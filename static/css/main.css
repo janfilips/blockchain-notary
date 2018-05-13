@@ -178,6 +178,9 @@ p a:hover {
 .action:hover::after {
   right: 1.6rem;
 }
+.clear {
+  clear: both;
+}
 
 /*-- header --*/
 .header {
@@ -467,8 +470,8 @@ p a:hover {
 .content-tab.tab-certifications {
   display: block;
 }
-.content-tab.tab-certifications .table-overflow {
-  height: 57.1rem;
+.content-tab .table-overflow {
+  height: 30rem;
   overflow-y: scroll;
 }
 .content-tab.tab-ongoing {
@@ -765,6 +768,60 @@ p a:hover {
   display: none;
 }
 
+/*--- dashboard -----*/
+.dashboard {
+  background: url('../images/bg-banner.jpg') no-repeat top;
+  background-size: cover;
+}
+.dashboard .promo-banner .center {
+  height: auto;
+  padding-top: 10rem;
+  background: none;
+  min-height: 60rem;
+}
+.dashboard .promo-banner .center .position {
+  position: relative;
+  top: auto;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  padding-right: 0;
+  width: 49%;
+  float: left;
+  padding-top: 7rem;
+}
+.dashboard .noterize-block {
+  width: 49%;
+  float: right;
+}
+.dashboard #dropzone-results th, .dashboard  #dropzone-results td {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+.dashboard #dropzone-results th {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.dashboard  #dropzone-results td {
+  padding-top: 1rem;
+}
+.dashboard  #dropzone-results tr:last-child td {
+  font-size: 1.4rem;
+}
+.dashboard .logout {
+  width: 9rem;
+  text-align: center;
+  margin: 3rem 0 0;
+  font-size: 1.2rem;
+  background: #ddd;
+}
+.dashboard .logout:hover {
+  background: #333;
+}
+.dashboard .logout::after {
+  display: none;
+}
 
 @media only screen and (max-width: 1200px) {
 
