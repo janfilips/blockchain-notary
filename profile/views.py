@@ -67,7 +67,7 @@ def register(request):
     return render(
         request=request,
         template_name='register.html',
-        context={},
+        context={'err':err,},
     )
 
 

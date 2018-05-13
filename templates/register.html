@@ -32,20 +32,26 @@
   <!-- main conetn -->
   <div class="center form-page">
     <div class="form-wrap box-form">
+      
+      {% if err %}
+              <div class="error">error: {{err}}</div>
+      {% endif %}
+
       <form action="/register/" method='POST' class='form-validate' id="register">
             <h2>Register</h2>
             {% csrf_token %}
+            err {{err}}
             <div class="input-wrap">
               <label>Email</label>
-              <input type="text" name="email" value="email">
+              <input type="text" name="email" value="">
             </div>
             <div class="input-wrap">
               <label>Password</label>
-              <input type="password" name="password1" value="password1">
+              <input type="password" name="password1" value="">
             </div>
             <div class="input-wrap">
               <label>Retype Password</label>
-              <input type="password" name="password2" value="password2">
+              <input type="password" name="password2" value="">
             </div>
             <div class="submit-wrap"><input type="submit" value="Submit"></div>
       </form>
