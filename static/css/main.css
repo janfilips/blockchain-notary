@@ -196,7 +196,13 @@ p a:hover {
   float: left;
   display: block;
   overflow: hidden;
+  padding-left: 14rem;
   padding-top: 0.5rem;
+  margin-top: 0.6rem;
+  background: url('../images/sny-logo.svg') no-repeat;
+}
+.header .BLN-logo:hover {
+  background: url('../images/sny-logo-green.svg') no-repeat;
 }
 .header .BLN-logo img {
   display: block;
@@ -211,7 +217,7 @@ p a:hover {
   letter-spacing: 0.6rem;
   font-weight: 300;
   text-transform: uppercase;
-  padding-top: 0.5rem;
+  padding: 0.3rem;
 }
 .header .main-nav {
   float: right;
@@ -569,6 +575,11 @@ p a:hover {
   box-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.33);
   margin-bottom: 9rem;
   overflow: hidden;
+  padding: 3rem;
+}
+.content-box .info-leyout {
+  max-width: 66%;
+  float: left;
 }
 .content-box .third {
   float: left;
@@ -593,6 +604,19 @@ p a:hover {
 .inner-content .half-wrap .content-box {
   padding: 4rem 3rem;
   box-sizing: border-box;
+}
+.alert-top {
+  background-color: #f2dede;
+  border-color: #ebcccc;
+  color: #a94442;
+  padding: 1rem;
+  text-align: center;
+  display: none;
+}
+.alert-top img {
+  display: block;
+  width: 3rem;
+  margin: 0 auto 1rem;
 }
 
 /*-- form page --*/
@@ -750,9 +774,7 @@ p a:hover {
   }
 }
 @media only screen and (max-width: 960px) and (min-width: 768px) {
-  html {
-    font-size: 50%;
-  }
+
   .header .BLN-logo span {
     letter-spacing: 0.3rem;
   }
@@ -767,6 +789,7 @@ p a:hover {
   }
   .content-box {
     margin-bottom: 4rem;
+    padding: 2rem;
   }
   .content-box .third {
     float: none;
@@ -779,6 +802,13 @@ p a:hover {
   .inner-content .half-wrap {
     width: 100%;
   }
+  .inner-content .half-wrap .content-box {
+    padding: 2rem;
+  }
+  .content-box .info-leyout {
+    width: 100%;
+    max-width: none;
+  }
 
   .header {
     padding: 1rem 0 0;
@@ -787,8 +817,9 @@ p a:hover {
   .header .BLN-logo {
     overflow: hidden;
     float: none;
-    width: 28rem;
+    width: 18rem;
     margin: 0 auto 1rem;
+    padding-left: 9rem;
   }
   .header .BLN-logo img {
     width: 9rem;
@@ -824,5 +855,8 @@ p a:hover {
   }
   .inner-content h2 {
     text-align: center;
+  }
+  .alert-top {
+    display: block;
   }
 }

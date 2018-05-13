@@ -17,11 +17,6 @@
   <script src="{% static 'vendors/ethjs/ethjs.min.js' %}"></script>
   <script src="{% static 'vendors/ethjs/ethjs-query.min.js' %}"></script>
   <script src="{% static 'vendors/ethjs/ethjs-contract.min.js' %}"></script>
-  <script type="text/javascript">
-    if (screen.width <= 768) {
-      document.location = "/about";
-    }
-  </script>
   <script src="{% static 'js/modal.js' %}"></script>
   <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
 </head>
@@ -32,7 +27,6 @@
         <!-- header -->
         <div class="center">
           <a class="BLN-logo" href="{% url 'home' %}">
-            <img alt="Blockchain Notary" src="/static/images/bln-logo.svg">
             <span>Blockchain Notary</span>
           </a>
           <nav class="main-nav">
@@ -51,4 +45,3 @@
 </body>
 
 </html>
-    

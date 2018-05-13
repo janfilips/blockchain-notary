@@ -1,13 +1,26 @@
 
-
-teraz čum kokot
-
-si prihlásenyyyyy
+{% extends "base.html" %}
 
 
-<br/>
-<br/>
-<br/>
+{% block content %}
+<section class="dashboard">
+<div class="promo-banner">
+  <!-- banner -->
+  <div class="center">
+    <div class="position">
+      <hgroup>
+        <h2>Will Rock Your Socks Off
+          <h2>
+            <h1>Blockchain Notary</h1>
+      </hgroup>
+      <p>Blockchain Notary is an open source service that computes the cryptographic hash for your documents and stores this
+        cryptographic information on the Blockchain.</p>
+    </div>
+  </div>
+</div>
+<!-- banner END -->
 
 <a href="/logout">logout</a>
+</section>
 
+  {% endblock content %}
