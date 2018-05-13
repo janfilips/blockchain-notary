@@ -1,29 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta charset="utf-8" />
-<title>Spark Notary</title>
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-<script type="text/jscript" src="/static/js/function.js"></script>
-<link rel="stylesheet" href="/static/css/main.css" type="text/css" />
-</head>
 
-<body>
+{% extends "base.html" %}
 
-  <header class="header"><!-- header -->
-    <div class="center">
-      <a class="BLN-logo" href="index.html"><img alt="blockchain notary" src="/static/images/bln-logo.svg"> <span>Blockchain Notary</span></a>
-      <nav class="main-nav"><!-- main nav -->
-        <a href="#">About BLN</a>
-        <a href="#">Login</a>
-        <a class="register" href="#">Register</a>
-      </nav><!-- main nav END -->
-    </div>
-  </header><!-- header END -->
+{% block content %}
   <main class="inner-content">
     <section class="center">
       <h2>What We Do</h2>
@@ -59,3 +37,4 @@
     </section>
   </main>
 </body>
+{% endblock content %}

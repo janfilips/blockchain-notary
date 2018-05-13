@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="utf-8" />
+  <title>Blockchain Notary Service</title>
+  <script src="{% static 'vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/pages/index.js' %}"></script>
+  <script src="{% static 'js/modal.js' %}"></script>
+  <script src="{% static 'vendors/abi/abi.js' %}"></script>
+  <script src="{% static 'vendors/dropzone/dropzone.js' %}"></script>
+  <script src="{% static 'js/notarise.js' %}"></script>
+  <script src="{% static 'vendors/jquery.formatNumber-master/jquery.formatNumber-0.1.1.min.js' %}"></script>
+  <script src="{% static 'vendors/standford-javascript-crypto-library/sjcl.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs.min.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs-query.min.js' %}"></script>
+  <script src="{% static 'vendors/ethjs/ethjs-contract.min.js' %}"></script>
+  <script type="text/javascript">
+    if (screen.width <= 768) {
+      document.location = "/about";
+    }
+  </script>
+  <script src="{% static 'js/modal.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
+</head>
+
+<body>
+
+  <header class="header">
+        <!-- header -->
+        <div class="center">
+          <a class="BLN-logo" href="{% url 'home' %}">
+            <img alt="Blockchain Notary" src="/static/images/bln-logo.svg">
+            <span>Blockchain Notary</span>
+          </a>
+          <nav class="main-nav">
+            <!-- main nav -->
+            <a href="{% url 'about' %}">About</a>
+            <a href="/login">Login</a>
+            <a class="register" href="/register">Register</a>
+          </nav>
+          <!-- main nav END -->
+        </div>
+      </header>
+      <!-- header END -->
+
+        {% block content %}{% endblock content %}
+
+</body>
+
+</html>
+    
