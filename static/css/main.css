@@ -323,7 +323,7 @@ p a:hover {
   border: solid 1px #80b045;
 }
 
-.notarize-block {
+.naterize-block {
   margin-bottom: 9rem;
 }
 .dropzone {
@@ -389,7 +389,6 @@ p a:hover {
 .notarize-action .action::after {
   display: none;
 }
-<<<<<<< HEAD
 .noterize-action .action.btn-success {
   background: #e64949;
   border: solid 2px #fff;
@@ -399,9 +398,6 @@ p a:hover {
   background: #d22929;
 }
 .noterize-action #upload-button-cancel {
-=======
-.notarize-action #upload-button-cancel {
->>>>>>> a7d3963f3afb933426056b8b2712edf57fc581ef
   background-color: #ccc;
 }
 .notarize-action #upload-button-cancel:hover {
@@ -481,7 +477,7 @@ p a:hover {
   display: block;
 }
 .content-tab .table-overflow {
-  height: 30rem;
+  height: 34.3rem;
   overflow-y: scroll;
 }
 .content-tab.tab-ongoing {

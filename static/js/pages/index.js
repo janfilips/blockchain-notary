@@ -1,8 +1,7 @@
 $( document ).ready(function() {
 
   /*-- tabs --*/
-  $('.tabs a').click(function(event){
-    event.preventDefault();
+  $('.tabs a').click(function(){
     var tablink = $(this).attr('id');
 
     if($(this).hasClass('inactive')){
