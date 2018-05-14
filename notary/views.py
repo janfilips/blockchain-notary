@@ -29,14 +29,14 @@ def about(request):
     return render(
         request=request,
         template_name='about.html',
-        context={'x':1,'y':2,},
+        context={},
     )
 
 
 def home(request):
 
     print('--  web:')
-
+ 
     if request.user.is_anonymous:
 
         return render(
@@ -56,5 +56,5 @@ def home(request):
     return render(
         request=request,
         template_name='dashboard.html',
-        context={'x':1,'y':2,},
+        context={'user':request.user,},
     )

@@ -7,9 +7,13 @@
         </a>
         <nav class="main-nav">
         <!-- main nav -->
-        <a href="/about">About</a>
-        <a href="/login">Login</a>
-        <a class="register" href="/register">Register</a>
+        {% if user.is_authenticated %}
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/about">About</a>
+            <a href="/login">Login</a>
+            <a class="register" href="/register">Register</a>
+        {% endif %}
         </nav>
         <!-- main nav END -->
     </div>
