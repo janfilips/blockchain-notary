@@ -830,6 +830,9 @@ p a:hover {
 .dashboard .logout::after {
   display: none;
 }
+.promo-banner .noterize-action .action {
+  zoom: 100%;
+}
 
 @media only screen and (max-width: 1200px) {
 
