@@ -323,9 +323,7 @@ p a:hover {
   border: solid 1px #80b045;
 }
 
-
-/*-- noterize --*/
-.noterize-block {
+.notarize-block {
   margin-bottom: 9rem;
 }
 .dropzone {
@@ -377,10 +375,10 @@ p a:hover {
   border-bottom: solid 1px #ddd;
   color: #666;
 }
-.noterize-action {
+.notarize-action {
   text-align: center;
 }
-.noterize-action .action {
+.notarize-action .action {
   display: inline-block;
   margin: 0 1rem;
   max-width: none;
@@ -388,13 +386,13 @@ p a:hover {
   font-size: 1.6rem;
   outline: none;
 }
-.noterize-action .action::after {
+.notarize-action .action::after {
   display: none;
 }
-.noterize-action #upload-button-cancel {
+.notarize-action #upload-button-cancel {
   background-color: #ccc;
 }
-.noterize-action #upload-button-cancel:hover {
+.notarize-action #upload-button-cancel:hover {
   background-color: #333;
 }
 .dropzone.dz-started {
@@ -790,7 +788,7 @@ p a:hover {
   float: left;
   padding-top: 7rem;
 }
-.dashboard .noterize-block {
+.dashboard .notarize-block {
   width: 49%;
   float: right;
 }
