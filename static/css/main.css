@@ -391,6 +391,14 @@ p a:hover {
 .noterize-action .action::after {
   display: none;
 }
+.noterize-action .action.btn-success {
+  background: #e64949;
+  border: solid 2px #fff;
+  color: #fff;
+}
+.noterize-action .action.btn-success:hover {
+  background: #d22929;
+}
 .noterize-action #upload-button-cancel {
   background-color: #ccc;
 }
