@@ -2,7 +2,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="alert-top"><img class="warning" src="/static/images/warning.svg" />You need to acess the site from desktop to be able to notarize your documents</div>
+
+{% include "header.html" %}
+
+<div class="alert-top"><img class="warning" src="/static/images/warning.svg" />You need to acess the site from desktop to be able to notarize your documents</div>
   <main class="inner-content">
     <section class="center">
       <h2>What We Do</h2>
@@ -19,17 +22,17 @@
         <h2>How it Works</h2>
         <div class="content-box"><!-- content 2 -->
           <p><span>Blockchain Notary</span> is an open source service that computes the <a href="#">cryptographic hash</a> for your documents and store this cryptographic information on the Blockchain.</p>
-          <img alt="concept-how" src="/static/images/art2-work.png">
           <p>We use the <a href="#">SHA-2 algorithm</a> to compute hash for your files and we never get to actually upload your file anywhere to a server. This means that your document content is 100% secured and cryptographically protected along the way.</p>
+          <img alt="concept-how" src="/static/images/art2-work.png">
           <p>Using our service, you will get the ultimate proof of your digital document yet it's secure and nobody but you gets to access the content whilst everyone will have an ability to verify it's authenticity. Yeah, and that's how it works really.  Blockchain rules.</p>
         </div><!-- content 2 END -->
       </div>
       <div class="half-wrap">
-        <h2>How it Works</h2>
+        <h2>How much does it cost?</h2>
         <div class="content-box"><!-- content 3 -->
           <p>Well, there is a cost associated to this service and it's compromised of 2 things: </p>
-          <img alt="concept-how" src="/static/images/art3-cost.png">
           <p>1 - 0.01 ETH is the cost for submitting the contract to the Blockchain (it's the standard network fee)<br> 2 - 0.99 ETH is for <a href="#">Jan Paricka</a> because he is a very good developer, we all love him and we want him to have tons of money</p>
+          <img alt="concept-how" src="/static/images/art3-cost.png">
           <p>So the total cost will be 1.00 ETH and we give you the lifetime warranty for your document proof guaranteed by the <a href="#">Ethereum Blockchain network.</a> For the current Ethereum to US Dollar exchange rate have a look here.<br> Or better don't look.  It is very cheap and a very good deal. There. Take my word for it. :)</p>
         </div><!-- content 3 END -->
       </div>
