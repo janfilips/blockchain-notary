@@ -1,11 +1,16 @@
 var isMetaMaskInstalled;
 var isLoggedIn;
+var eth;
+const contract_address = '0xf035755df96ad968a7ad52c968dbe86d52927f5b';
+const etherValue = web3.toWei(10, 'ether');
+var address = '0x91612055A68aD74A6e756615941Ac59e9220A940';
+var token;
 
 Dropzone.autoDiscover = false;
 
 $(document).ready(function () {
     if (typeof web3 !== 'undefined') {
-        eth = new Eth(web3.currentProvider);
+
         isMetaMaskInstalled = true;
 
         if (web3.eth.accounts.length !== 0) {
@@ -37,7 +42,26 @@ $(document).ready(function () {
             });
         }
     });
+
+    $("#upload-button-notarize").click(function () {
+        const eth = new Eth(web3.currentProvider);
+        var contract = new EthContract(eth);
+        token = contract(abi).at(contract_address);
+        sendContract();
+    });
 });
+
+async function waitForTxToBeMined(txHash) {
+    let txReceipt
+    while (!txReceipt) {
+        try {
+            txReceipt = await eth.getTransactionReceipt(txHash)
+        } catch (err) {
+            return indicateFailure(err)
+        }
+    }
+    indicateSuccess()
+}
 
 function formatFileSize() {
     $("[data-file-size]").formatNumber();
@@ -51,13 +75,13 @@ function getHash(file) {
 }
 
 function getHashOnDone() {
-    $("#upload-button-notarise").prop("disabled", false);
+    $("#upload-button-notarize").prop("disabled", false);
     $("#upload-button-cancel").prop("disabled", false);
     $(".spinner").hide();
 }
 
 $("#upload-button-cancel").click(function () {
-    $("#upload-button-notarise").prop("disabled", true);
+    $("#upload-button-notarize").prop("disabled", true);
     $("#upload-button-cancel").prop("disabled", true);
     $("#upload-buttons").hide();
     $("[data-file-name]").html("Unknown");
@@ -71,25 +95,19 @@ $("#upload-button-cancel").click(function () {
     $("#dropzone").show();
 });
 
-$("#upload-button-notarise").click(function () {
-    sendContract();
-});
-
-function initContract(contract) {
-    const MiniToken = contract(abi);
-    const miniToken = MiniToken.at(address);
-    listenForClicks(miniToken);
-}
-
 function sendContract() {
     if (isMetaMaskInstalled) {
         if (isLoggedIn) {
-            //var ethContract = new EthContract(eth);
-            //var contract = ethContract(abi);
-            //var request = contract.at(address);
+            token.transfer(contract_address, '88888888888888888888', { from: address })
+                .then(function (txHash) {
+                    console.log('Transaction sent')
+                    console.dir(txHash)
+                    waitForTxToBeMined(txHash)
+                })
+                .catch(console.error)
         }
         else {
-            showAlert("You are not logged into your MetaMask account. You need to log in before notary your file.", "Not Logged In");
+            showAlert("You are not logged into your MetaMask account. You need to log in before notary your file and refresh page.", "Not Logged In");
         }
     }
     else {

@@ -1,57 +1,55 @@
-var abi = [
+const abi = [
     {
-        constant: true,
-        inputs: [],
-        name: "name",
-        outputs: [
+        "constant": false,
+        "inputs": [],
+        "name": "addFive",
+        "outputs": [
             {
-                name: "",
-                type: "bytes32"
-            }],
-        payable: false,
-        type: "function"
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
     },
     {
-        constant: true,
-        inputs: [],
-        name: "hash",
-        outputs: [
+        "constant": false,
+        "inputs": [],
+        "name": "substractFive",
+        "outputs": [
             {
-                name: "",
-                type: "bytes32"
-            }],
-        payable: false,
-        type: "function"
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
     },
     {
-        constant: true,
-        inputs: [],
-        name: "owner",
-        outputs: [
+        "inputs": [
             {
-                name: "",
-                type: "address"
-            }],
-        payable: false,
-        type: "function"
+                "name": "_x",
+                "type": "uint8"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
     },
     {
-        constant: true,
-        inputs: [],
-        name: "size",
-        outputs: [
+        "constant": true,
+        "inputs": [],
+        "name": "x",
+        "outputs": [
             {
-                name: "", type: "uint256"
-            }],
-        payable: false,
-        type: "function"
-    },
-    {
-        constant: true,
-        inputs: [],
-        name: "timestamp",
-        outputs: [
-            {
-                name: "", type: "uint256"
-            }], payable: false, type: "function"
-    }, { constant: true, inputs: [], name: "file_timestamp", outputs: [{ name: "", type: "uint256" }], payable: false, type: "function" }, { constant: true, inputs: [], name: "mime_type", outputs: [{ name: "", type: "bytes32" }], payable: false, type: "function" }, { inputs: [{ name: "_hash", type: "bytes32" }, { name: "_name", type: "bytes32" }, { name: "_mime_type", type: "bytes32" }, { name: "_size", type: "uint256" }, { name: "_file_timestamp", type: "uint256" }], payable: true, type: "constructor" }];
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
