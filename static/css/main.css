@@ -244,6 +244,38 @@ p a:hover {
 .header .main-nav a.register:hover {
   background: #2573b7;
 }
+.header .main-nav a.non-operational {
+  position: relative;
+}
+.header .main-nav a.non-operational span {
+  position: absolute;
+  display: block;
+  font-size: 1.2rem;
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+  width: 10rem;
+  left: 50%;
+  margin-left: -6rem;
+  bottom: -3rem;
+  text-align: center;
+  border-radius: 2rem;
+  display: none;
+}
+.header .main-nav a.non-operational span::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 0.6rem solid transparent;
+  border-right: 0.6rem solid transparent;
+  border-bottom: 0.6rem solid #333;
+  top: -0.6rem;
+  left: 3rem;
+}
+.header .main-nav a.non-operational:hover span {
+  display: block;
+}
 
 /*-- promo banner --*/
 .promo-banner {
@@ -385,6 +417,11 @@ p a:hover {
   cursor: pointer;
   font-size: 1.6rem;
   outline: none;
+}
+.notarize-action #upload-button-notarize.action {
+  background-color: #d74848;
+  border: solid 2px #fff;
+  color: #fff;
 }
 .notarize-action .action::after {
   display: none;
@@ -613,6 +650,15 @@ p a:hover {
 .inner-content .half-wrap .content-box {
   padding: 4rem 3rem;
   box-sizing: border-box;
+}
+.inner-content .art-img, .inner-content .art-img2 {
+  float: right;
+  width: 30%;
+  display: block;
+}
+.inner-content .art-img2 {
+  width: 20%;
+  margin-right: 5%;
 }
 .alert-top {
   background-color: #f2dede;
@@ -924,5 +970,11 @@ p a:hover {
   }
   .alert-top {
     display: block;
+  }
+  .inner-content .art-img, .inner-content .art-img2 {
+    float: none;
+    width: 50%;
+    margin: 2rem auto 2rem;
+    max-width: 26rem;
   }
 }
