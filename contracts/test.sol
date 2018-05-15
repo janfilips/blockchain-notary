@@ -11,7 +11,7 @@ contract SimpleTest {
         x += 5;
         return x;
     }
-    function substractFive() public returns (uint8) {   
+    function substractFive() public returns (uint8) {
         x -= 5;
         return x;
     }
