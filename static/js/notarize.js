@@ -1,8 +1,9 @@
+const contract_address = '0xf035755df96ad968a7ad52c968dbe86d52927f5b';
+
 var isMetaMaskInstalled;
 var isLoggedIn;
 var eth;
-const contract_address = '0xf035755df96ad968a7ad52c968dbe86d52927f5b';
-const etherValue = web3.toWei(10, 'ether');
+const etherValue=web3.toWei(10, 'ether');
 var address = '0x91612055A68aD74A6e756615941Ac59e9220A940';
 var token;
 
@@ -44,12 +45,18 @@ $(document).ready(function () {
     });
 
     $("#upload-button-notarize").click(function () {
-        const eth = new Eth(web3.currentProvider);
-        var contract = new EthContract(eth);
-        token = contract(abi).at(contract_address);
+        initContract();
         sendContract();
     });
 });
+
+function initContract(){
+    if (isMetaMaskInstalled) {
+        var eth = new Eth(web3.currentProvider);
+        var contract=new EthContract(eth);
+        token = contract(abi).at(contract_address);
+    }
+}
 
 async function waitForTxToBeMined(txHash) {
     let txReceipt
