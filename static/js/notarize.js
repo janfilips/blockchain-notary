@@ -60,6 +60,7 @@ $(document).ready(function () {
         $("#dropzoneform").show();
         Dropzone.forElement("#dropzoneform").removeAllFiles(true);
         $("#dropzone-results").hide();
+        $(".additional-info").show();
     });
 });
 
