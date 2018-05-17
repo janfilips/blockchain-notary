@@ -39,6 +39,9 @@ $(document).ready(function () {
                 }
                 $("[data-file-size]").html(file.size);
                 $("[data-file-last-modified]").html(file.lastModifiedDate);
+                $(".spinner").show();
+                $("#spinner-text").show();
+                $("#spinner-text").text("Hashing file…");
                 getHash(file);
 
                 // Format file size
@@ -81,6 +84,8 @@ function getHash(file) {
 function getHashOnDone() {
     $("#upload-button-notarize").prop("disabled", false);
     $("#upload-button-cancel").prop("disabled", false);
+    $("#spinner-text").hide();
+    $(".spinner").hide();
 }
 
 async function waitForTxToBeMined (txHash, notaryContract) {
@@ -93,15 +98,18 @@ async function waitForTxToBeMined (txHash, notaryContract) {
                     isNotarised=result;
                     if(isNotarised)
                     {
+                    $("#spinner-text").text("Hashing file…");
+                    $(".spinner").hide();
+                    $("#spinner-text").hide();
                     window.location.href="https://ropsten.etherscan.io/tx/"+txHash;
                     }
                     else{
-                        showAlert("Your document has not been notarized. Low gas?", "We are sorry...");
+                        showAlert("Your document has not been notarized. Low gas?", "We are sorry…");
                     }
                 }));
             }
             else{
-                console.log("Waiting...");
+                console.log("Waiting…");
             }
       } catch (err) {
         alert(err);
@@ -114,6 +122,9 @@ function sendTransaction() {
         eth = new Eth(web3.currentProvider);
         if (isLoggedIn) {
             isNotarised=false;
+            $("#spinner-text").text("Waiting for the transaction to be mined…");
+            $(".spinner").show();
+            $("#spinner-text").show();
             myAddress = web3.eth.accounts[0];
             var contract = new EthContract(eth);
             var notaryContract = contract(abi, byteCode, { from: myAddress, gas: gas }).at(contractAddress);
