@@ -1,69 +1,35 @@
-const abi = [
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "addFive",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint8"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "expensiveLoop",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint8"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "substractFive",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint8"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "name": "_x",
-                "type": "uint8"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "x",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint8"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }
+const abi=[
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "proof",
+				"type": "bytes32"
+			}
+		],
+		"name": "hasProof",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "proof",
+				"type": "bytes32"
+			}
+		],
+		"name": "notarise",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
 ]
