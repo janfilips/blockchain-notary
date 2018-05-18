@@ -1,14 +1,16 @@
+// Config
 const contractAddress = '0xb9e60e66223614dee25a540d554e3d64e73fbc4b';
 const byteCode = "608060405234801561001057600080fd5b5061015e806100206000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063e3d1e6d614610051578063e7e9f3851461009a575b600080fd5b34801561005d57600080fd5b5061008060048036038101908080356000191690602001909291905050506100cb565b604051808215151515815260200191505060405180910390f35b3480156100a657600080fd5b506100c960048036038101908080356000191690602001909291905050506100fc565b005b6000806000836000191660001916815260200190815260200160002060009054906101000a900460ff169050919050565b6001600080836000191660001916815260200190815260200160002060006101000a81548160ff021916908315150217905550505600a165627a7a723058202f28747a8e344601a677093c4b07a6e1fb3a6a91c059626efa959f5113c766560029";
 const gas = "100000";
 const etherValue = web3.toWei(1, 'ether');
 
+// Global variables
 var myAddress;
 var isMetaMaskInstalled;
-var isLoggedIn;
-var hash;
+var isUserLoggedIn;
+var fileHash;
 var eth;
-var isNotarised;
+var isNotarized;
 
 Dropzone.autoDiscover = false;
 
@@ -18,7 +20,7 @@ $(document).ready(function () {
         isMetaMaskInstalled = true;
 
         if (web3.eth.accounts.length !== 0) {
-            isLoggedIn = true;
+            isUserLoggedIn = true;
         }
     }
 
@@ -51,7 +53,7 @@ $(document).ready(function () {
     });
 
     $("#upload-button-notarize").click(function () {
-        sendTransaction();
+        createTransaction();
     });
 
     $("#upload-button-cancel").click(function () {
@@ -78,7 +80,7 @@ function formatFileSize() {
 
 function getHash(file) {
     var reader = new FileReader();
-    reader.addEventListener("loadend", function (event) { hash = "0x" + sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(event.target.result)); $("#hash-result").html(hash); getHashOnDone(); });
+    reader.addEventListener("loadend", function (event) { fileHash = "0x" + sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(event.target.result)); $("#hash-result").html(fileHash); getHashOnDone(); });
     reader.readAsBinaryString(file);
 }
 
@@ -91,45 +93,64 @@ function getHashOnDone() {
 
 async function waitForTxToBeMined (txHash, notaryContract) {
     $("#spinner-text-mining").text("Waiting for the transaction to be mined…");
-    let txReceipt
+    $("#upload-button-cancel").prop("disabled", true);
+    var txReceipt;
+
+    // Waiting for receipt
     while (!txReceipt) {
       try {
         txReceipt = await eth.getTransactionReceipt(txHash)
+
+            // Receipt returned => Verify if document is signed properly
             if(txReceipt){
-                notaryContract.hasProof(hash).then((function(result){
-                    isNotarised=result;
-                    if(isNotarised)
+                notaryContract.hasProof(fileHash).then((function(result){
+                    isNotarized=result;
+                    if(isNotarized)
                     {
                     $(".spinner-hashing").hide();
                     $("#spinner-text-hashing").hide();
                     window.location.href="https://ropsten.etherscan.io/tx/"+txHash;
                     }
                     else{
-                        showAlert("Your document has not been notarized. Low gas?", "We are sorry…");
+                        showAlert("Your document has not been notarized.", "We are sorry…");
                     }
                 }));
             }
             else{
-                console.log("Waiting for the transaction to be mined…");
+                    console.log("Waiting for the transaction to be mined…");
             }
       } catch (err) {
-        alert(err);
+          showAlert("An error occured. Watch console for further info...", "An error occured...");
+        console.log(err);
       }
     }
   }
 
-function sendTransaction() {
+function errorHandler(_error){
+
+    var error=_error.toString();
+
+    // User rejected transaction
+    if(error.indexOf("User denied transaction signature")>=0){
+        $(".spinner-mining").hide();
+    }
+}
+
+function createTransaction() {
     if (isMetaMaskInstalled) {
         eth = new Eth(web3.currentProvider);
-        if (isLoggedIn) {
-            isNotarised=false;
+        if (isUserLoggedIn) {
+            isNotarized=false;
             $(".spinner-mining").show();
+            setTimeout(function(){
+                $("#spinner-text-mining").text($("#spinner-text-mining").text()+" (Takes too long? Use default values or try increase gas limit or gas price)");
+            }, 60000);
             myAddress = web3.eth.accounts[0];
             var contract = new EthContract(eth);
             var notaryContract = contract(abi, byteCode, { from: myAddress, gas: gas }).at(contractAddress);
-            notaryContract.notarise(hash).then(function (notarise) {
+            notaryContract.notarise(fileHash).then(function (notarise) {
                waitForTxToBeMined(notarise, notaryContract);
-            });
+            }).catch(function(error){errorHandler(error)});
         }
         else {
             showAlert("You are not logged into your MetaMask account. You need to log in before notary your file and refresh page.", "Not Logged In");
