@@ -84,14 +84,14 @@
         <tr>
           <th>Hash</th>
           <td data-file-hash>
-              <div class="spinner">
+              <div class="spinner spinner-hashing">
                   <div class="rect1"></div>
                   <div class="rect2"></div>
                   <div class="rect3"></div>
                   <div class="rect4"></div>
                   <div class="rect5"></div>
                 </div>
-                <p id="spinner-text">Hashing file...</p>
+                <p id="spinner-text-hashing">Hashing file...</p>
             <div id="hash-result"></div>
           </td>
         </tr>
@@ -99,6 +99,14 @@
       <div class="notarize-action" id="upload-buttons" style="display: none" ;>
         <button class="btn btn-success action" id="upload-button-notarize" disabled="disabled">Notarize</button>
         <button class="btn btn-danger action" id="upload-button-cancel" disabled="disabled">Cancel</button>
+      </div>
+      <div class="spinner spinner-mining">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+        <p id="spinner-text-mining">Waiting for confirmation of transaction…</p>
       </div>
     </section>
 

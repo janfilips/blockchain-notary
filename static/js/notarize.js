@@ -39,7 +39,7 @@ $(document).ready(function () {
                 }
                 $("[data-file-size]").html(file.size);
                 $("[data-file-last-modified]").html(file.lastModifiedDate);
-                $(".spinner").show();
+                $(".spinner-hashing").show();
                 $("#spinner-text").show();
                 $("#spinner-text").text("Hashing file…");
                 getHash(file);
@@ -67,6 +67,7 @@ $(document).ready(function () {
         Dropzone.forElement("#dropzoneform").removeAllFiles(true);
         $("#dropzone-results").hide();
         $(".additional-info").show();
+        $(".spinner-mining").hide();
     });
 });
 
@@ -84,11 +85,12 @@ function getHash(file) {
 function getHashOnDone() {
     $("#upload-button-notarize").prop("disabled", false);
     $("#upload-button-cancel").prop("disabled", false);
-    $("#spinner-text").hide();
-    $(".spinner").hide();
+    $("#spinner-text-hashing").hide();
+    $(".spinner-hashing").hide();
 }
 
 async function waitForTxToBeMined (txHash, notaryContract) {
+    $("#spinner-text-mining").text("Waiting for the transaction to be mined…");
     let txReceipt
     while (!txReceipt) {
       try {
@@ -98,9 +100,8 @@ async function waitForTxToBeMined (txHash, notaryContract) {
                     isNotarised=result;
                     if(isNotarised)
                     {
-                    $("#spinner-text").text("Hashing file…");
-                    $(".spinner").hide();
-                    $("#spinner-text").hide();
+                    $(".spinner-hashing").hide();
+                    $("#spinner-text-hashing").hide();
                     window.location.href="https://ropsten.etherscan.io/tx/"+txHash;
                     }
                     else{
@@ -109,7 +110,7 @@ async function waitForTxToBeMined (txHash, notaryContract) {
                 }));
             }
             else{
-                console.log("Waiting…");
+                console.log("Waiting for the transaction to be mined…");
             }
       } catch (err) {
         alert(err);
@@ -122,9 +123,7 @@ function sendTransaction() {
         eth = new Eth(web3.currentProvider);
         if (isLoggedIn) {
             isNotarised=false;
-            $("#spinner-text").text("Waiting for the transaction to be mined…");
-            $(".spinner").show();
-            $("#spinner-text").show();
+            $(".spinner-mining").show();
             myAddress = web3.eth.accounts[0];
             var contract = new EthContract(eth);
             var notaryContract = contract(abi, byteCode, { from: myAddress, gas: gas }).at(contractAddress);

@@ -1016,6 +1016,19 @@ p a:hover {
   animation-delay: -0.8s;
 }
 
+.spinner-mining{
+  display: none;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+  margin-top: 20px;
+}
+
+.spinner-mining >div{
+  background-color: white;
+}
+
 @-webkit-keyframes sk-stretchdelay {
   0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
   20% { -webkit-transform: scaleY(1.0) }
