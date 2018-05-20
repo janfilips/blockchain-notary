@@ -38,13 +38,41 @@
       <div class="centerp">
         <h2>Smart-contract</h2>
         <div class="content-box"><!-- content 4 -->
-        <p>XXX</p>
+        <p>Our Smart-contract is quite easy actually as all it does is that it stores your document's hash on the blockchain.
+          <br/>
+          And that's it yeah.
+          <br/>
+          <code>
+              pragma solidity ^0.4.13;<br/>
+              contract Notarise {<br/>
+              &nbsp;&nbsp;&nbsp;mapping (bytes32 => bool) private proofs;<br/>
+              &nbsp;&nbsp;&nbsp;// store a proof of existence in the contract state<br/>
+              &nbsp;&nbsp;&nbsp;// *transactional function*<br/>
+              &nbsp;&nbsp;&nbsp;function notarise(bytes32 proof) public {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proofs[proof] = true;<br/>
+                &nbsp;&nbsp;&nbsp;}<br/>
+                &nbsp;&nbsp;&nbsp;// returns true if proof is stored<br/>
+                &nbsp;&nbsp;&nbsp;// *read-only function*<br/>
+                &nbsp;&nbsp;&nbsp;function hasProof(bytes32 proof) public constant returns (bool) {<br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return proofs[proof];<br/>
+                  &nbsp;}<br/>
+              }<br/>
+          </code>
+          This service is open source and the full code (including the contract) can be seen on <a href="https://github.com/jparicka/blockchain-notary" target="_blank">here</a>.
+          <br/>
+          The contract can be seen on <a href="#">here</a>.
+        </p>
         </div><!-- content 4 END -->
       </div>
       <div class="centerp">
         <h2>FAQ</h2>
         <div class="content-box"><!-- content 5 -->
-        <p>XXX</p>
+        <p>Freel free to contact us should you have any questions.
+          <br/>
+          <br/>
+          Q: Do you rock?<br/>
+          A: Yes we very much do. :)
+        </p>
         </div><!-- content 5 END -->
       </div>
       <div class="centerp">

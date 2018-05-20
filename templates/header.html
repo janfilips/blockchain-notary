@@ -11,8 +11,11 @@
             <a href="/logout">Logout</a>
         {% else %}
             <a href="/about">About</a>
-            <a class="non-operational" href="#">Login <span>coming soon</span></a>
-            <a class="register non-operational" href="#">Register <span>coming soon</span></a>
+            <a href="https://github.com/jparicka/blockchain-notary/blob/master/contracts/notary.sol" target="_blank">Smart contract</a>
+            {% comment %}
+            <a class="register non-operational" href="#">Login <span>coming soon..</span></a>
+            {% endcomment %}
+            <a class="register" href="/login">Login</a>
         {% endif %}
         </nav>
         <!-- main nav END -->
