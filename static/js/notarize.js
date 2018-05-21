@@ -11,6 +11,11 @@ var isUserLoggedIn;
 var fileHash;
 var eth;
 var isNotarized;
+var timeout;
+var fileName;
+var fileType;
+var fileSize;
+var lastModified;
 
 Dropzone.autoDiscover = false;
 
@@ -29,6 +34,10 @@ $(document).ready(function () {
         uploadMultiple: false,
         init: function () {
             this.on("addedfile", function (file) {
+                fileName=file.name;
+                fileType=file.type;
+                fileSize=file.size;
+                lastModified=file.lastModified;
                 $("#dropzoneform").hide().next().hide();
                 $("#dropzone-results").show();
                 $("[data-file-name]").html(file.name);
@@ -65,6 +74,7 @@ $(document).ready(function () {
         $("#dropzone-results").hide();
         $(".additional-info").show();
         setSpinner(false);
+        clearTimeout(timeout);
     });
 });
 
@@ -85,6 +95,7 @@ function getHashOnDone() {
 }
 
 async function waitForTxToBeMined(txHash, notaryContract) {
+    //ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash);
     setSpinner(true, "Waiting for the transaction to be mined…");
     var txReceipt;
 
@@ -98,6 +109,7 @@ async function waitForTxToBeMined(txHash, notaryContract) {
                 notaryContract.hasProof(fileHash).then((function (result) {
                     isNotarized = result;
                     if (isNotarized) {
+                        //setProofAjax(fileHash);
                         setSpinner(false);
                         window.location.href = "https://ropsten.etherscan.io/tx/" + txHash;
                     }
@@ -144,7 +156,7 @@ function createTransaction() {
         if (isUserLoggedIn) {
             isNotarized = false;
             setSpinner(true, "Waiting for confirmation of the transaction…");
-            setTimeout(function () {
+            timeout=setTimeout(function () {
                 setSpinner(true, "Waiting for confirmation of the transaction…  (Takes too long? Try to increase the gas limit or gas price…)");
             }, 50000);
             myAddress = web3.eth.accounts[0];
@@ -161,4 +173,41 @@ function createTransaction() {
     else {
         showAlert("This is a blockchain application, you need to install Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a> if you want to play around with blockchains.", "MetaMask not detected");
     }
+}
+
+function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_modified, file_hash){
+    $.ajax({
+        type: "POST",
+        url: '/ongoing_submissions_ajax',
+        data: {
+            file_name: file_name,
+            file_mime_type: file_mime_type,
+            file_size: file_size,
+            file_last_modified: file_last_modified,
+            file_hash,
+            has_proof: false
+        },
+        success: function(result){
+            // Add transaction to "Ongoing Submissions"
+        },
+        error: function(){
+            showAlert(console.log("Ongoing Submission could not be saved to history…"));
+        }
+    });
+}
+
+function setProofAjax(file_hash){
+    $.ajax({
+        type: "POST",
+        url: '/set_proof_ajax',
+        data: {
+            file_hash
+        },
+        success: function(result){
+            // Remove transaction from "Ongoing Submissions" and place to "Certifications"
+        },
+        error: function(){
+            showAlert(console.log('Ongoing Submission could not be moved to "Certifications" history…'));
+        }
+    });
 }
