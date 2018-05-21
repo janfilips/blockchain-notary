@@ -30,7 +30,6 @@ $(document).ready(function () {
         init: function () {
             this.on("addedfile", function (file) {
                 $("#dropzoneform").hide().next().hide();
-                $("#upload-buttons").show();
                 $("#dropzone-results").show();
                 $("[data-file-name]").html(file.name);
                 if (file.type) {
@@ -41,9 +40,7 @@ $(document).ready(function () {
                 }
                 $("[data-file-size]").html(file.size);
                 $("[data-file-last-modified]").html(file.lastModifiedDate);
-                $(".spinner-hashing").show();
-                $("#spinner-text").show();
-                $("#spinner-text").text("Hashing file…");
+                setSpinner(true, "Hashing file…");
                 getHash(file);
 
                 // Format file size
@@ -57,8 +54,6 @@ $(document).ready(function () {
     });
 
     $("#upload-button-cancel").click(function () {
-        $("#upload-button-notarize").prop("disabled", true);
-        $("#upload-button-cancel").prop("disabled", true);
         $("#upload-buttons").hide();
         $("[data-file-name]").html("Unknown");
         $("[data-file-type]").html("Unknown");
@@ -69,7 +64,7 @@ $(document).ready(function () {
         Dropzone.forElement("#dropzoneform").removeAllFiles(true);
         $("#dropzone-results").hide();
         $(".additional-info").show();
-        $(".spinner-mining").hide();
+        setSpinner(false);
     });
 });
 
@@ -85,54 +80,61 @@ function getHash(file) {
 }
 
 function getHashOnDone() {
-    $("#upload-button-notarize").prop("disabled", false);
-    $("#upload-button-cancel").prop("disabled", false);
-    $("#spinner-text-hashing").hide();
-    $(".spinner-hashing").hide();
+    setSpinner(false);
+    $("#upload-buttons").show();
 }
 
-async function waitForTxToBeMined (txHash, notaryContract) {
-    $("#spinner-text-mining").text("Waiting for the transaction to be mined…");
-    $("#upload-button-cancel").prop("disabled", true);
+async function waitForTxToBeMined(txHash, notaryContract) {
+    setSpinner(true, "Waiting for the transaction to be mined…");
     var txReceipt;
 
     // Waiting for receipt
     while (!txReceipt) {
-      try {
-        txReceipt = await eth.getTransactionReceipt(txHash)
+        try {
+            txReceipt = await eth.getTransactionReceipt(txHash)
 
             // Receipt returned => Verify if document is signed properly
-            if(txReceipt){
-                notaryContract.hasProof(fileHash).then((function(result){
-                    isNotarized=result;
-                    if(isNotarized)
-                    {
-                    $(".spinner-hashing").hide();
-                    $("#spinner-text-hashing").hide();
-                    window.location.href="https://ropsten.etherscan.io/tx/"+txHash;
+            if (txReceipt) {
+                notaryContract.hasProof(fileHash).then((function (result) {
+                    isNotarized = result;
+                    if (isNotarized) {
+                        setSpinner(false);
+                        window.location.href = "https://ropsten.etherscan.io/tx/" + txHash;
                     }
-                    else{
+                    else {
                         showAlert("We could not notarise your document.", "We are sorry.");
                     }
                 }));
             }
-            else{
-                    console.log("Waiting for the blockchain transaction to be mined…");
+            else {
+                console.log("Waiting for the blockchain transaction to be mined…");
             }
-      } catch (err) {
-          showAlert("An error occured. See the console for further info...", "An error occured.");
-        console.log(err);
-      }
+        } catch (err) {
+            showAlert("An error occured. See the console for further info…", "An error occured.");
+            console.log(err);
+        }
     }
-  }
+}
 
-function errorHandler(_error){
+function errorHandler(_error) {
 
-    var error=_error.toString();
+    var error = _error.toString();
 
     // User rejected transaction
-    if(error.indexOf("User denied transaction signature")>=0){
-        $(".spinner-mining").hide();
+    if (error.indexOf("User denied transaction signature") >= 0) {
+        setSpinner(false);
+    }
+}
+
+function setSpinner(visible, text = null) {
+    $("#spinner-text").text(text);
+    switch (visible) {
+        case true:
+            $(".spinner").show();
+            break;
+        case false:
+            $(".spinner").hide();
+
     }
 }
 
@@ -140,17 +142,17 @@ function createTransaction() {
     if (isMetaMaskInstalled) {
         eth = new Eth(web3.currentProvider);
         if (isUserLoggedIn) {
-            isNotarized=false;
-            $(".spinner-mining").show();
-            setTimeout(function(){
-                $("#spinner-text-mining").text($("#spinner-text-mining").text()+" (Takes too long? Try to increase the gas limit or gas price..)");
+            isNotarized = false;
+            setSpinner(true, "Waiting for confirmation of the transaction…");
+            setTimeout(function () {
+                setSpinner(true, "Waiting for confirmation of the transaction…  (Takes too long? Try to increase the gas limit or gas price…)");
             }, 50000);
             myAddress = web3.eth.accounts[0];
             var contract = new EthContract(eth);
             var notaryContract = contract(abi, byteCode, { from: myAddress, gas: gas }).at(contractAddress);
             notaryContract.notarise(fileHash).then(function (notarise) {
-               waitForTxToBeMined(notarise, notaryContract);
-            }).catch(function(error){errorHandler(error)});
+                waitForTxToBeMined(notarise, notaryContract);
+            }).catch(function (error) { errorHandler(error) });
         }
         else {
             showAlert("You are not logged to your MetaMask account. You need to log in to MetaMask and refresh this page.", "Not Logged In");

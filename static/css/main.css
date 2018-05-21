@@ -984,10 +984,15 @@ p a:hover {
   height: 40px;
   text-align: center;
   font-size: 10px;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+  display: none;
+  margin-top: 20px;
 }
 
 .spinner > div {
-  background-color: #333;
+  background-color: white;
   height: 100%;
   width: 6px;
   display: inline-block;
@@ -1016,19 +1021,6 @@ p a:hover {
   animation-delay: -0.8s;
 }
 
-.spinner-mining{
-  display: none;
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-size: 1em;
-  margin-top: 20px;
-}
-
-.spinner-mining >div{
-  background-color: white;
-}
-
 @-webkit-keyframes sk-stretchdelay {
   0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
   20% { -webkit-transform: scaleY(1.0) }
@@ -1042,4 +1034,8 @@ p a:hover {
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
+}
+
+#upload-buttons{
+  display: none;
 }
