@@ -9,6 +9,5 @@ class Submissions(models.Model):
     file_size=models.IntegerField()
     file_last_modified=models.CharField(max_length=100)
     file_hash=models.CharField(max_length=66)
-    transaction_timestamp=models.DateTimeField(auto_now_add=True),
     transaction_hash=models.CharField(max_length=256, default="")
     has_proof=models.BooleanField()
