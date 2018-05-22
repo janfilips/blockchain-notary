@@ -20,6 +20,9 @@ from django.contrib.auth.decorators import login_required
 
 from django.conf import settings
 
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+
 from notary.models import History
 
 def about(request):
@@ -33,12 +36,21 @@ def about(request):
         context={},
     )
 
+
 def ajax_list_ongoing_submissions(request):
 
     ongoing_submissions = []
     _ongoing_submissions = History.objects.filter(has_proof=False)
 
     for _submission in _ongoing_submissions:
+
+        #print('here type', type(_submission.timestamp), dir(_submission.timestamp))
+        #_timestamp = _submission.timestamp
+        #print('-------------------------------------------------------')
+        #print('kaka', _timestamp)
+
+        #.strftime('%Y-%m-%d %H:%M:%s')
+
         submission = {
             'file_name': _submission.file_name,
             'file_mime_type': _submission.file_mime_type,
@@ -47,6 +59,7 @@ def ajax_list_ongoing_submissions(request):
             'file_hash': _submission.file_hash,
             'has_proof': _submission.has_proof,
             'transaction_hash': _submission.transaction_hash,
+            'timestamp': str(_submission.timestamp),
         }
         ongoing_submissions.append(submission)
 
@@ -63,6 +76,7 @@ def ajax_list_ongoing_submissions(request):
             'file_hash': _certificate.file_hash,
             'has_proof': _certificate.has_proof,
             'transaction_hash': _certificate.transaction_hash,
+            #'timestamp': str(_certificate.timestamp),
         }
         certifications.append(_certificate)
         
@@ -71,6 +85,9 @@ def ajax_list_ongoing_submissions(request):
         'ongoing_submissions': ongoing_submissions,
         'certifications': certifications,
     }
+
+    print('*'*100)
+    print(response)
 
     return JsonResponse(response)
 
