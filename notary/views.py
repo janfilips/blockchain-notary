@@ -36,17 +36,17 @@ def about(request):
     )
 
 # Save transaction as pending into db (return true or false as result)
-#def ongoing_submissions_ajax(request):
+def ongoing_submissions_ajax(request):
 
-    # ongoing_submission=History.objects.create(
-    #     file_name=request.POST.get("file_name", None),
-    #     file_mime_type=request.POST.get("file_mime_type", None),
-    #     file_size=request.POST.get("file_size", None),
-    #     file_last_modified=request.POST.get("file_last_modified", None),
-    #     file_hash=request.POST.get("file_hash", None),
-    #     has_proof=request.POST.get("has_proof", None)
-    #     )
-    # return JsonResponse({"result": "true"})
+     ongoing_submission=History.objects.create(
+         file_name=request.POST.get("file_name", None),
+         file_mime_type=request.POST.get("file_mime_type", None),
+         file_size=request.POST.get("file_size", None),
+         file_last_modified=request.POST.get("file_last_modified", None),
+         file_hash=request.POST.get("file_hash", None),
+         has_proof=request.POST.get("has_proof", None)
+         )
+     return JsonResponse({"result": "true"})
 
 # Set has_proof in db to true only (return true or false as result)
 #def set_proof_ajax(request):

@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 
 from notary.views import home, about
+from notary.views import 
 from profile.views import auth, register, user_logout
 
 
@@ -9,6 +10,7 @@ urlpatterns = [
     # common views..
     url(r'^$', home, name='home'),
     url(r'^about/$', about, name='about'),
+    url(r'^ajax/ongoing_submissions$', ongoing_submissions, name='ongoing_submissions'),
     # userprofile stuff..
     url(r'^login/$', auth, name='login'),
     url(r'^register/$', register, name='login'),
