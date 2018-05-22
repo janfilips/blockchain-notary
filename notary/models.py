@@ -13,4 +13,5 @@ class History(models.Model):
     file_size=models.IntegerField()
     file_last_modified=models.DateField()
     file_hash=models.CharField(max_length=66)
+    timestamp=models.DateTimeField(auto_now_add=True),
     has_proof=models.BooleanField()
