@@ -24,8 +24,6 @@ from notary.models import History
 
 def about(request):
 
-    print('--  about:')
-
     ip = request.META['REMOTE_ADDR']
     print('ip',ip)
 
@@ -35,11 +33,50 @@ def about(request):
         context={},
     )
 
+def ajax_list_ongoing_submissions(request):
+
+    ongoing_submissions = []
+    _ongoing_submissions = History.objects.filter(has_proof=False)
+
+    for _submission in _ongoing_submissions:
+        submission = {
+            'file_name': _submission.file_name,
+            'file_mime_type': _submission.file_mime_type,
+            'file_size': _submission.file_size,
+            'file_last_modified': _submission.file_last_modified,
+            'file_hash': _submission.file_hash,
+            'has_proof': _submission.has_proof,
+            'transaction_hash': _submission.transaction_hash,
+        }
+        ongoing_submissions.append(submission)
+
+
+    certifications = []
+    _certifications = History.objects.filter(has_proof=False)
+
+    for _certificate in _certifications:
+        _certificate = {
+            'file_name': _certificate.file_name,
+            'file_mime_type': _certificate.file_mime_type,
+            'file_size': _certificate.file_size,
+            'file_last_modified': _certificate.file_last_modified,
+            'file_hash': _certificate.file_hash,
+            'has_proof': _certificate.has_proof,
+            'transaction_hash': _certificate.transaction_hash,
+        }
+        certifications.append(_certificate)
+        
+
+    response = {
+        'ongoing_submissions': ongoing_submissions,
+        'certifications': certifications,
+    }
+
+    return JsonResponse(response)
+
 def ajax_set_ongoing_submissions(request):
 
     if(request.POST):
-
-        print(request.POST)
 
         ongoing_submission=History.objects.create(
             file_name=request.POST.get("file_name", None),
@@ -56,8 +93,6 @@ def ajax_set_ongoing_submissions(request):
 
 
 def home(request):
-
-    print('--  web:')
  
     if request.user.is_anonymous:
         return render(
@@ -72,7 +107,6 @@ def home(request):
     user.save()
 
     ip = request.META['REMOTE_ADDR']
-    print('ip',ip)
 
     return render(
         request=request,
