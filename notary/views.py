@@ -23,7 +23,7 @@ from django.conf import settings
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 
-from notary.models import History
+from notary.models import Submissions
 
 def about(request):
 
@@ -40,7 +40,7 @@ def about(request):
 def ajax_list_ongoing_submissions(request):
 
     ongoing_submissions = []
-    _ongoing_submissions = History.objects.filter(has_proof=False)
+    _ongoing_submissions = Submissions.objects.filter(has_proof=False)
 
     for _submission in _ongoing_submissions:
 
@@ -59,13 +59,13 @@ def ajax_list_ongoing_submissions(request):
             'file_hash': _submission.file_hash,
             'has_proof': _submission.has_proof,
             'transaction_hash': _submission.transaction_hash,
-            'timestamp': str(_submission.timestamp),
+            'transaction_timestamp': str(_submission.transaction_timestamp[0]),
         }
         ongoing_submissions.append(submission)
 
 
     certifications = []
-    _certifications = History.objects.filter(has_proof=False)
+    _certifications = Submissions.objects.filter(has_proof=False)
 
     for _certificate in _certifications:
         _certificate = {
@@ -76,7 +76,7 @@ def ajax_list_ongoing_submissions(request):
             'file_hash': _certificate.file_hash,
             'has_proof': _certificate.has_proof,
             'transaction_hash': _certificate.transaction_hash,
-            #'timestamp': str(_certificate.timestamp),
+            #'transaction_timestamp': str(_certificate.transaction_timestamp),
         }
         certifications.append(_certificate)
         
@@ -95,7 +95,7 @@ def ajax_set_ongoing_submissions(request):
 
     if(request.POST):
 
-        ongoing_submission=History.objects.create(
+        ongoing_submission=Submissions.objects.create(
             file_name=request.POST.get("file_name", None),
             file_mime_type=request.POST.get("file_mime_type", None),
             file_size=request.POST.get("file_size", None),
