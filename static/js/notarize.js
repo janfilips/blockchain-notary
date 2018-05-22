@@ -98,7 +98,7 @@ function getHashOnDone() {
 }
 
 async function waitForTxToBeMined(txHash, notaryContract) {
-    ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash);
+    ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash=txHash);
     setSpinner(true, "Waiting for the transaction to be mined…");
     var txReceipt;
 
@@ -178,7 +178,7 @@ function createTransaction() {
     }
 }
 
-function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_modified, file_hash){
+function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_modified, file_hash, transaction_hash){
     $.ajax({
         type: "POST",
         url: '/ajax/ongoing_submissions/',
@@ -194,6 +194,7 @@ function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_m
             file_last_modified: file_last_modified,
             file_hash,
             has_proof: "False",
+            transaction_hash: transaction_hash
         },
         success: function(result){
             // Add transaction to "Ongoing Submissions"

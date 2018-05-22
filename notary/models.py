@@ -15,3 +15,4 @@ class History(models.Model):
     file_hash=models.CharField(max_length=66)
     timestamp=models.DateTimeField(auto_now_add=True),
     has_proof=models.BooleanField()
+    transaction_hash=models.CharField(max_length=256, default="")

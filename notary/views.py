@@ -47,7 +47,8 @@ def ajax_set_ongoing_submissions(request):
             file_size=request.POST.get("file_size", None),
             file_last_modified=request.POST.get("file_last_modified", None),
             file_hash=request.POST.get("file_hash", None),
-            has_proof=request.POST.get("has_proof", None)
+            has_proof=request.POST.get("has_proof", None),
+            transaction_hash=request.POST.get("transaction_hash", None)
             )
         return JsonResponse({"result": "true"})
 
