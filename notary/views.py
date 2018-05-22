@@ -52,6 +52,7 @@ def ajax_list_ongoing_submissions(request):
             'file_hash': _submission.file_hash,
             'has_proof': _submission.has_proof,
             'transaction_hash': _submission.transaction_hash,
+            'transaction_created_at': _submission.transaction_created_at,
         }
         ongoing_submissions.append(submission)
 
@@ -68,6 +69,7 @@ def ajax_list_ongoing_submissions(request):
             'file_hash': _certificate.file_hash,
             'has_proof': _certificate.has_proof,
             'transaction_hash': _certificate.transaction_hash,
+            'transaction_created_at': _certificate.transaction_created_at,
         }
         certifications.append(_certificate)
         
