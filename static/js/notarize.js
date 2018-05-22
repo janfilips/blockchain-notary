@@ -182,14 +182,18 @@ function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_m
     $.ajax({
         type: "POST",
         url: '/ajax/ongoing_submissions/',
+        "dataType": "json",
+        "headers": {
+            'X-CSRFToken': csrf_token
+        },
+        "cache": false,
         data: {
             file_name: file_name,
             file_mime_type: file_mime_type,
             file_size: file_size,
             file_last_modified: file_last_modified,
             file_hash,
-            has_proof: false,
-            csrf_token: csrf_token
+            has_proof: "False",
         },
         success: function(result){
             // Add transaction to "Ongoing Submissions"

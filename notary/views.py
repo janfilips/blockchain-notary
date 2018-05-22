@@ -38,6 +38,9 @@ def about(request):
 def ajax_set_ongoing_submissions(request):
 
     if(request.POST):
+
+        print(request.POST)
+
         ongoing_submission=History.objects.create(
             file_name=request.POST.get("file_name", None),
             file_mime_type=request.POST.get("file_mime_type", None),
