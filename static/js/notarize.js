@@ -112,7 +112,7 @@ async function waitForTxToBeMined(txHash, notaryContract) {
                 notaryContract.hasProof(fileHash).then((function (result) {
                     isNotarized = result;
                     if (isNotarized) {
-                        //setProofAjax(fileHash);
+                        setProofAjax(txHash);
                         setSpinner(false);
                         window.location.href = "https://ropsten.etherscan.io/tx/" + txHash;
                     }
@@ -141,15 +141,23 @@ function errorHandler(_error) {
     }
 }
 
-function setSpinner(visible, text = null) {
-    $("#spinner-text").text(text);
-    switch (visible) {
+function setSpinner(visible, text = null, add=false) {
+    switch(add){
         case true:
-            $(".spinner").show();
+            $("#spinner-text").text($("#spinner-text").text()+text);
             break;
+        default:
+            $("#spinner-text").text(text);
+            break;
+    }
+
+    switch (visible) {
         case false:
             $(".spinner").hide();
-
+            break;
+        default:
+            $(".spinner").show();
+            break;
     }
 }
 
@@ -160,8 +168,8 @@ function createTransaction() {
             isNotarized = false;
             setSpinner(true, "Waiting for confirmation of the transaction…");
             timeout=setTimeout(function () {
-                setSpinner(true, "Waiting for confirmation of the transaction…  (Takes too long? Try to increase the gas limit or gas price…)");
-            }, 50000);
+                setSpinner(true, " (Takes too long? Try to increase the gas limit or gas price…)", true);
+            }, 90000);
             myAddress = web3.eth.accounts[0];
             var contract = new EthContract(eth);
             var notaryContract = contract(abi, byteCode, { from: myAddress, gas: gas }).at(contractAddress);
@@ -182,11 +190,11 @@ function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_m
     $.ajax({
         type: "POST",
         url: '/ajax/ongoing_submissions/',
-        "dataType": "json",
-        "headers": {
+        dataType: "json",
+        headers: {
             'X-CSRFToken': csrf_token
         },
-        "cache": false,
+        cache: false,
         data: {
             file_name: file_name,
             file_mime_type: file_mime_type,
@@ -196,27 +204,43 @@ function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_m
             has_proof: "False",
             transaction_hash: transaction_hash
         },
-        success: function(result){
-            // Add transaction to "Ongoing Submissions"
+        success: function(response){
+
+            switch(response.result){
+                case "true":
+                    console.log("Ongoing submission has been saved into history…");
+                    break;
+                default:
+                    console.log("Ongoing submission could not be saved to history… (Exception while saving into database)");
+            }
         },
         error: function(){
-            showAlert(console.log("Ongoing Submission could not be saved to history…"));
+            console.log("Ongoing submission could not be saved to history… (Ajax exception)");
         }
     });
 }
 
-function setProofAjax(file_hash){
+function setProofAjax(transaction_hash){
     $.ajax({
         type: "POST",
-        url: '/ajax/set_proof/',
-        data: {
-            file_hash
+        url: '/ajax/proof/',
+        headers: {
+            'X-CSRFToken': csrf_token
         },
-        success: function(result){
-            // Remove transaction from "Ongoing Submissions" and place to "Certifications"
+        data: {
+            transaction_hash: transaction_hash
+        },
+        success: function(response){
+            switch(response.result){
+                case "true":
+                    console.log("Ongoing submission has been moved into Certifications history…");
+                    break;
+                default:
+                    console.log("Ongoing submission could not be moved into Certifications history… (Exception while saving into database)");
+            }
         },
         error: function(){
-            showAlert(console.log('Ongoing Submission could not be moved to "Certifications" history…'));
+            console.log("Ongoing submission could not be moved into Certifications history… (Ajax exception)");
         }
     });
 }
