@@ -199,13 +199,13 @@ p a:hover {
   float: left;
   display: block;
   overflow: hidden;
-  padding-left: 14rem;
+  padding-left: 15rem;
   padding-top: 0.5rem;
   margin-top: 0.6rem;
-  background: url('../images/sny-logo.svg') no-repeat;
+  background: url('../images/git-logo.svg') no-repeat;
 }
 .header .BLN-logo:hover {
-  background: url('../images/sny-logo-green.svg') no-repeat;
+  background: url('../images/git-blue.svg') no-repeat;
 }
 .header .BLN-logo img {
   display: block;
@@ -931,7 +931,7 @@ p a:hover {
     float: none;
     width: 18rem;
     margin: 0 auto 1rem;
-    padding-left: 9rem;
+    padding-left: 11rem;
   }
   .header .BLN-logo img {
     width: 9rem;
@@ -996,7 +996,7 @@ p a:hover {
   height: 100%;
   width: 6px;
   display: inline-block;
-  
+
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
 }
@@ -1022,15 +1022,15 @@ p a:hover {
 }
 
 @-webkit-keyframes sk-stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
   20% { -webkit-transform: scaleY(1.0) }
 }
 
 @keyframes sk-stretchdelay {
-  0%, 40%, 100% { 
+  0%, 40%, 100% {
     transform: scaleY(0.4);
     -webkit-transform: scaleY(0.4);
-  }  20% { 
+  }  20% {
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
