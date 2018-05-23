@@ -1,23 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import os
+import string
 import unicodedata
 import datetime
-
-import string
-from random import choice
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
-from django.contrib.auth.models import User
-
 from django.contrib.auth import authenticate
 from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
 from django.middleware import csrf
 
-from django.conf import settings
+from django.contrib.auth.models import User
 
 
 def _remove_accents(data):
@@ -53,7 +48,7 @@ def register(request):
 
             try:
                 User.objects.create_user(username, email, password1, last_login=datetime.datetime.now())
-            except: 
+            except:
                 err = "duplicate_username"
 
             if not err:
@@ -94,10 +89,10 @@ def auth(request):
             try:
                 user = authenticate(username=user.username, password=password)
                 login(request, user)
-            except: err = 'failed login code: 3'
+            except: 
+                err = 'failed login code: 3'
         
         if(not err):
             return HttpResponseRedirect("/")
-
-
+    
     return render(request,template_name='login.html',context={'err':err},)
