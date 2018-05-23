@@ -1,24 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import os
-import time
 import socket
 import logging
 import datetime
-import base64
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-
-from django.http import HttpResponseForbidden
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import JsonResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
-from django.conf import settings
 
 import json
 from django.core.serializers.json import DjangoJSONEncoder
@@ -88,7 +79,7 @@ def ajax_list_transaction_history(request):
 def ajax_set_ongoing_submissions(request):
     if(request.POST):
         try:
-            ongoing_submission=Submissions.objects.create(
+            Submissions.objects.create(
                 file_name=request.POST.get("file_name", None),
                 file_mime_type=request.POST.get("file_mime_type", None),
                 file_size=request.POST.get("file_size", None),
@@ -130,6 +121,7 @@ def home(request):
     user.save()
 
     ip = request.META['REMOTE_ADDR']
+    print(ip)
 
     return render(
         request=request,
