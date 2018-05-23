@@ -4,8 +4,8 @@ python:
   - "3.6"
 
 install:
-  - pip install -r requirements.txt
-  - pip install pipenv
+  - pip3 install -r requirements.txt
+  - pip3 install pipenv
 
 script:
   - python -m unittest
