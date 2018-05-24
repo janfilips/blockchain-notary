@@ -1,18 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import socket
-import logging
 import datetime
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.shortcuts import render
-
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-
-import json
-from django.core.serializers.json import DjangoJSONEncoder
 
 from notary.models import Submissions
 
