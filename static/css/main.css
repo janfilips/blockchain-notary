@@ -513,9 +513,9 @@ p a:hover {
 .content-tab.tab-certifications {
   display: block;
 }
-.content-tab .table-overflow {
-  height: 34.3rem;
-  overflow-y: scroll;
+.content-tab {
+  max-height: 34.3rem;
+  overflow-y: auto;
 }
 .content-tab.tab-ongoing {
   display: none;
@@ -558,37 +558,37 @@ p a:hover {
   color: #999;
   padding-bottom: 2rem;
 }
-.table-leyout {
+.table-layout {
   width: 100%;
   margin-bottom: 2rem;
   border: solid 1px #bbb;
 }
-.table-leyout th {
+.table-layout th {
   text-align: left;
   text-transform: uppercase;
   font-size: 1.6rem;
   color: #666;
 }
-.table-leyout th, .table-leyout td {
+.table-layout th, .table-layout td {
   padding: 2rem 3rem;
   border-bottom: solid 1px #ddd;
 }
-.table-leyout th:last-child td {
+.table-layout th:last-child td {
   border-bottom: none;
 }
-.table-leyout tr:nth-child(even) {
+.table-layout tr:nth-child(even) {
   background: #f7f7f7;
 }
-.table-leyout a {
+.table-layout a {
   color: #2573b7;
 }
-.table-leyout a:hover {
+.table-layout a:hover {
   color: #80b045;
 }
-.table-leyout tr td:last-child {
+.table-layout tr td:last-child {
   color: #888;
 }
-.table-leyout .check {
+.table-layout .check {
   width: 1.6rem;
   height: 1.6rem;
   display: block;
@@ -623,7 +623,7 @@ p a:hover {
   overflow: hidden;
   padding: 3rem;
 }
-.content-box .info-leyout {
+.content-box .info-layout {
   max-width: 66%;
   float: left;
 }
@@ -812,6 +812,7 @@ p a:hover {
   color: #666;
   line-height: 2rem;
   margin-bottom: 2rem;
+  word-wrap: break-word;
 }
 .modal-footer .action {
   cursor: pointer;
@@ -917,7 +918,7 @@ p a:hover {
   .inner-content .half-wrap .content-box {
     padding: 2rem;
   }
-  .content-box .info-leyout {
+  .content-box .info-layout {
     width: 100%;
     max-width: none;
   }

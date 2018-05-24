@@ -100,6 +100,7 @@ function getHashOnDone() {
 async function waitForTxToBeMined(txHash, notaryContract) {
     ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash=txHash);
     setSpinner(true, "Waiting for the transaction to be mined…");
+    getTransactionHistoryAjax();
     var txReceipt;
 
     // Waiting for receipt
@@ -114,10 +115,11 @@ async function waitForTxToBeMined(txHash, notaryContract) {
                     if (isNotarized) {
                         setProofAjax(txHash);
                         setSpinner(false);
-                        window.location.href = "https://ropsten.etherscan.io/tx/" + txHash;
+                        showAlert('Your document was notarized. You can check it on <a href="https://ropsten.etherscan.io/tx/"'+txHash+' target="_blank" aria-label="Your notarized document link">https://ropsten.etherscan.io/tx/'+txHash+'</a>', 'Notarization done');
+                        getTransactionHistoryAjax();
                     }
                     else {
-                        showAlert("We could not notarise your document.", "We are sorry.");
+                        showAlert("We could not notarise your document.", "We are sorry");
                     }
                 }));
             }
@@ -125,7 +127,7 @@ async function waitForTxToBeMined(txHash, notaryContract) {
                 console.log("Waiting for the blockchain transaction to be mined…");
             }
         } catch (err) {
-            showAlert("An error occured. See the console for further info…", "An error occured.");
+            showAlert("An error occured. See the console for further info…", "An error occured");
             console.log(err);
         }
     }
