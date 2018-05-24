@@ -1,10 +1,8 @@
 from django.conf.urls import url
-from django.conf import settings
 
 from notary.views import home, about
 from notary.views import ajax_set_ongoing_submissions, ajax_list_transaction_history, ajax_set_proof
 from profile.views import auth, register, user_logout
-
 
 urlpatterns = [
     # common views..
