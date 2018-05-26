@@ -1,35 +1,58 @@
-const abi=[
+const abi = [
 	{
-		"constant": true,
+		"anonymous": false,
 		"inputs": [
 			{
-				"name": "proof",
-				"type": "bytes32"
-			}
-		],
-		"name": "hasProof",
-		"outputs": [
-			{
+				"indexed": false,
 				"name": "",
-				"type": "bool"
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "",
+				"type": "uint256"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"name": "LogBalance",
+		"type": "event"
 	},
 	{
 		"constant": false,
 		"inputs": [
 			{
-				"name": "proof",
+				"name": "",
 				"type": "bytes32"
 			}
 		],
 		"name": "notarise",
 		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"inputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "constructor"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "recipient",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
 		"payable": false,
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
 		"type": "function"
 	}
 ]

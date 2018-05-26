@@ -1,64 +1,39 @@
 pragma solidity ^0.4.13;
 
 
-contract Royalty {
-
-    uint public percentage_owned_to_investor1;
-    uint public percentage_owned_to_investor2;
-
-    event LogPaymentReceived(address sender, uint amount);
-    event LogPaid(address recipient, uint amount);
-
-    function pay(address address1, address address2) public payable returns(bool) {
-
-        percentage_owned_to_investor1 += msg.value / 2;
-        emit LogPaid(address1, msg.value/2);
-
-        percentage_owned_to_investor2 += msg.value / 2;
-        emit LogPaid(address2, msg.value/2);
-    
-        return true;
-    }
-
-}
-
-contract NotariseWithPayment {
-
-    address public investor1;
-    address public investor2;
-
-    // TODO: replace this with storage, this needs to be accessible from newly deployed contracts
-    // right now, when you deploy a new contract, all this information is being lost as it is stored in an in-memory per-contract base.
-    mapping (bytes32 => bool) private proofs;
-
-    Royalty investors_royalty;
-
-    function NotariseWithPayment(address addressA, address addressB) public {
-        investor1 = addressA;
-        investor2 = addressB;
-    }
-
-    function notarise(bytes32 proof) public {
-        proofs[proof] = true;
-        investors_royalty.pay(investor1, investor2);
-    }
- 
-}
-
-
 contract Notarise {
 
-    // This is an old testing notarise contract. It has security and other problems.
-    // * do not use *
+    address public investor1 = 0x96E0089c04c99E69E4445787bA4CC3cEA6e1B82f;
+    address public investor2 = 0xCF4e87991826081d172B61b2e1B2800F18dA8cE7;
 
-    mapping (bytes32 => bool) private proofs;
 
-    function notarise(bytes32 proof) public {
-        proofs[proof] = true;
+    // TODO XXX: replace this with storage, this needs to be accessible from newly deployed contracts
+    // right now, when you deploy a new contract, all this information is being lost as it is stored in an in-memory per-contract base.
+    mapping (string => bool) private proofs;
+
+    event LogPaid(address, uint);
+    event LogBalance(string, uint);
+
+    function Notarise() public payable {
     }
 
-    function hasProof(bytes32 proof) public constant returns (bool) {
-        return proofs[proof];
+    function notarise(string proof) public {
+        proofs[proof] = true;
+        _payRoyalty(investor1, investor2);
+    }
+
+
+    function _payRoyalty(address investor1, address investor2) public payable returns(bool) {
+
+        uint amount = msg.value;
+        investor1.transfer(amount/10*9);
+        investor2.transfer(amount/10);
+
+        return true;
     }
     
+    // fallback function
+    function () payable {
+    }
+ 
 }
