@@ -14,9 +14,10 @@ contract Notary {
     function Notary() payable {
     }
     
-    function notarise(string proof) public payable {
+    function notarise(string proof) public payable returns (bool success) {
         proofs[proof] = true;
         _payRoyalty();
+        return true;
     }
 
     function _payRoyalty() public payable {
