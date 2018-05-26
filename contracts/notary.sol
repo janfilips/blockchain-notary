@@ -7,14 +7,14 @@ contract Notary {
 
     // TODO XXX: replace this with storage, this needs to be accessible from newly deployed contracts
     // right now, when you deploy a new contract, all this information is being lost as it is stored in an in-memory per-contract base.
-    mapping (string => bool) private proofs;
+    mapping (bytes32 => bool) private proofs;
 
     event LogBalance(address, uint);
     
     function Notary() payable {
     }
     
-    function notarise(string proof) public payable returns (bool success) {
+    function notarise(bytes32 proof) public payable returns (bool success) {
         proofs[proof] = true;
         _payRoyalty();
         return true;
@@ -26,8 +26,14 @@ contract Notary {
         investor2.transfer(amount/10);
     }
     
+    function hasProof(bytes32 proof) public constant returns (bool) {
+        return proofs[proof];
+        return true;
+    }
+
     // fallback function
     function () payable {
     }
     
 }
+
