@@ -29,23 +29,47 @@ const abi = [
 	},
 	{
 		"constant": false,
-		"inputs": [
-			{
-				"name": "proof",
-				"type": "string"
-			}
-		],
-		"name": "notarise",
+		"inputs": [],
+		"name": "_payRoyalty",
 		"outputs": [],
 		"payable": true,
 		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "proof",
+				"type": "bytes32"
+			}
+		],
+		"name": "hasProof",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
-		"inputs": [],
-		"name": "_payRoyalty",
-		"outputs": [],
+		"inputs": [
+			{
+				"name": "proof",
+				"type": "bytes32"
+			}
+		],
+		"name": "notarise",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
 		"payable": true,
 		"stateMutability": "payable",
 		"type": "function"
