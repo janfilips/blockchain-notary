@@ -103,6 +103,7 @@ async function waitForTxToBeMined(txHash, notaryContract) {
     getTransactionHistoryAjax();
     var txReceipt;
 
+
     // Waiting for receipt
     while (!txReceipt) {
         try {
@@ -110,6 +111,11 @@ async function waitForTxToBeMined(txHash, notaryContract) {
 
             // Receipt returned => Verify if document is signed properly
             if (txReceipt) {
+                
+                
+                
+                // XXX TODO we need to pull hasProof function from a separate contract..... 
+                
                 notaryContract.hasProof(fileHash).then((function (result) {
                     isNotarized = result;
                     if (isNotarized) {
@@ -121,6 +127,9 @@ async function waitForTxToBeMined(txHash, notaryContract) {
                     else {
                         showAlert("We could not notarise your document.", "We are sorry");
                     }
+                
+                
+                
                 }));
             }
             else {
