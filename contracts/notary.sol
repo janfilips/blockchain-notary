@@ -12,7 +12,7 @@ contract Notary {
 
     function Notary() payable {
     }
-    
+
     function notarise(bytes32 _proof) public payable returns (bool success) {
         
         NotaryPersistentStorage notary = NotaryPersistentStorage(NotaryPersistentStorageAddress);
