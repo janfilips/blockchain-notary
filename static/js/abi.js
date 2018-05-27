@@ -1,17 +1,59 @@
 const abi = [
 	{
-		"constant": true,
+		"constant": false,
 		"inputs": [],
-		"name": "investor2",
-		"outputs": [
+		"name": "_payRoyalty",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
 			{
+				"indexed": false,
 				"name": "",
-				"type": "address"
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "",
+				"type": "bool"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
+		"name": "LogResponse",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_proof",
+				"type": "bytes32"
+			}
+		],
+		"name": "notarise",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
 		"type": "function"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"inputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "constructor"
 	},
 	{
 		"constant": true,
@@ -28,78 +70,17 @@ const abi = [
 		"type": "function"
 	},
 	{
-		"constant": false,
-		"inputs": [],
-		"name": "_payRoyalty",
-		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
 		"constant": true,
-		"inputs": [
-			{
-				"name": "proof",
-				"type": "bytes32"
-			}
-		],
-		"name": "hasProof",
+		"inputs": [],
+		"name": "investor2",
 		"outputs": [
 			{
 				"name": "",
-				"type": "bool"
+				"type": "address"
 			}
 		],
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "proof",
-				"type": "bytes32"
-			}
-		],
-		"name": "notarise",
-		"outputs": [
-			{
-				"name": "success",
-				"type": "bool"
-			}
-		],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "constructor"
-	},
-	{
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "fallback"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "LogBalance",
-		"type": "event"
 	}
 ]
