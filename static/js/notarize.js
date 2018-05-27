@@ -103,6 +103,11 @@ async function waitForTxToBeMined(txHash, notaryContract) {
     getTransactionHistoryAjax();
     var txReceipt;
 
+
+    // XXX OK, here is a thing - hasProof has moved onto a separate contract...
+    // Hit me up and I will talk to you about it..  :P
+    // Thanks. Jan
+
     // Waiting for receipt
     while (!txReceipt) {
         try {
