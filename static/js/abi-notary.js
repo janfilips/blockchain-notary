@@ -1,5 +1,33 @@
 const abi = [
 	{
+		"constant": true,
+		"inputs": [],
+		"name": "investor2",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "investor1",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [],
 		"name": "_payRoyalty",
@@ -28,23 +56,6 @@ const abi = [
 		"type": "function"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "",
-				"type": "bytes32"
-			},
-			{
-				"indexed": false,
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"name": "LogResponse",
-		"type": "event"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -64,42 +75,31 @@ const abi = [
 		"type": "function"
 	},
 	{
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "fallback"
-	},
-	{
 		"inputs": [],
 		"payable": true,
 		"stateMutability": "payable",
 		"type": "constructor"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "investor1",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "investor2",
-		"outputs": [
+		"anonymous": false,
+		"inputs": [
 			{
+				"indexed": false,
 				"name": "",
-				"type": "address"
+				"type": "bytes32"
+			},
+			{
+				"indexed": false,
+				"name": "",
+				"type": "bool"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"name": "LogResponse",
+		"type": "event"
 	}
 ]
