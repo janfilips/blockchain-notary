@@ -1,12 +1,33 @@
 import os
 
+ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-SECRET_KEY = '&z7lwkrzvx&c%-d(f+6&%e0_oy0-paricka-lq6!0((rw@^80gnys^rvmgm'
+
+# Bytecode for notarise contract
+BYTECODE_NOTARISE = ""
+
+# Bytecode for storage contract
+BYTECODE_STORAGE = ""
+
+# Contract address for notarise
+CONTRACT_ADDRESS_NOTARISE = ""
+
+# Contract address for storage
+CONTRACT_ADDRESS_STORAGE = ""
 
 DEBUG = True
-TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+# Max gas value for transaction
+GAS = "99000"
+
+# Price of transaction in ETH
+ETHER_VALUE = 1
+
+# Time in hours for removing outgoing submission from index history (will be stored still)
+REMOVE_FROM_OUTGOING_TIME=1
+
+SECRET_KEY = '&z7lwkrzvx&c%-d(f+6&%e0_oy0-paricka-lq6!0((rw@^80gnys^rvmgm'
+TEMPLATE_DEBUG = True
 
 # Application definition
 INSTALLED_APPS = [
