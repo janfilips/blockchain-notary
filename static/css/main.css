@@ -407,10 +407,10 @@ p a:hover {
   border-bottom: solid 1px #ddd;
   color: #666;
 }
-.notarize-action {
+.notarise-action {
   text-align: center;
 }
-.notarize-action .action {
+.notarise-action .action {
   display: inline-block;
   margin: 0 1rem;
   max-width: none;
@@ -418,12 +418,12 @@ p a:hover {
   font-size: 1.6rem;
   outline: none;
 }
-.notarize-action #upload-button-notarize.action {
+.notarise-action #upload-button-notarise.action {
   background-color: #d74848;
   border: solid 2px #fff;
   color: #fff;
 }
-.notarize-action .action::after {
+.notarise-action .action::after {
   display: none;
 }
 .noterize-action .action.btn-success {
@@ -437,7 +437,7 @@ p a:hover {
 .noterize-action #upload-button-cancel {
   background-color: #ccc;
 }
-.notarize-action #upload-button-cancel:hover {
+..notarise-action #upload-button-cancel:hover {
   background-color: #333;
 }
 .dropzone.dz-started {
@@ -1039,4 +1039,13 @@ p a:hover {
 
 #upload-buttons{
   display: none;
+}
+
+#spinner-text a, #spinner-subtext a{
+  color: #80b045;
+}
+
+#spinner-subtext{
+  margin-top: 20px;
+  font-size: 0.75em;
 }

@@ -11,7 +11,7 @@
       </hgroup>
       <p>Blockchain Notary is an open source service that computes the cryptographic hash for your documents and stores this
         cryptographic information on the Blockchain.</p>
-      <a class="action scrollink" href="#notarize-block">Notarize</a>
+      <a class="action scrollink" href="#notarise-block">Notarise</a>
     </div>
   </div>
 </div>
@@ -26,7 +26,7 @@
         <!-- box 1 -->
         <h2>What we do</h2>
         <p>We provide a unique proof of any
-          <a href="https://en.wikipedia.org/wiki/Electronic_document" target="_blank">electronic document</a> and we record this information (notarize it). The result is a mathematical proof of your original document. Stored forever on the Blockchain.</p>
+          <a href="https://en.wikipedia.org/wiki/Electronic_document" target="_blank">electronic document</a> and we record this information (notarise it). The result is a mathematical proof of your original document. Stored forever on the Blockchain.</p>
         <a class="action" href="{% url 'about' %}">read more</a>
       </div>
       <!-- box 1 END -->
@@ -48,9 +48,9 @@
       </div>
     </section>
 
-    <section class="naterize-block" id="notarize-block">
+    <section class="naterize-block" id="notarise-block">
       <!-- Drag and drop zone -->
-      <h3>Notarize Your Document</h3>
+      <h3>Notarise Your Document</h3>
       <form action="/" method="get" class="dropzone" id="dropzoneform">{% csrf_token %}
         <div class="dz-message">
           <div class="indrop">
@@ -87,8 +87,8 @@
           </td>
         </tr>
       </table>
-      <div class="notarize-action" id="upload-buttons"">
-        <button class="btn btn-success action" id="upload-button-notarize">Notarize</button>
+      <div class="notarise-action" id="upload-buttons"">
+        <button class="btn btn-success action" id="upload-button-notarise">Notarise</button>
         <button class="btn btn-danger action" id="upload-button-cancel">Cancel</button>
       </div>
       <div class="spinner">
@@ -98,6 +98,7 @@
         <div class="rect4"></div>
         <div class="rect5"></div>
         <p id="spinner-text">Waiting for confirmation of transaction…</p>
+        <p id="spinner-subtext"></p>
       </div>
     </section>
 
@@ -134,7 +135,7 @@
       </div>
       <div class="tab-certifications content-tab" id="tab-certificationsC">
         <!-- certifications -->
-        <p class="doc-info">Documents of proven existence (notarized) and on the blockchain.</p>
+        <p class="doc-info">Documents of proven existence (notarised) and on the blockchain.</p>
           <table class="table-layout">
             <tr>
               <th>Document Digest</th>

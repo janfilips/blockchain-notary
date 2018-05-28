@@ -66,7 +66,7 @@ function redrawHistory(response) {
         $.each(response.certifications, function (index) {
             var transactionHash = response.certifications[index].transaction_hash;
             var transactionCreated = response.certifications[index].transaction_created_at;
-            var row = '<tr><td><a href="https://ropsten.etherscan.io/tx/' + transactionHash + '" aria-label="Transaction ' + transactionHash + '" target="_blank">' + transactionHash + '</a></td><td>' + transactionCreated + '</td></tr>';
+            var row = '<tr><td><span class="check"></span><a href="https://ropsten.etherscan.io/tx/' + transactionHash + '" aria-label="Transaction ' + transactionHash + '" target="_blank">' + transactionHash + '</a></td><td>' + transactionCreated + '</td></tr>';
 
             $(".tab-certifications tbody:last-child").append(row);
         });
@@ -86,7 +86,7 @@ function redrawHistory(response) {
         $.each(response.ongoing_submissions, function (index) {
             var transactionHash = response.ongoing_submissions[index].transaction_hash;
             var transactionCreated = response.ongoing_submissions[index].transaction_created_at;
-            var row = '<tr><td><a href="https://ropsten.etherscan.io/tx/' + transactionHash + '" aria-label="Transaction ' + transactionHash + '" target="_blank">' + transactionHash + '</a></td><td>' + transactionCreated + '</td></tr>';
+            var row = '<tr><td><span class="check"></span><a href="https://ropsten.etherscan.io/tx/' + transactionHash + '" aria-label="Transaction ' + transactionHash + '" target="_blank">' + transactionHash + '</a></td><td>' + transactionCreated + '</td></tr>';
 
             $(".tab-ongoing tbody:last-child").append(row);
         });
