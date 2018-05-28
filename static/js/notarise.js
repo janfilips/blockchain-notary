@@ -128,11 +128,13 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                         setProofAjax(txHash);
                         setSpinner(false);
                         showAlert('Your document was notarised. You can check it on <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/' + txHash + '</a>', 'Notarization done');
+                        console.log("Document proved sucessfully…");
                         clearDropzone();
                         getTransactionHistoryAjax();
                     }
                     else {
                         showAlert("We could not notarise your document.", "We are sorry");
+                        console.log("Document proof failed…");
                     }
                 }));
             }
