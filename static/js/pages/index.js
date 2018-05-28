@@ -82,6 +82,10 @@ function redrawHistory(response) {
 
     // Has items
     if (response.ongoing_submissions.length > 0) {
+        
+        // Show count
+        $("#tab-ongoing").text("Ongoing Submissions ("+response.ongoing_submissions.length+")");
+
         $(".tab-ongoing tbody tr:gt(0)").remove();
         $.each(response.ongoing_submissions, function (index) {
             var transactionHash = response.ongoing_submissions[index].transaction_hash;
@@ -94,6 +98,10 @@ function redrawHistory(response) {
 
     // No items
     else {
+
+        // Hide count
+        $("#tab-ongoing").text("Ongoing Submissions");
+
         $(".tab-ongoing tbody tr:gt(0)").remove();
         $(".tab-ongoing tbody:last-child").append('<tr><td colspan=2>There are no documents for notarization pending right now…</td></tr>');
     }
