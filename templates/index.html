@@ -192,4 +192,9 @@
   if (screen.width <= 768) {
     document.location = "/about";
   }
-</script> {% endblock content %}
+</script> 
+
+{% load static %}
+<script src="{% static 'js/notarise.js' %}" settings_bytecode_notarise="{{ settings_bytecode_notarise }}" settings_bytecode_storage="{{ settings_bytecode_storage }}" settings_contract_address_notarise="{{ settings_contract_address_notarise }}" settings_contract_address_storage="{{ settings_contract_address_storage }}" settings_gas="{{ settings_gas }}" settings_ether_value="{{ settings_ether_value }}"></script>
+
+{% endblock content %}
