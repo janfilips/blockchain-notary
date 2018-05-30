@@ -514,7 +514,7 @@ p a:hover {
   display: block;
 }
 .content-tab {
-  max-height: 34.3rem;
+  max-height: 102.9rem;
   overflow-y: auto;
 }
 .content-tab.tab-ongoing {
