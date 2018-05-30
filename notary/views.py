@@ -107,7 +107,14 @@ def home(request):
         return render(
             request=request,
             template_name='index.html',
-            context={},
+            context={
+                "settings_bytecode_notarise": getattr(settings, "BYTECODE_NOTARISE"),
+                "settings_bytecode_storage": getattr(settings, "BYTECODE_STORAGE"),
+                "settings_contract_address_notarise": getattr(settings, "CONTRACT_ADDRESS_NOTARISE"),
+                "settings_contract_address_storage": getattr(settings, "CONTRACT_ADDRESS_STORAGE"),
+                "settings_gas": getattr(settings, "GAS"),
+                "settings_ether_value": getattr(settings, "ETHER_VALUE")
+            },
         )
 
 

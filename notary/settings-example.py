@@ -18,7 +18,7 @@ CONTRACT_ADDRESS_STORAGE = ""
 DEBUG = True
 
 # Max gas value for transaction
-GAS = "99000"
+GAS = 99000
 
 # Price of transaction in ETH
 ETHER_VALUE = 1
