@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # views
     'notary',
     'profile',
+    'gunicorn',    
 ]
 
 MIDDLEWARE = [
