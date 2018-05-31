@@ -7,21 +7,28 @@ const GAS = parseInt(document.currentScript.getAttribute("settings_gas"));
 const ETHER_VALUE = web3.toWei(parseFloat(document.currentScript.getAttribute("settings_ether_value")), 'ether');
 
 // Global variables
-var myAddress;
-var isMetaMaskInstalled;
-var isUserLoggedIn;
-var fileHash;
-var eth;
-var isNotarised;
-var timeout;
-var fileName;
-var fileType;
-var fileSize;
-var lastModified;
 var csrf_token;
+var eth;
+var fileHash;
+var fileName;
+var fileSize;
+var fileType;
+var isMetaMaskInstalled;
+var isNotarised;            // Is document notarized already
+var isNotarising;           // Is document notarizing right now?
+var isUserLoggedIn;
+var lastModified;
+var myAddress;
+var timeout;
 
 
 Dropzone.autoDiscover = false;
+
+window.onbeforeunload = function () {
+    if (isNotarising == true) {
+        return "You are trying to reload page when document is notarised. Are you sure you want really reload this page? Currencies spend to transaction will be lost.";
+    }
+}
 
 $(document).ready(function () {
     csrf_token = $("[name=csrfmiddlewaretoken]").val();
@@ -72,19 +79,19 @@ $(document).ready(function () {
     });
 });
 
-function clearDropzone(){
+function clearDropzone() {
     $("#upload-buttons").hide();
-        $("[data-file-name]").html("Unknown");
-        $("[data-file-type]").html("Unknown");
-        $("[data-file-size]").html("Unknown");
-        $("[data-file-last-modified]").html("Unknown");
-        $("#hash-result").text("");
-        $("#dropzoneform").show();
-        Dropzone.forElement("#dropzoneform").removeAllFiles(true);
-        $("#dropzone-results").hide();
-        $(".additional-info").show();
-        setSpinner(false);
-        clearTimeout(timeout);
+    $("[data-file-name]").html("Unknown");
+    $("[data-file-type]").html("Unknown");
+    $("[data-file-size]").html("Unknown");
+    $("[data-file-last-modified]").html("Unknown");
+    $("#hash-result").text("");
+    $("#dropzoneform").show();
+    Dropzone.forElement("#dropzoneform").removeAllFiles(true);
+    $("#dropzone-results").hide();
+    $(".additional-info").show();
+    setSpinner(false);
+    clearTimeout(timeout);
 }
 
 function formatFileSize() {
@@ -105,12 +112,13 @@ function getHashOnDone() {
 
 async function waitForTxToBeMined(txHash, notaryContract, eth) {
     ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash = txHash);
-    setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">'+ txHash + '</a>');
+    setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
     timeout = setTimeout(function () {
         setSpinner(true, "Waiting for the transaction to be mined… (Takes too long? Try to increase the gas limit or gas price…)");
     }, 90000);
     getTransactionHistoryAjax();
     var txReceipt;
+    isNotarising = true;
 
 
     // Waiting for receipt
@@ -127,10 +135,11 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                     if (isNotarised) {
                         setProofAjax(txHash);
                         setSpinner(false);
-                        showAlert('Your document was notarised. You can check it on <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/' + txHash + '</a>', 'Notarization done');
+                        showAlert('Your document was notarised. You can find it at <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/' + txHash + '</a>', 'Notarization done');
                         console.log("Document proved sucessfully…");
                         clearDropzone();
                         getTransactionHistoryAjax();
+                        isNotarising = false;
                     }
                     else {
                         showAlert("We could not notarise your document.", "We are sorry");
