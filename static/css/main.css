@@ -803,10 +803,18 @@ p a:hover {
 }
 .modal h5 {
   font-size: 2.6rem;
-  color: #a94442;
   font-weight: 300;
   margin-bottom: 1.6rem;
 }
+
+.modal-title-failure{
+  color: #a94442;
+}
+
+.modal-title-success{
+  color: green;
+}
+
 .modal .modal-body p {
   font-size: 1.6rem;
   color: #666;
