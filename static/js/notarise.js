@@ -112,7 +112,7 @@ function getHashOnDone() {
 
 async function waitForTxToBeMined(txHash, notaryContract, eth) {
     ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash = txHash);
-    setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
+    setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here: <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
     timeout = setTimeout(function () {
         setSpinner(true, "Waiting for the transaction to be mined… (Takes too long? Try to increase the gas limit or gas price…)");
     }, 90000);
@@ -142,7 +142,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                         isNotarising = false;
                     }
                     else {
-                        showAlert("We could not notarise your document.", "We are sorry");
+                        showAlert("We could not notarise your document.", "We are sorry", "OK", "Failure");
                         console.log("Document proof failed…");
                     }
                 }));
@@ -151,7 +151,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                 console.log("Waiting for the blockchain transaction to be mined…");
             }
         } catch (err) {
-            showAlert("An error occured. See the console for further info…", "An error occured");
+            showAlert("An error occured. See the console for further info…", "An error occured", "OK", "Failure");
             console.log(err);
         }
     }
@@ -208,11 +208,11 @@ function createTransaction() {
 
         }
         else {
-            showAlert("You are not logged to your MetaMask account.<br/><br/>You need to log in to MetaMask and refresh this page.", "Not Logged In");
+            showAlert("You are not logged to your MetaMask account.<br/><br/>You need to log in to MetaMask and refresh this page.", "Not Logged In", "OK", "Failure");
         }
     }
     else {
-        showAlert("This is a blockchain application, you need to install Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a> if you want to play around with blockchains.", "MetaMask not detected");
+        showAlert("This is a blockchain application, you need to install Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a> if you want to play around with blockchains.", "MetaMask not detected", "OK", "Failure");
     }
 }
 
