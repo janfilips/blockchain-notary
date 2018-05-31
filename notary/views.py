@@ -11,9 +11,6 @@ from notary.models import Submissions
 
 def about(request):
 
-    ip = request.META['REMOTE_ADDR']
-    print('ip',ip)
-
     return render(
         request=request,
         template_name='about.html',
