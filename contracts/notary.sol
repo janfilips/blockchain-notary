@@ -16,7 +16,7 @@ contract Notary {
     function notarise(bytes32 _proof) public payable returns (bool success) {
         
         NotaryPersistentStorage notary = NotaryPersistentStorage(NotaryPersistentStorageAddress);
-        bool result = notary.storeProof(_proof);
+        notary.storeProof(_proof);
 
         _payRoyalty();
         
