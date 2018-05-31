@@ -80,6 +80,8 @@ $(document).ready(function () {
 });
 
 function clearDropzone() {
+    $("#upload-button-notarise").prop("disabled", false);
+    isNotarising=false;
     $("#upload-buttons").hide();
     $("[data-file-name]").html("Unknown");
     $("[data-file-type]").html("Unknown");
@@ -118,6 +120,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
     }, 90000);
     getTransactionHistoryAjax();
     var txReceipt;
+    $("#upload-button-notarise").prop("disabled", true);
     isNotarising = true;
 
 
@@ -135,14 +138,15 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                     if (isNotarised) {
                         setProofAjax(txHash);
                         setSpinner(false);
-                        showAlert('Your document was notarised. You can find it at <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/' + txHash + '</a>', 'Notarization done');
+                        showAlert('Your document was notarised. You can find it at <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/' + txHash + '</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, null, "Success");
                         console.log("Document proved sucessfully…");
                         clearDropzone();
                         getTransactionHistoryAjax();
+                        $("#upload-button-notarise").prop("disabled", false);
                         isNotarising = false;
                     }
                     else {
-                        showAlert("We could not notarise your document.", "We are sorry", "OK", "Failure");
+                        showAlert("We could not notarise your document.", "We are sorry", "OK", null, modalClose, null, "Failure");
                         console.log("Document proof failed…");
                     }
                 }));
@@ -151,7 +155,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                 console.log("Waiting for the blockchain transaction to be mined…");
             }
         } catch (err) {
-            showAlert("An error occured. See the console for further info…", "An error occured", "OK", "Failure");
+            showAlert("An error occured. See the console for further info…", "An error occured", "OK", null, modalClose, null, "Failure");
             console.log(err);
         }
     }
@@ -208,11 +212,11 @@ function createTransaction() {
 
         }
         else {
-            showAlert("You are not logged to your MetaMask account.<br/><br/>You need to log in to MetaMask and refresh this page.", "Not Logged In", "OK", "Failure");
+            showAlert("You are not logged to your MetaMask account.<br/><br/>You need to log in to MetaMask and refresh this page.", "Not Logged In", "OK", null, modalClose, null, "Failure");
         }
     }
     else {
-        showAlert("This is a blockchain application, you need to install Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a> if you want to play around with blockchains.", "MetaMask not detected", "OK", "Failure");
+        showAlert("This is a blockchain application, you need to install Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a> if you want to play around with blockchains.", "MetaMask not detected", "OK", null, modalClose, null, "Failure");
     }
 }
 

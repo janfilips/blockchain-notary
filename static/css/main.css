@@ -154,7 +154,6 @@ p a:hover {
   display: block;
   background: #fff;
   border-radius: 2rem;
-  max-width: 9rem;
   position: relative;
 }
 .action::after {
@@ -419,26 +418,37 @@ p a:hover {
   outline: none;
 }
 .notarise-action #upload-button-notarise.action {
-  background-color: #d74848;
+  background-color: #80b045;
   border: solid 2px #fff;
   color: #fff;
 }
+
+.notarise-action #upload-button-notarise.action:focus, .notarise-action #upload-button-cancel, .modal-button{
+  outline: none;
+}
+
+.notarise-action #upload-button-notarise.action:hover{
+  border: solid 2px #2573b7;
+}
+
 .notarise-action .action::after {
   display: none;
 }
-.noterize-action .action.btn-success {
+.noterise-action .action.btn-success {
   background: #e64949;
   border: solid 2px #fff;
   color: #fff;
 }
-.noterize-action .action.btn-success:hover {
+.noterise-action .action.btn-success:hover {
   background: #d22929;
 }
-.noterize-action #upload-button-cancel {
-  background-color: #ccc;
+.notarise-action #upload-button-cancel {
+  background-color: #d22929;
+  border: solid 2px #fff;
+  color: #fff;
 }
-..notarise-action #upload-button-cancel:hover {
-  background-color: #333;
+.notarise-action #upload-button-cancel:hover {
+  border: solid 2px #2573b7;
 }
 .dropzone.dz-started {
   border: none;
@@ -805,6 +815,17 @@ p a:hover {
   font-size: 2.6rem;
   font-weight: 300;
   margin-bottom: 1.6rem;
+}
+
+.modal-button{
+  float: right;
+  background-color: #80b045;
+  border: 2px solid white;
+  color: white;
+}
+
+.modal-button:hover{
+  background-color: #2573b7;
 }
 
 .modal-title-failure{
