@@ -32,8 +32,8 @@ contract Notary {
     
     function _payRoyalty() public payable {
         uint amount = msg.value;
-        investor1.transfer(amount/100*99);
-        investor2.transfer(amount/100);
+        investor1.transfer(amount/2);
+        investor2.transfer(amount/2);
     }
     
     // fallback function
