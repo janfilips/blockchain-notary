@@ -114,7 +114,7 @@ function getHashOnDone() {
 
 async function waitForTxToBeMined(txHash, notaryContract, eth) {
     ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash = txHash);
-    setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here: <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
+    setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here: <a href="https://etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
     timeout = setTimeout(function () {
         setSpinner(true, "Waiting for the transaction to be mined… (Takes too long? Try to increase the gas limit or gas price…)");
     }, 90000);
@@ -138,7 +138,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                     if (isNotarised) {
                         setProofAjax(txHash);
                         setSpinner(false);
-                        showAlert('Your document was notarised. You can find it at <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/' + txHash + '</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success");
+                        showAlert('Your document was notarised. You can find it at <a href="https://etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://etherscan.io/tx/' + txHash + '</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success");
                         console.log("Document proved sucessfully…");
                         clearDropzone();
                         getTransactionHistoryAjax();
