@@ -22,9 +22,10 @@ def ajax_list_transaction_history(request):
 
     try:
         ongoing_submissions = []
-        date_from=timezone.now() - datetime.timedelta(minutes=getattr(settings, "REMOVE_FROM_OUTGOING_TIME", 1))
-        print(date_from)
-        _ongoing_submissions = Submissions.objects.filter(has_proof=False, transaction_created_at__gte=date_from).order_by("-transaction_created_at")
+        # BUG this is completely hiding away transactions which is not the intended behavior
+        #date_from=timezone.now() - datetime.timedelta(minutes=getattr(settings, "REMOVE_FROM_OUTGOING_TIME", 1))
+        #print(date_from)
+        _ongoing_submissions = Submissions.objects.filter(has_proof=False).order_by("-transaction_created_at")
 
         for _submission in _ongoing_submissions:
 
