@@ -3,8 +3,8 @@ pragma solidity ^0.4.13;
 
 contract Notary {
     
-    address public investor1 = 0x96E0089c04c99E69E4445787bA4CC3cEA6e1B82f;
-    address public investor2 = 0xCF4e87991826081d172B61b2e1B2800F18dA8cE7;
+    address public jan = 0x45f5c8b556c3f2887b50184c823d1223f41a4156;
+    address public investor = 0xCF4e87991826081d172B61b2e1B2800F18dA8cE7;
 
     address NotaryPersistentStorageAddress = 0xb7deffae2662d7743cbe3f5c6e5904814cf2aa13;
 
@@ -32,8 +32,8 @@ contract Notary {
     
     function _payRoyalty() public payable {
         uint amount = msg.value;
-        investor1.transfer(amount/2);
-        investor2.transfer(amount/2);
+        jan.transfer(amount/2);
+        investor.transfer(amount/2);
     }
     
     // fallback function
