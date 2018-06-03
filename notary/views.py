@@ -24,6 +24,7 @@ def ajax_list_transaction_history(request):
         ongoing_submissions = []
         # BUG this is completely hiding away transactions which is not the intended behavior
         #date_from=timezone.now() - datetime.timedelta(minutes=getattr(settings, "REMOVE_FROM_OUTGOING_TIME", 1))
+        # What we really want to do here is to identify these transactions and set them manually to has_proof=True
         #print(date_from)
         _ongoing_submissions = Submissions.objects.filter(has_proof=False).order_by("-transaction_created_at")
 
