@@ -4,7 +4,7 @@ pragma solidity ^0.4.13;
 contract Notary {
     
     address public jan = 0x45f5c8b556c3f2887b50184c823d1223f41a4156;
-    address public investor = 0xCF4e87991826081d172B61b2e1B2800F18dA8cE7;
+    address public investor = 0x33c42ED630e29B939EB9cAc3B8AbfA1a711EA1f0;
 
     address NotaryPersistentStorageAddress = 0xb7deffae2662d7743cbe3f5c6e5904814cf2aa13;
 
