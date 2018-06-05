@@ -3,6 +3,7 @@
 import datetime
 
 from django.conf import settings
+from django.core.mail import EmailMessage
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
@@ -25,7 +26,6 @@ def ajax_list_transaction_history(request):
         # BUG this is completely hiding away transactions which is not the intended behavior
         #date_from=timezone.now() - datetime.timedelta(minutes=getattr(settings, "REMOVE_FROM_OUTGOING_TIME", 1))
         # What we really want to do here is to identify these transactions and set them manually to has_proof=True
-        #print(date_from)
         _ongoing_submissions = Submissions.objects.filter(has_proof=False).order_by("-transaction_created_at")
 
         for _submission in _ongoing_submissions:
@@ -87,14 +87,21 @@ def ajax_set_ongoing_submissions(request):
             return JsonResponse({'result': 'false'})
     return JsonResponse({'result': 'false'})
 
+def ajax_send_mail(request):
+    if(request.POST):
+        try:
+            msg = EmailMessage(getattr(settings, "SITE_NAME"), request.POST.get("mail_body")+request.POST.get("transaction_hash"), to=[request.POST.get("mail_to")])
+            msg.send()
+            print("subject: "+getattr(settings, "SITE_NAME")+", body: "+request.POST.get("mail_body")+request.POST.get("transaction_hash")+", to: "+request.POST.get("mail_to"));
+            return JsonResponse({"result": "true"})
+        except Exception as exception:
+            print("Exception: "+exception)
+            return JsonResponse({"result": "false"})
+
 def ajax_set_proof(request):
     if(request.POST):
         try:
             proof=Submissions.objects.filter(transaction_hash=request.POST.get("transaction_hash")).update(has_proof=True)
-            print(proof)
-            print(request.POST.get("transaction_hash"))
-            #proof.has_proof=True
-            #proof.save()
             return JsonResponse({'result': 'true'})
         except:
             return JsonResponse({'result': 'false'})

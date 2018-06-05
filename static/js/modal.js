@@ -4,6 +4,8 @@ var _button2call;
 // Shows modal dialog
 // Type=Success, Failure
 function showAlert(text, title = "Alert", button1Text = "OK", button2Text = null, button1call = modalClose, button2call = null, type = "Success") {
+
+    $(".modal-body #email").hide();
     
     _button1call=button1call;
     _button2call=button2call;
@@ -39,18 +41,43 @@ function modalClose() {
 
 function manageEmailBox() {
     if (!$(".modal-body input:last-child").is("#email")) {
-        console.log("není e-mail");
-        $(".modal-body").append('<input id="email" type="email" />');
+        $(".modal-body").append('<input id="email" type="email" placeholder="Enter your e-mail" required="required" />');
+        $("#modal-button-2").text("Send");
+        $("#modal-button-1").text("Cancel");
     }
-    else{
-        console.log("je e-mail");
-        if($(".modal-body #email").is(":visible")){
-            console.log("je zobrazen");
+}
+
+function sendMailAjax() {
+    $.ajax({
+        type: "POST",
+        url: '/ajax/send-mail/',
+        dataType: 'json',
+        headers: {
+            'X-CSRFToken': csrf_token
+        },
+        cache: 'false',
+        data: {
+            mail_body: "test",
+            mail_to: $(".modal-body #email").val(),
+            transaction_hash: "hash"
+        },
+        success: function (response) {
+            switch (response.result) {
+                case "true":
+                    console.log("E-mail sucessfully send");
+                    showAlert("Notarising informations was sucessfully send to entered e-mail address", "E-mail send");
+                    break;
+                default:
+                    console.log("E-mail has not been send (Django error)");
+                    showAlert("An internal error occured. We can not send e-mail to entered address. Use link profided instead", "An error occured", "OK", null, modalClose, null, "Failure");
+
+            }
+        },
+        error: function () {
+            console.log("E-mail has not been send (Ajax error)");
+            showAlert("An internal error occured. We can not send e-mail to entered address. Use link profided instead", "An error occured", "OK", null, modalClose, null, "Failure");
         }
-        else{
-            console.log("je skryt");
-        }
-    }
+    });
 }
 
 $(document).ready(function () {
@@ -61,6 +88,13 @@ $(document).ready(function () {
         window["_button1call"]();
     });
     $("#modal-button-2").click(function () {
-        window["_button2call"]();
+        if($("#modal-button-2").text()=="Send via e-mail")
+        {
+            window["_button2call"]();
+        }
+        else if($("#modal-button-2").text()=="Send"){
+            sendMailAjax();
+            modalClose();
+        }
     });
 });

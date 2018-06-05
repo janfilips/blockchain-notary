@@ -7,6 +7,7 @@ const GAS = parseInt(document.currentScript.getAttribute("settings_gas"));
 const ETHER_VALUE = web3.toWei(parseFloat(document.currentScript.getAttribute("settings_ether_value")), 'ether');
 
 // Global variables
+var contractStorage;
 var csrf_token;
 var eth;
 var fileHash;
@@ -19,6 +20,7 @@ var isNotarising;           // Is document notarizing right now?
 var isUserLoggedIn;
 var lastModified;
 var myAddress;
+var notaryContractStorage;
 var timeout;
 
 
@@ -71,7 +73,7 @@ $(document).ready(function () {
     });
 
     $("#upload-button-notarise").click(function () {
-        createTransaction();
+        checkProofOrCreateTransaction();
     });
 
     $("#upload-button-cancel").click(function () {
@@ -81,7 +83,7 @@ $(document).ready(function () {
 
 function clearDropzone() {
     $("#upload-button-notarise").prop("disabled", false);
-    isNotarising=false;
+    isNotarising = false;
     $("#upload-buttons").hide();
     $("[data-file-name]").html("Unknown");
     $("[data-file-type]").html("Unknown");
@@ -131,10 +133,10 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
 
             // Receipt returned => Verify if document is signed properly
             if (txReceipt) {
-                var contractStorage = new EthContract(eth);
-                var notaryContractStorage = contractStorage(ABI_STORAGE, BYTECODE_STORAGE, { from: myAddress }).at(CONTRACT_ADDRESS_STORAGE);
+                contractStorage = new EthContract(eth);
+                notaryContractStorage = contractStorage(ABI_STORAGE, BYTECODE_STORAGE, { from: myAddress }).at(CONTRACT_ADDRESS_STORAGE);
                 notaryContractStorage.hasProof(fileHash).then((function (result) {
-                    isNotarised = result;
+                    isNotarised = result[0];
                     if (isNotarised) {
                         setProofAjax(txHash);
                         setSpinner(false);
@@ -146,7 +148,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                         isNotarising = false;
                     }
                     else {
-                        showAlert("We could not notarise your document.", "We are sorry", "OK", null, modalClose, null, "Failure");
+                        showAlert("We could not proof your document. Try link bellow...", "We are sorry", "OK", null, modalClose, null, "Failure");
                         console.log("Document proof failed…");
                     }
                 }));
@@ -172,7 +174,6 @@ function errorHandler(_error) {
 }
 
 function setSpinner(visible, text = null, subtext = null) {
-    console.log(text);
 
     $("#spinner-text").html(text);
 
@@ -197,19 +198,32 @@ function setSpinner(visible, text = null, subtext = null) {
 
 }
 
-function createTransaction() {
+function checkProofOrCreateTransaction() {
     if (isMetaMaskInstalled) {
         eth = new Eth(web3.currentProvider);
         if (isUserLoggedIn) {
             isNotarised = false;
             setSpinner(true, "Waiting for confirmation of the transaction…");
             myAddress = web3.eth.accounts[0];
-            var contractNotarise = new EthContract(eth);
-            var notaryContractNotarise = contractNotarise(ABI_NOTARISE, BYTECODE_NOTARISE, { from: myAddress, gas: GAS, value: ETHER_VALUE }).at(CONTRACT_ADDRESS_NOTARISE);
-            notaryContractNotarise.notarise(fileHash).then(function (notarise) {
-                waitForTxToBeMined(notarise, notaryContractNotarise, eth);
-            }).catch(function (error) { errorHandler(error) });
 
+            contractStorage = new EthContract(eth);
+            notaryContractStorage = contractStorage(ABI_STORAGE, BYTECODE_STORAGE, { from: myAddress }).at(CONTRACT_ADDRESS_STORAGE);
+            notaryContractStorage.hasProof(fileHash).then((function (result) {
+                isNotarised = result[0];
+                if (isNotarised) {
+                    setSpinner(false);
+                    showAlert('Your document was notarised in past already. You can find it at <a href="https://ropsten.etherscan.io/tx/" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success");
+                    console.log("Document was notarised in past…");
+                    clearDropzone();
+                }
+                else {
+                    var contractNotarise = new EthContract(eth);
+                    var notaryContractNotarise = contractNotarise(ABI_NOTARISE, BYTECODE_NOTARISE, { from: myAddress, gas: GAS, value: ETHER_VALUE }).at(CONTRACT_ADDRESS_NOTARISE);
+                    notaryContractNotarise.notarise(fileHash).then(function (notarise) {
+                        waitForTxToBeMined(notarise, notaryContractNotarise, eth);
+                    }).catch(function (error) { errorHandler(error) });
+                }
+            }));
         }
         else {
             showAlert("You are not logged to your MetaMask account.<br/><br/>You need to log in to MetaMask and refresh this page.", "Not Logged In", "OK", null, modalClose, null, "Failure");

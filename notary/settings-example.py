@@ -1,5 +1,16 @@
 import os
 
+# Websites name
+SITE_NAME="Blockchain Notary"
+
+DEFAULT_FROM_EMAIL = 'workorbit@gmail.com'
+SERVER_EMAIL = 'workorbit@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'workorbit@gmail.com'
+EMAIL_HOST_PASSWORD = 'P@ssw0rd5'
+
 ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
