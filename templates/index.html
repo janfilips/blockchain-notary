@@ -184,6 +184,12 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet risus facilisis, gravida sem ut, imperdiet nisi.</p>
       </div>
       <div class="modal-footer">
+          <ul class="share-buttons">
+              <li><a href="https://www.facebook.com/sharer/sharer.php?u=&quote=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&quote=' + encodeURIComponent(document.URL)); return false;"><img alt="Share on Facebook" src="static/images/flat_web_icon_set/color/Facebook.png" /></a></li>
+              <li><a href="https://twitter.com/intent/tweet?source=&text=:%20" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img alt="Tweet" src="static/images/flat_web_icon_set/color/Twitter.png" /></a></li>
+              <li><a href="https://plus.google.com/share?url=" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img alt="Share on Google+" src="static/images/flat_web_icon_set/color/Google+.png" /></a></li>
+              <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=&source=" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img alt="Share on LinkedIn" src="static/images/flat_web_icon_set/color/LinkedIn.png" /></a></li>
+            </ul>
         <button type="button" class="btn btn-secondary action modal-button" id="modal-button-1">OK</button>
         <button type="button" class="btn-btn-secondary action modal-button" id="modal-button-2"></button>
       </div>

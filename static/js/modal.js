@@ -3,12 +3,12 @@ var _button2call;
 
 // Shows modal dialog
 // Type=Success, Failure
-function showAlert(text, title = "Alert", button1Text = "OK", button2Text = null, button1call = modalClose, button2call = null, type = "Success") {
+function showAlert(text, title = "Alert", button1Text = "OK", button2Text = null, button1call = modalClose, button2call = null, type = "Success", socialMedia = false) {
 
     $(".modal-body #email").hide();
-    
-    _button1call=button1call;
-    _button2call=button2call;
+
+    _button1call = button1call;
+    _button2call = button2call;
 
     switch (type) {
         case "Failure":
@@ -22,6 +22,14 @@ function showAlert(text, title = "Alert", button1Text = "OK", button2Text = null
 
     $("#modal h5").text(title);
     $("#modal .modal-body p").html(text);
+
+    if (socialMedia == true) {
+        $(".share-buttons").show();
+    }
+    else {
+        $(".share-buttons").hide();
+    }
+
     $("#modal-button-1").text(button1Text);
     $("#modal").show();
 
@@ -36,6 +44,7 @@ function showAlert(text, title = "Alert", button1Text = "OK", button2Text = null
 }
 
 function modalClose() {
+    $(".modal-body #email").remove();
     $("#modal").hide();
 }
 
@@ -88,13 +97,17 @@ $(document).ready(function () {
         window["_button1call"]();
     });
     $("#modal-button-2").click(function () {
-        if($("#modal-button-2").text()=="Send via e-mail")
-        {
+        if ($("#modal-button-2").text() == "Send via e-mail") {
             window["_button2call"]();
         }
-        else if($("#modal-button-2").text()=="Send"){
-            sendMailAjax();
-            modalClose();
+        else if ($("#modal-button-2").text() == "Send") {
+            if ($(".modal-body #email").val() != "") {
+                sendMailAjax();
+                modalClose();
+            }
+            else{
+                $(".modal-body #email").val("your@email.com");
+            }
         }
     });
 });

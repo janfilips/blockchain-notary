@@ -140,7 +140,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
                     if (isNotarised) {
                         setProofAjax(txHash);
                         setSpinner(false);
-                        showAlert('Your document was notarised. You can find it at <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/' + txHash + '</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success");
+                        showAlert('Your document was notarised. You can find it at <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/' + txHash + '</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success", true);
                         console.log("Document proved sucessfully…");
                         clearDropzone();
                         getTransactionHistoryAjax();
@@ -212,7 +212,7 @@ function checkProofOrCreateTransaction() {
                 isNotarised = result[0];
                 if (isNotarised) {
                     setSpinner(false);
-                    showAlert('Your document was notarised in past already. You can find it at <a href="https://ropsten.etherscan.io/tx/" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success");
+                    showAlert('Your document was notarised in past already. You can find it at <a href="https://ropsten.etherscan.io/tx/" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success", true);
                     console.log("Document was notarised in past…");
                     clearDropzone();
                 }
