@@ -90,6 +90,18 @@ def ajax_set_ongoing_submissions(request):
             return JsonResponse({'result': 'false'})
     return JsonResponse({'result': 'false'})
 
+def ajax_get_document_data(request):
+    if(request.POST):
+        try:
+            return JsonResponse({
+                "result": "true",
+                "date": "datum",
+                "file_hash": "filehash" 
+            })
+        except Exception as exception:
+            print("Exception: "+exception)
+            return JsonResponse({"result": "false"})
+
 def ajax_send_mail(request):
     if(request.POST):
         try:
