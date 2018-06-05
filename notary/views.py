@@ -28,6 +28,9 @@ def ajax_list_transaction_history(request):
         # What we really want to do here is to identify these transactions and set them manually to has_proof=True
         _ongoing_submissions = Submissions.objects.filter(has_proof=False).order_by("-transaction_created_at")
 
+        # 1st we need to get a list of those ongoing transactions that are older than say 10 hours
+        # 2nd we neet to itterate through this list and set these transactions to has_proof=True
+
         for _submission in _ongoing_submissions:
 
             submission = {
