@@ -115,6 +115,7 @@ function getHashOnDone() {
 }
 
 async function waitForTxToBeMined(txHash, notaryContract, eth) {
+    console.log("Hash: "+txHash)
     ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash = txHash);
     setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here: <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
     timeout = setTimeout(function () {
@@ -212,9 +213,7 @@ function checkProofOrCreateTransaction() {
                 isNotarised = result[0];
                 if (isNotarised) {
                     setSpinner(false);
-                    showAlert('Your document was notarised in past already. You can find it at <a href="https://ropsten.etherscan.io/tx/" target="_blank" aria-label="Your notarised document link">https://ropsten.etherscan.io/tx/</a>', 'Notarization done', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success", true);
-                    console.log("Document was notarised in past…");
-                    clearDropzone();
+                    getDocumentDataByFileHashAjax(fileHash);
                 }
                 else {
                     var contractNotarise = new EthContract(eth);
@@ -232,6 +231,39 @@ function checkProofOrCreateTransaction() {
     else {
         showAlert("This is a blockchain application, you need to install Metamask from <a href='https://metamask.io/' target='_blank'>MetaMask.io</a> if you want to play around with blockchains.", "MetaMask not detected", "OK", null, modalClose, null, "Failure");
     }
+}
+
+function getDocumentDataByFileHashAjax(file_hash) {
+    $.ajax({
+        type: "POST",
+        url: '/ajax/document-data/',
+        dataType: "json",
+        headers: {
+            'X-CSRFToken': csrf_token
+        },
+        cache: false,
+        data: {
+            file_hash: file_hash
+        },
+        success: function (response) {
+            switch (response.result) {
+                case "true":
+                    showAlert('This document was notarised on the <strong>' + new Date(response.date).toDateString() + '</strong>. <strong>You have the original document.</strong>', 'Document is verified', "See Proof", "Send via e-mail", function(){window.location.href="https://ropsten.etherscan.io/tx/"+response.transaction_hash}, manageEmailBox, "Success", true);
+                    console.log("Transaction hash was found…");
+                    console.log("Document was notarised in past…");
+                    clearDropzone();
+                    break;
+                default:
+                    showAlert('This document was notarised but we can not find it in our database.', 'Document is verified', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success", true);
+                    console.log("Transaction was not found… (Exception while reading from database)");
+                    break;
+            }
+        },
+        error: function () {
+            return null;
+            console.log("Transaction was not found… (Ajax exception)");
+        }
+    });
 }
 
 function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_modified, file_hash, transaction_hash) {
@@ -260,6 +292,7 @@ function ongoingSubmissionAjax(file_name, file_mime_type, file_size, file_last_m
                     break;
                 default:
                     console.log("Ongoing submission could not be saved to history… (Exception while saving into database)");
+                    break;
             }
         },
         error: function () {
