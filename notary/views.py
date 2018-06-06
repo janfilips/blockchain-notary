@@ -3,7 +3,7 @@
 import datetime
 
 from django.conf import settings
-from django.core.mail import EmailMessage
+from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
@@ -88,7 +88,8 @@ def ajax_set_ongoing_submissions(request):
             return JsonResponse({'result': 'true'})
         except:
             return JsonResponse({'result': 'false'})
-    return JsonResponse({'result': 'false'})
+    else:
+        return JsonResponse({'result': 'false'})
 
 def ajax_get_document_data(request):
     if(request.POST):
@@ -96,7 +97,6 @@ def ajax_get_document_data(request):
             document = Submissions.objects.filter(file_hash=request.POST.get("file_hash"))
             date=document[0].transaction_created_at
             transaction_hash=document[0].transaction_hash
-            print(date)
             return JsonResponse({
                 "result": "true",
                 "date": date,
@@ -105,18 +105,19 @@ def ajax_get_document_data(request):
         except Exception as exception:
             print("Exception: "+exception)
             return JsonResponse({"result": "false"})
-    return JsonResponse({'result': 'false'})
+    else:
+        return JsonResponse({'result': 'false'})
 
 def ajax_send_mail(request):
     if(request.POST):
         try:
-            msg = EmailMessage(getattr(settings, "SITE_NAME"), request.POST.get("mail_body")+request.POST.get("transaction_hash"), to=[request.POST.get("mail_to")])
-            msg.send()
-            print("subject: "+getattr(settings, "SITE_NAME")+", body: "+request.POST.get("mail_body")+request.POST.get("transaction_hash")+", to: "+request.POST.get("mail_to"));
+            send_mail(getattr(settings, "SITE_NAME"), "", getattr(settings, "EMAIL_HOST_USER"), [request.POST.get("mail_to")], html_message=request.POST.get("mail_body"))
             return JsonResponse({"result": "true"})
         except Exception as exception:
             print("Exception: "+exception)
             return JsonResponse({"result": "false"})
+    else:
+        return JsonResponse({'result': 'false'})
 
 def ajax_set_proof(request):
     if(request.POST):
@@ -125,7 +126,8 @@ def ajax_set_proof(request):
             return JsonResponse({'result': 'true'})
         except:
             return JsonResponse({'result': 'false'})
-    return JsonResponse({'result': 'false'})
+    else:
+        return JsonResponse({'result': 'false'})
 
 def home(request):
  
@@ -138,6 +140,7 @@ def home(request):
                 "settings_bytecode_storage": getattr(settings, "BYTECODE_STORAGE"),
                 "settings_contract_address_notarise": getattr(settings, "CONTRACT_ADDRESS_NOTARISE"),
                 "settings_contract_address_storage": getattr(settings, "CONTRACT_ADDRESS_STORAGE"),
+                "settings_email_notarised_html": getattr(settings, "EMAIL_NOTARISED_HTML"),
                 "settings_gas": getattr(settings, "GAS"),
                 "settings_ether_value": getattr(settings, "ETHER_VALUE")
             },

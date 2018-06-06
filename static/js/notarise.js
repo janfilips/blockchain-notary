@@ -115,7 +115,6 @@ function getHashOnDone() {
 }
 
 async function waitForTxToBeMined(txHash, notaryContract, eth) {
-    console.log("Hash: "+txHash)
     ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash = txHash);
     setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here: <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
     timeout = setTimeout(function () {
@@ -124,6 +123,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
     getTransactionHistoryAjax();
     var txReceipt;
     $("#upload-button-notarise").prop("disabled", true);
+    $("#last-successful-transaction-hash").val(txHash);
     isNotarising = true;
 
 
@@ -248,6 +248,7 @@ function getDocumentDataByFileHashAjax(file_hash) {
         success: function (response) {
             switch (response.result) {
                 case "true":
+                    $("#last-successful-transaction-hash").val(response.transaction_hash);
                     showAlert('This document was notarised on the <strong>' + new Date(response.date).toDateString() + '</strong>. <strong>You have the original document.</strong>', 'Document is verified', "See Proof", "Send via e-mail", function(){window.location.href="https://ropsten.etherscan.io/tx/"+response.transaction_hash}, manageEmailBox, "Success", true);
                     console.log("Transaction hash was found…");
                     console.log("Document was notarised in past…");

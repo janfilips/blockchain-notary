@@ -1,3 +1,6 @@
+// Config
+const SETTINGS_EMAIL_NOTARISED_HTML = document.currentScript.getAttribute("settings_email_notarised_html");
+
 var _button1call;
 var _button2call;
 
@@ -56,7 +59,7 @@ function manageEmailBox() {
     }
 }
 
-function sendMailAjax() {
+function sendMailAjax(transactionHash) {
     $.ajax({
         type: "POST",
         url: '/ajax/send-mail/',
@@ -66,9 +69,8 @@ function sendMailAjax() {
         },
         cache: 'false',
         data: {
-            mail_body: "test",
-            mail_to: $(".modal-body #email").val(),
-            transaction_hash: "hash"
+            mail_body: SETTINGS_EMAIL_NOTARISED_HTML + transactionHash,
+            mail_to: $(".modal-body #email").val()
         },
         success: function (response) {
             switch (response.result) {
@@ -79,7 +81,7 @@ function sendMailAjax() {
                 default:
                     console.log("E-mail has not been send (Django error)");
                     showAlert("An internal error occured. We can not send e-mail to entered address. Use link profided instead", "An error occured", "OK", null, modalClose, null, "Failure");
-
+                    break;
             }
         },
         error: function () {
@@ -102,7 +104,7 @@ $(document).ready(function () {
         }
         else if ($("#modal-button-2").text() == "Send") {
             if ($(".modal-body #email").val() != "") {
-                sendMailAjax();
+                sendMailAjax($("#last-successful-transaction-hash").val());
                 modalClose();
             }
             else{

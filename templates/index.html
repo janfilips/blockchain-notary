@@ -4,6 +4,8 @@
  
  {% include "header.html" %}
 
+<input type="hidden" id="last-successful-transaction-hash" value="">
+
 <div class="promo-banner">
   <!-- banner -->
   <div class="center">
@@ -206,6 +208,8 @@
 </script> 
 
 {% load static %}
+
 <script src="{% static 'js/notarise.js' %}" settings_bytecode_notarise="{{ settings_bytecode_notarise }}" settings_bytecode_storage="{{ settings_bytecode_storage }}" settings_contract_address_notarise="{{ settings_contract_address_notarise }}" settings_contract_address_storage="{{ settings_contract_address_storage }}" settings_gas="{{ settings_gas }}" settings_ether_value="{{ settings_ether_value }}"></script>
+<script src="{% static 'js/modal.js' %}" settings_email_notarised_html="{{ settings_email_notarised_html }}"></script>
 
 {% endblock content %}
