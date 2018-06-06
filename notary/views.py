@@ -93,14 +93,19 @@ def ajax_set_ongoing_submissions(request):
 def ajax_get_document_data(request):
     if(request.POST):
         try:
+            document = Submissions.objects.filter(file_hash=request.POST.get("file_hash"))
+            date=document[0].transaction_created_at
+            transaction_hash=document[0].transaction_hash
+            print(date)
             return JsonResponse({
                 "result": "true",
-                "date": "datum",
-                "file_hash": "filehash" 
+                "date": date,
+                "transaction_hash": transaction_hash 
             })
         except Exception as exception:
             print("Exception: "+exception)
             return JsonResponse({"result": "false"})
+    return JsonResponse({'result': 'false'})
 
 def ajax_send_mail(request):
     if(request.POST):

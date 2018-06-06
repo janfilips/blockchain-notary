@@ -115,6 +115,7 @@ function getHashOnDone() {
 }
 
 async function waitForTxToBeMined(txHash, notaryContract, eth) {
+    console.log("Hash: "+txHash)
     ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash = txHash);
     setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here: <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
     timeout = setTimeout(function () {
@@ -212,7 +213,7 @@ function checkProofOrCreateTransaction() {
                 isNotarised = result[0];
                 if (isNotarised) {
                     setSpinner(false);
-                    getDocumentDataByFileHashAjax();
+                    getDocumentDataByFileHashAjax(fileHash);
                 }
                 else {
                     var contractNotarise = new EthContract(eth);
@@ -245,16 +246,15 @@ function getDocumentDataByFileHashAjax(file_hash) {
             file_hash: file_hash
         },
         success: function (response) {
-
             switch (response.result) {
                 case "true":
-                    showAlert('This document was notarised on the ' + response.date + '. <strong>You have the original document.</strong> The document proof can be found <a href="https://ropsten.etherscan.io/tx/' + response.file_hash + '" target="_blank" aria-label="Your notarised document link">here</a>.', 'Document is verified', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success", true);
+                    showAlert('This document was notarised on the <strong>' + new Date(response.date).toDateString() + '</strong>. <strong>You have the original document.</strong>', 'Document is verified', "See Proof", "Send via e-mail", function(){window.location.href="https://ropsten.etherscan.io/tx/"+response.transaction_hash}, manageEmailBox, "Success", true);
                     console.log("Transaction hash was found…");
                     console.log("Document was notarised in past…");
                     clearDropzone();
                     break;
                 default:
-                    showAlert('This document was notarised but we can not find it in our database." target="_blank" aria-label="Your notarised document link">here</a>.', 'Document is verified', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success", true);
+                    showAlert('This document was notarised but we can not find it in our database.', 'Document is verified', "OK", "Send via e-mail", modalClose, manageEmailBox, "Success", true);
                     console.log("Transaction was not found… (Exception while reading from database)");
                     break;
             }
