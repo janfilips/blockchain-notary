@@ -60,6 +60,10 @@ function manageEmailBox() {
 }
 
 function sendMailAjax(transactionHash) {
+
+    // Replace placeholders
+    var mailBody=SETTINGS_EMAIL_NOTARISED_HTML.replace(new RegExp("\\[transaction-hash\\]", "g"), transactionHash);
+
     $.ajax({
         type: "POST",
         url: '/ajax/send-mail/',
@@ -69,14 +73,14 @@ function sendMailAjax(transactionHash) {
         },
         cache: 'false',
         data: {
-            mail_body: SETTINGS_EMAIL_NOTARISED_HTML + transactionHash,
+            mail_body: mailBody,
             mail_to: $(".modal-body #email").val()
         },
         success: function (response) {
             switch (response.result) {
                 case "true":
                     console.log("E-mail sucessfully send");
-                    showAlert("Notarising informations was sucessfully send to entered e-mail address", "E-mail send");
+                    showAlert("Notarising informations was sucessfully send to entered e-mail address", "E-mail was send");
                     break;
                 default:
                     console.log("E-mail has not been send (Django error)");
