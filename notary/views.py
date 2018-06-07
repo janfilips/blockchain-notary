@@ -95,13 +95,17 @@ def ajax_get_document_data(request):
     if(request.POST):
         try:
             document = Submissions.objects.filter(file_hash=request.POST.get("file_hash"))
-            date=document[0].transaction_created_at
-            transaction_hash=document[0].transaction_hash
-            return JsonResponse({
+            if(len(document)>0):
+                date=document[0].transaction_created_at
+                transaction_hash=document[0].transaction_hash
+                return JsonResponse({
                 "result": "true",
                 "date": date,
                 "transaction_hash": transaction_hash 
-            })
+                })
+            else:
+                print("No notarised documents in database")
+                return JsonResponse({"result": "false"})
         except Exception as exception:
             print("Exception: "+exception)
             return JsonResponse({"result": "false"})
