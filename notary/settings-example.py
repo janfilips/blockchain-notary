@@ -3,8 +3,8 @@ import os
 # Websites name
 SITE_NAME="Blockchain Notary"
 
-DEFAULT_FROM_EMAIL = 'workorbit@gmail.com'
-SERVER_EMAIL = 'workorbit@gmail.com'
+EMAIL_NOTARISED_HTML = 'Here is your <strong>notarised document</strong>: https://ropsten.etherscan.io/tx/'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
