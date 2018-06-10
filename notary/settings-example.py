@@ -3,7 +3,7 @@ import os
 # Websites name
 SITE_NAME="Blockchain Notary"
 
-EMAIL_NOTARISED_HTML = 'Here is your <strong>notarised document</strong>: https://ropsten.etherscan.io/tx/'
+EMAIL_NOTARISED_HTML = 'Here is your notarised document: <strong><a href="https://ropsten.etherscan.io/tx/[transaction-hash]">https://ropsten.etherscan.io/tx/[transaction-hash]</a></strong>.'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

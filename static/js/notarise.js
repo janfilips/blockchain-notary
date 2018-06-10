@@ -116,8 +116,10 @@ function getHashOnDone() {
 
 async function waitForTxToBeMined(txHash, notaryContract, eth) {
     ongoingSubmissionAjax(fileName, fileType, fileSize, lastModified, fileHash, transactionHash = txHash);
+    $("#upload-button-cancel").prop("disabled", true);
     setSpinner(true, "Waiting for the transaction to be mined…", 'Your notarised document can be tracked here: <a href="https://ropsten.etherscan.io/tx/' + txHash + '" target="_blank" aria-label="">' + txHash + '</a>');
     timeout = setTimeout(function () {
+        $("#upload-button-cancel").prop("disabled", false);
         setSpinner(true, "Waiting for the transaction to be mined… (Takes too long? Try to increase the gas limit or gas price…)");
     }, 90000);
     getTransactionHistoryAjax();
@@ -134,6 +136,7 @@ async function waitForTxToBeMined(txHash, notaryContract, eth) {
 
             // Receipt returned => Verify if document is signed properly
             if (txReceipt) {
+                $("#upload-button-cancel").prop("disabled", false);
                 contractStorage = new EthContract(eth);
                 notaryContractStorage = contractStorage(ABI_STORAGE, BYTECODE_STORAGE, { from: myAddress }).at(CONTRACT_ADDRESS_STORAGE);
                 notaryContractStorage.hasProof(fileHash).then((function (result) {
