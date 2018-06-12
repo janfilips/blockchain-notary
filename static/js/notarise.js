@@ -52,7 +52,7 @@ $(document).ready(function () {
                 fileType = file.type;
                 fileSize = file.size;
                 lastModified = file.lastModified;
-                $("#dropzoneform").hide().next().hide();
+                $("#dropzoneform").hide();
                 $("#dropzone-results").show();
                 $("[data-file-name]").html(file.name);
                 if (file.type) {

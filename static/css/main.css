@@ -354,7 +354,7 @@ p a:hover {
   border: solid 1px #80b045;
 }
 
-.naterize-block {
+.noterise-block {
   margin-bottom: 9rem;
 }
 .dropzone {
@@ -1076,6 +1076,7 @@ p a:hover {
 
 #upload-buttons{
   display: none;
+  margin-bottom: 20px;
 }
 
 #spinner-text a, #spinner-subtext a{
@@ -1083,7 +1084,6 @@ p a:hover {
 }
 
 #spinner-subtext{
-  margin-top: 20px;
   font-size: 0.75em;
 }
 

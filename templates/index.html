@@ -54,7 +54,7 @@
       </div>
     </section>
 
-    <section class="naterize-block" id="notarise-block">
+    <section class="noterise-block" id="notarise-block">
       <!-- Drag and drop zone -->
       <h3>Notarise Your Document</h3>
       <form action="/" method="get" class="dropzone" id="dropzoneform">{% csrf_token %}
@@ -67,8 +67,6 @@
           </div>
         </div>
       </form>
-      <p class="additional-info">If it has been certified already, you will be redirected to the original record.
-        <br>You can also input a hash to find previous records.</p>
       <table style="display: none;" id="dropzone-results">
         <tr>
           <th>Name</th>
@@ -106,6 +104,8 @@
         <p id="spinner-text">Waiting for confirmation of transaction…</p>
         <p id="spinner-subtext"></p>
       </div>
+      <p class="additional-info">If it has been certified already, you will be redirected to the original record.
+          <br>You can also input a hash to find previous records.</p>
     </section>
 
     <section class="process">
