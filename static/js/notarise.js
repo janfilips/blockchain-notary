@@ -4,7 +4,13 @@ const CONTRACT_ADDRESS_STORAGE = document.currentScript.getAttribute("settings_c
 const BYTECODE_NOTARISE = document.currentScript.getAttribute("settings_bytecode_notarise");
 const BYTECODE_STORAGE = document.currentScript.getAttribute("settings_bytecode_storage");
 const GAS = parseInt(document.currentScript.getAttribute("settings_gas"));
-const ETHER_VALUE = web3.toWei(parseFloat(document.currentScript.getAttribute("settings_ether_value")), 'ether');
+
+try{
+    const ETHER_VALUE = web3.toWei(parseFloat(document.currentScript.getAttribute("settings_ether_value")), 'ether');
+}
+catch{
+    console.log("Metamask is not loaded…")
+}
 
 // Global variables
 var contractStorage;
