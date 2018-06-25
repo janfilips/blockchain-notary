@@ -1027,6 +1027,7 @@ p a:hover {
   font-size: 1em;
   display: none;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .spinner > div {
