@@ -5,8 +5,10 @@ const BYTECODE_NOTARISE = document.currentScript.getAttribute("settings_bytecode
 const BYTECODE_STORAGE = document.currentScript.getAttribute("settings_bytecode_storage");
 const GAS = parseInt(document.currentScript.getAttribute("settings_gas"));
 
+var ETHER_VALUE;
+
 try{
-    const ETHER_VALUE = web3.toWei(parseFloat(document.currentScript.getAttribute("settings_ether_value")), 'ether');
+    ETHER_VALUE = web3.toWei(parseFloat(document.currentScript.getAttribute("settings_ether_value")), 'ether');
 }
 catch{
     console.log("Metamask is not loaded…")
