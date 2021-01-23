@@ -32,7 +32,8 @@ License
 
 BSD-2-Clause
 
-### Donation Address
+Donation Address
+----
 
 ETH: 0xbcFAB06E0cc4Fe694Bdf780F1FcB1bB143bD93Ad
 
