@@ -37,4 +37,6 @@ Donation Address
 
 ETH: 0xbcFAB06E0cc4Fe694Bdf780F1FcB1bB143bD93Ad
 
+The demo can be currently seen on http://18.157.182.120:8000/
+
 Have fun and enjoy! :)
